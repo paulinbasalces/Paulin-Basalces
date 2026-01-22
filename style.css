@@ -1,188 +1,215 @@
-/* --- VARIÁVEIS DE DESIGN SYSTEM (Design Tokens) --- */
+/* --- VARIÁVEIS DE DESIGN SYSTEM (TEMA CLARO - PADRÃO) --- */
 :root {
-    --bg-color: #111111;       /* Preto quase absoluto */
-    --text-color: #FFFFFF;     /* Branco Puro */
-    --accent-color: #FBbf24;   /* Amarelo Acessível para destaque */
-    --text-secondary: #D1D5DB; /* Cinza claro para suporte */
-    --spacing-unit: 1.5rem;
-    --font-main: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    /* Cores da Marca */
+    --brand-purple: #6D28D9;   /* Roxo Vibrante (Botões/Destaques) */
+    --brand-orange: #EA580C;   /* Laranja (Detalhes) */
+    
+    /* Paleta Semântica (Light Mode) */
+    --bg-body: #FFFFFF;        /* Fundo Principal */
+    --bg-soft: #F3F4F6;        /* Fundo Secundário (Seções alternadas) */
+    --bg-card: #FFFFFF;        /* Fundo dos Cards */
+    --bg-header: rgba(255, 255, 255, 0.90); /* Header Translúcido */
+    
+    --text-main: #1F2937;      /* Texto Principal (Cinza Escuro) */
+    --text-muted: #4B5563;     /* Texto Secundário */
+    
+    --border-color: #E5E7EB;   /* Bordas sutis */
+    --shadow-color: rgba(0, 0, 0, 0.08); /* Sombra suave */
+    
+    /* Configurações Globais */
+    --spacing-section: 6rem;
+    --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --radius-soft: 16px;
 }
 
-/* --- RESET E BASE --- */
+/* --- TEMA ESCURO (DARK PURPLE MODE) --- */
+body.dark-mode {
+    /* Paleta Semântica (Dark Mode - Roxo Profundo) */
+    --bg-body: #0F0529;        /* Roxo Quase Preto (Deep Void) */
+    --bg-soft: #1A0B3B;        /* Roxo Escuro (Seções alternadas) */
+    --bg-card: #241245;        /* Roxo Card (Um pouco mais claro) */
+    --bg-header: rgba(15, 5, 41, 0.90); /* Header Dark */
+    
+    --text-main: #F9FAFB;      /* Branco Suave */
+    --text-muted: #D1D5DB;     /* Cinza Claro */
+    
+    --border-color: #382558;   /* Borda Roxa Sutil */
+    --shadow-color: rgba(0, 0, 0, 0.4); /* Sombra mais forte no escuro */
+}
+
+/* --- RESET & BASE --- */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
+    background-color: var(--bg-body);
+    color: var(--text-main);
     font-family: var(--font-main);
-    line-height: 1.6;
+    line-height: 1.8;
     font-size: 18px;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transição suave entre temas */
 }
 
-/* --- UTILITIES (Classes auxiliares) --- */
-.mb-1 { margin-bottom: 1rem; }
-.mb-2 { margin-bottom: 2rem; }
+/* --- UTILITIES --- */
+.container { max-width: 1080px; margin: 0 auto; padding: 0 2rem; }
 .text-center { text-align: center; }
-
-.section-divider {
-    border: 0;
-    border-top: 1px solid #333;
-    max-width: 900px;
-    margin: 0 auto;
-}
+.mb-1 { margin-bottom: 1.5rem; }
+.mb-2 { margin-bottom: 3rem; }
+.full-width { width: 100%; display: block; text-align: center; }
 
 /* --- ACESSIBILIDADE --- */
 .skip-link {
-    position: absolute; top: -40px; left: 0; background: var(--accent-color); color: #000; 
-    padding: 8px; z-index: 100; transition: top 0.3s; text-decoration: none; font-weight: bold;
+    position: absolute; top: -50px; left: 0; 
+    background: var(--brand-purple); color: #fff; padding: 1rem; 
+    z-index: 101; transition: top 0.3s; font-weight: bold;
 }
 .skip-link:focus { top: 0; }
 
 *:focus-visible {
-    outline: 3px solid var(--accent-color);
+    outline: 3px solid var(--brand-orange);
     outline-offset: 4px;
-}
-
-/* --- LAYOUT --- */
-.container {
-    max-width: 1000px; /* Aumentei um pouco para caber a imagem e texto lado a lado */
-    margin: 0 auto;
-    padding: 0 var(--spacing-unit);
+    border-radius: 4px;
 }
 
 /* --- HEADER & NAV --- */
 header {
     padding: 1.5rem 0;
-    border-bottom: 1px solid #333;
+    background: var(--bg-header);
+    position: sticky; top: 0; z-index: 50;
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
+    transition: background 0.3s ease, border-color 0.3s ease;
 }
-.navbar-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-}
-.logo {
-    font-weight: 800;
-    font-size: 1.2rem;
-    letter-spacing: -0.5px;
-}
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-}
-nav a {
-    color: var(--text-color);
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 1rem;
-    border-bottom: 2px solid transparent;
-    transition: border-color 0.3s;
-}
-nav a:hover, nav a[aria-current="page"] {
-    border-bottom-color: var(--accent-color);
+.navbar-container { display: flex; justify-content: space-between; align-items: center; }
+
+.logo { 
+    font-weight: 800; font-size: 1.4rem; color: var(--brand-purple); letter-spacing: -0.5px; 
 }
 
-/* --- HERO SECTION (Com imagem) --- */
+/* Container do Menu + Toggle */
+.nav-wrapper { display: flex; align-items: center; gap: 2rem; }
+
+nav ul { list-style: none; display: flex; gap: 2rem; }
+nav a { 
+    color: var(--text-muted); text-decoration: none; font-weight: 500; 
+    transition: color 0.2s ease;
+}
+nav a:hover, nav a[aria-current="page"] { color: var(--brand-purple); font-weight: 700; }
+
+/* --- BOTÃO TOGGLE THEME --- */
+.theme-toggle {
+    background: transparent; border: 2px solid var(--border-color);
+    color: var(--text-main); cursor: pointer;
+    padding: 0.5rem; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s ease;
+    width: 40px; height: 40px;
+}
+.theme-toggle:hover {
+    border-color: var(--brand-purple); color: var(--brand-purple); background: var(--bg-soft);
+}
+.theme-toggle svg { width: 20px; height: 20px; fill: currentColor; }
+
+/* Ícones: Mostra Sol no Dark, Lua no Light */
+.icon-sun { display: none; }
+.icon-moon { display: block; }
+body.dark-mode .icon-sun { display: block; }
+body.dark-mode .icon-moon { display: none; }
+
+/* --- HERO SECTION --- */
 .hero-container {
-    padding: 4rem var(--spacing-unit);
-    display: grid;
-    gap: 3rem;
-    align-items: center;
-    /* No mobile é uma coluna só */
+    padding-top: 4rem; padding-bottom: var(--spacing-section);
+    display: grid; gap: 4rem; align-items: center;
+}
+.hero-content h1 {
+    font-size: clamp(3rem, 6vw, 5rem); line-height: 1.1; font-weight: 800; 
+    margin-bottom: 1.5rem; color: var(--text-main); letter-spacing: -1px;
+}
+.highlight { color: var(--brand-purple); }
+.subtitle { font-size: 1.35rem; color: var(--text-muted); max-width: 55ch; margin-bottom: 2.5rem; }
+
+.hero-image-container { display: flex; justify-content: center; order: -1; }
+.profile-photo {
+    width: 260px; height: 260px; object-fit: cover; border-radius: 50%;
+    box-shadow: 0 20px 40px -10px rgba(109, 40, 217, 0.3);
+    border: 4px solid var(--bg-card); /* Borda ajuda a separar do fundo no dark mode */
 }
 
-.hero-content {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+/* --- BUTTONS --- */
+.cta-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn { 
+    display: inline-flex; justify-content: center; align-items: center;
+    padding: 1rem 2rem; font-weight: 600; text-decoration: none; 
+    border-radius: 50px; transition: all 0.3s ease;
 }
-
-h1 {
-    font-size: clamp(2.5rem, 5vw, 4.5rem);
-    line-height: 1.1;
-    font-weight: 800;
+.btn-primary { 
+    background-color: var(--brand-purple); color: #fff; 
+    box-shadow: 0 4px 14px 0 rgba(109, 40, 217, 0.4);
 }
-.highlight { color: var(--accent-color); }
+.btn-primary:hover { transform: translateY(-2px); background-color: #5b21b6; }
+.btn-outline { background: transparent; color: var(--text-main); border: 2px solid var(--border-color); }
+.btn-outline:hover { border-color: var(--brand-purple); color: var(--brand-purple); }
 
-.subtitle {
-    font-size: 1.25rem;
-    color: var(--text-secondary);
-    max-width: 60ch;
+/* --- SEÇÃO LIVRO --- */
+.book-section { background-color: var(--bg-soft); padding: var(--spacing-section) 0; transition: background 0.3s; }
+.book-container { display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: center; }
+.book-image-wrapper { display: flex; justify-content: center; position: relative; }
+
+/* Círculo decorativo ajustável */
+.book-image-wrapper::before {
+    content: ''; position: absolute; width: 300px; height: 300px;
+    background: var(--brand-purple); opacity: 0.1; /* Transparente para funcionar nos 2 temas */
+    border-radius: 50%; z-index: 0; top: 50%; left: 50%; transform: translate(-50%, -50%);
 }
-
-/* Estilos da Imagem do Livro */
-.hero-image-container {
-    display: flex;
-    justify-content: center;
-    order: -1; /* No mobile, a imagem aparece primeiro */
-}
-
 .book-cover {
-    max-width: 100%;
-    height: auto;
-    width: 350px; /* Tamanho base */
-    border-radius: 8px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.5); /* Sombra para destacar do fundo */
-    transform: rotate(3deg); /* Um leve toque de design */
-    transition: transform 0.3s ease;
+    max-width: 220px; border-radius: 8px; position: relative; z-index: 1;
+    box-shadow: 0 20px 40px var(--shadow-color);
+    transform: rotate(-3deg); transition: transform 0.3s ease;
 }
-.book-cover:hover {
-    transform: rotate(0deg) scale(1.02);
+.book-cover:hover { transform: rotate(0deg) scale(1.02); }
+
+.badge {
+    display: inline-block; background: var(--bg-card); border: 1px solid var(--border-color);
+    color: var(--brand-purple); padding: 6px 12px; border-radius: 20px; 
+    font-size: 0.85rem; font-weight: 700; text-transform: uppercase; margin-bottom: 1rem;
 }
 
-/* --- CTA BUTTONS --- */
-.cta-group {
-    display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem;
-}
-.btn {
-    display: inline-block; padding: 1rem 2rem; font-weight: 700;
-    text-decoration: none; border-radius: 8px; transition: transform 0.2s; text-align: center;
-}
-.btn-primary { background-color: var(--accent-color); color: #000000; }
-.btn-outline { border: 2px solid var(--text-color); color: var(--text-color); }
-.btn:hover { transform: translateY(-3px); }
+.book-content h2 { font-size: 2.5rem; margin-bottom: 1rem; color: var(--text-main); }
+.book-content p { font-size: 1.15rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+.btn-text { color: var(--brand-purple); font-weight: 700; text-decoration: none; }
 
-/* --- SECTIONS GERAIS --- */
-section { padding: 4rem 0; }
-h2 { font-size: 2.5rem; margin-bottom: 1.5rem; border-left: 5px solid var(--accent-color); padding-left: 1rem; }
+/* --- SERVIÇOS --- */
+section { padding: var(--spacing-section) 0; }
+h2 { font-size: 2.5rem; margin-bottom: 3rem; color: var(--text-main); }
+.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; }
 
-/* --- GRID DE SERVIÇOS --- */
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-}
 .card {
-    background: #1a1a1a; padding: 2rem; border-radius: 12px; border: 1px solid #333;
+    background: var(--bg-card); padding: 2.5rem; 
+    border-radius: var(--radius-soft); border: 1px solid var(--border-color);
+    box-shadow: 0 10px 30px -10px var(--shadow-color);
+    transition: transform 0.3s ease, border 0.3s;
 }
-.card h3 { margin-bottom: 1rem; font-size: 1.5rem; color: var(--accent-color); }
+.card:hover { transform: translateY(-5px); border-color: var(--brand-purple); }
+.card h3 { margin-bottom: 1rem; font-size: 1.5rem; color: var(--text-main); }
+.card p { color: var(--text-muted); margin-bottom: 2rem; }
+
+.highlight-card { border: 2px solid var(--brand-purple); } /* Destaque no tema escuro também */
 
 /* --- FOOTER --- */
-footer {
-    text-align: center; padding: 3rem 0; border-top: 1px solid #333;
-    color: var(--text-secondary); font-size: 0.9rem;
+footer { 
+    text-align: center; padding: 4rem 0; 
+    background: var(--bg-soft); color: var(--text-muted); 
+    border-top: 1px solid var(--border-color);
+    transition: background 0.3s;
 }
-.footer-note { margin-top: 0.5rem; font-size: 0.8rem; opacity: 0.7; }
 
-/* --- RESPONSIVIDADE (Media Queries) --- */
+/* --- RESPONSIVIDADE --- */
 @media (min-width: 768px) {
-    /* Em tablets e desktop, coloca texto e imagem lado a lado */
-    .hero-container {
-        grid-template-columns: 1fr 1fr;
-    }
-    .hero-image-container {
-        order: 1; /* Imagem vai para a direita */
-        justify-content: flex-end;
-    }
+    .hero-container { grid-template-columns: 1.2fr 1fr; }
+    .hero-image-container { order: 1; justify-content: flex-end; }
+    .book-container { grid-template-columns: auto 1fr; }
 }
-
-@media (max-width: 600px) {
-    .navbar-container { justify-content: center; }
-    .hero-container { padding: 2rem var(--spacing-unit); }
-    .cta-group { flex-direction: column; }
-    .btn { width: 100%; }
-    .book-cover { width: 280px; } /* Imagem menor no mobile */
+@media (max-width: 768px) {
+    .nav-wrapper { flex-direction: column-reverse; gap: 1rem; width: 100%; margin-top: 1rem; }
+    .navbar-container { flex-direction: column; }
+    nav ul { flex-wrap: wrap; justify-content: center; }
 }
