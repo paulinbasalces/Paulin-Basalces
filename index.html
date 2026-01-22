@@ -14,14 +14,22 @@
     <header role="banner">
         <div class="container navbar-container">
             <div class="logo">Paulin Basalces</div>
-            <nav role="navigation" aria-label="Menu Principal">
-                <ul>
-                    <li><a href="#" aria-current="page">Início</a></li>
-                    <li><a href="#sobre">Sobre</a></li>
-                    <li><a href="#servicos">Serviços</a></li>
-                    <li><a href="#contato">Contato</a></li>
-                </ul>
-            </nav>
+            
+            <div class="nav-wrapper">
+                <nav role="navigation" aria-label="Menu Principal">
+                    <ul>
+                        <li><a href="#" aria-current="page">Início</a></li>
+                        <li><a href="#livro">Livro</a></li>
+                        <li><a href="#servicos">Mentorias</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                    </ul>
+                </nav>
+
+                <button id="theme-toggle" class="theme-toggle" aria-label="Alternar para modo escuro">
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                </button>
+            </div>
         </div>
     </header>
 
@@ -35,47 +43,56 @@
                     Trabalho na intersecção entre inovação e inclusão para resolver barreiras que o mercado ignora.
                 </p>
                 <div class="cta-group">
-                    <a href="https://www.linkedin.com/in/paulinbasalces/" target="_blank" class="btn btn-primary">Vamos nos conectar no LinkedIn</a>
-                    <a href="#sobre" class="btn btn-outline">Conheça minha trajetória</a>
+                    <a href="https://www.linkedin.com/in/paulinbasalces/" target="_blank" class="btn btn-primary">Vamos nos conectar</a>
+                    <a href="#servicos" class="btn btn-outline">Ver Mentorias</a>
                 </div>
             </div>
             <div class="hero-image-container">
-                <img src="capa-livro.png" 
-                     alt="Capa do livro 'Desconstruindo o Capacitismo' de Paulin Basalces. O livro tem fundo roxo, com o título em letras laranjas e brancas no topo. Abaixo, uma ilustração em contorno laranja mostra duas cadeiras de plástico lado a lado, onde uma delas possui as pernas visivelmente mais curtas e tortas." 
-                     class="book-cover">
+                <img src="foto-perfil.png" 
+                     alt="Foto de rosto de Paulin Basalces." 
+                     class="profile-photo">
             </div>
         </section>
 
-        <hr class="section-divider">
-
-        <section id="sobre" class="container">
-            <h2>Sobre a Jornada</h2>
-            <article>
-                <p class="mb-1">
-                    Como criador de experiências inclusivas (PcD • ♿️ 🏳️‍⚧️), minha missão vai além do checklist básico. 
-                    Utilizo Design Estratégico para conectar negócios a realidades complexas.
-                </p>
-                <p>
-                    Sou autor do livro <em>"Desconstruindo o Capacitismo"</em> e atuo como parceiro ideal para empresas 
-                    que buscam maturidade real em diversidade e tecnologia assistiva.
-                </p>
-            </article>
+        <section id="livro" class="book-section">
+            <div class="container book-container">
+                <div class="book-image-wrapper">
+                    <img src="capa-livro.png" 
+                         alt="Capa do livro 'Desconstruindo o Capacitismo'. Fundo roxo vibrante." 
+                         class="book-cover">
+                </div>
+                <div class="book-content">
+                    <span class="badge">Autoria Própria</span>
+                    <h2>Desconstruindo o Capacitismo</h2>
+                    <p>
+                        A inclusão começa com a desconstrução de preconceitos. Uma obra essencial para designers e líderes que desejam ir além do checklist básico de acessibilidade.
+                    </p>
+                    <a href="#" class="btn btn-text">Adquirir o livro &rarr;</a>
+                </div>
+            </div>
         </section>
 
         <section id="servicos" class="container">
             <h2>Como posso ajudar</h2>
             <div class="services-grid">
-                <article class="card">
-                    <h3>Mentorias</h3>
-                    <p>Orientação de carreira para designers que querem se especializar em Acessibilidade e Liderança.</p>
+                <article class="card highlight-card">
+                    <h3>Mentorias Individuais</h3>
+                    <p>Orientação de carreira estratégica para designers. Foco em Liderança, IA e Acessibilidade Real.</p>
+                    <a href="https://app.ementor.com.br/pacotes/pedido/3265/" target="_blank" class="btn btn-primary full-width mt-1">
+                        Agendar Sessão
+                    </a>
                 </article>
+
                 <article class="card">
-                    <h3>Palestras</h3>
-                    <p>Talks sobre IA Inclusiva, Anticapacitismo e o futuro do Design Operations.</p>
+                    <h3>Palestras & Talks</h3>
+                    <p>Leve discussões sobre IA Inclusiva, Anticapacitismo e Design Operations para sua empresa.</p>
+                    <a href="#contato" class="btn btn-outline full-width mt-1">Solicitar Proposta</a>
                 </article>
+
                 <article class="card">
                     <h3>Consultoria</h3>
-                    <p>Análise profunda de produtos digitais para eliminação de barreiras de acesso.</p>
+                    <p>Análise profunda de produtos digitais para eliminação de barreiras de acesso e compliance.</p>
+                    <a href="#contato" class="btn btn-outline full-width mt-1">Entrar em contato</a>
                 </article>
             </div>
         </section>
@@ -83,7 +100,7 @@
         <section id="contato" class="container text-center">
             <h2>Vamos conversar?</h2>
             <p class="mb-2">Estou aberto a trocas, conexões e novos desafios estratégicos.</p>
-            <a href="mailto:seu-email-aqui@exemplo.com" class="btn btn-primary">Enviar um E-mail</a>
+            <a href="mailto:seu-email@exemplo.com" class="btn btn-primary">Enviar um E-mail</a>
         </section>
 
     </main>
@@ -91,9 +108,37 @@
     <footer role="contentinfo">
         <div class="container">
             <p>&copy; 2024 Paulin Basalces. Todos os direitos reservados.</p>
-            <p class="footer-note">Site desenvolvido com foco em Acessibilidade (WCAG AAA).</p>
+            <p style="margin-top: 0.5rem; opacity: 0.7;">Site desenvolvido com foco em Acessibilidade (WCAG AAA).</p>
         </div>
     </footer>
+
+    <script>
+        const toggleButton = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        // 1. Verificar Preferência Salva ou do Sistema
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+            body.classList.add('dark-mode');
+            toggleButton.setAttribute('aria-label', 'Alternar para modo claro');
+        }
+
+        // 2. Função de Alternância
+        toggleButton.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            
+            // Atualizar ARIA e Salvar
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+                toggleButton.setAttribute('aria-label', 'Alternar para modo claro');
+            } else {
+                localStorage.setItem('theme', 'light');
+                toggleButton.setAttribute('aria-label', 'Alternar para modo escuro');
+            }
+        });
+    </script>
 
 </body>
 </html>
