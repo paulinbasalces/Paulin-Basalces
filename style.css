@@ -1,28 +1,28 @@
-/* --- VARIÁVEIS DE DESIGN SYSTEM (V 5.0 - Identity Hub) --- */
+/* --- VARIÁVEIS DE DESIGN SYSTEM (V 6.0 - Official Colors) --- */
 :root {
-    /* Paleta Identity (Baseada na capa do livro) */
-    --brand-purple: #6D28D9;   
-    --brand-purple-dark: #4C1D95;
-    --brand-orange: #EA580C;   /* Laranja da capa */
-    --brand-orange-light: #FDBA74;
+    /* Cores Oficiais da Marca */
+    --brand-purple: #770a94;   
+    --brand-purple-dark: #4a055c;
+    --brand-orange: #db742e;   
+    --brand-orange-light: #f59e5e;
     
     /* Dark Mode Nativo (Baseado na Ref Visual) */
-    --bg-body: #05020D;        /* Fundo Profundo */
-    --bg-surface: #0F0529;     /* Roxo muito escuro para seções */
-    --bg-card: #140830;        /* Card levemente mais claro */
-    --bg-input: #1F1045;
+    --bg-body: #05020D;        
+    --bg-surface: #0e031a;     /* Tom arroxeado muito escuro */
+    --bg-card: #140526;        
+    --bg-input: #1F0A3A;
     
     --text-main: #FFFFFF;      
-    --text-body: #CBD5E1;      /* Cinza Azulado Claro */
+    --text-body: #E2E8F0;      
     --text-muted: #94A3B8;     
     
-    --border-light: rgba(109, 40, 217, 0.3); /* Bordas roxas sutis */
+    --border-light: rgba(119, 10, 148, 0.3); /* Borda roxa sutil */
     
     /* Espaçamento e Layout */
     --section-gap: 8rem;       
     --container-max: 1200px;   
-    --radius-md: 12px;
-    --radius-lg: 24px;
+    --radius-md: 16px;
+    --radius-lg: 32px;
     
     --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
 }
@@ -37,7 +37,7 @@ body {
     font-family: var(--font-sans);
     line-height: 1.6;
     font-size: 17px;
-    background-image: radial-gradient(circle at 50% 0%, rgba(109, 40, 217, 0.15), transparent 60%);
+    background-image: radial-gradient(circle at 50% 0%, rgba(119, 10, 148, 0.2), transparent 70%);
 }
 
 h1, h2, h3, h4 { color: var(--text-main); font-weight: 800; line-height: 1.2; letter-spacing: -0.02em; }
@@ -47,16 +47,17 @@ ul { list-style: none; }
 .container { max-width: var(--container-max); margin: 0 auto; padding: 0 2rem; }
 .section-padding { padding: var(--section-gap) 0; }
 .bg-surface { background-color: var(--bg-surface); border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); }
+.text-center { text-align: center; }
 
 /* --- HEADER --- */
 header {
     height: 90px; display: flex; align-items: center;
-    background: rgba(5, 2, 13, 0.8); backdrop-filter: blur(12px);
+    background: rgba(5, 2, 13, 0.85); backdrop-filter: blur(12px);
     position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--border-light);
 }
 .nav-flex { display: flex; justify-content: space-between; align-items: center; width: 100%; }
 .logo { font-size: 1.4rem; font-weight: 800; color: var(--text-main); }
-.logo span { color: var(--brand-purple); } /* Destaque no nome */
+.logo span { color: var(--brand-purple); }
 
 .nav-links { display: flex; gap: 2rem; align-items: center; }
 .nav-links a { font-size: 0.95rem; font-weight: 500; color: var(--text-muted); }
@@ -69,15 +70,15 @@ header {
 }
 .hero-content h1 { font-size: clamp(3rem, 5vw, 4.8rem); margin-bottom: 1.5rem; }
 .highlight { 
-    background: linear-gradient(90deg, #A855F7, #EC4899); 
+    background: linear-gradient(90deg, var(--brand-orange), #f59e5e); 
     -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
 }
 .hero-content .lead { font-size: 1.25rem; color: var(--text-muted); margin-bottom: 2.5rem; max-width: 50ch; }
 
 .hero-img-style {
-    width: 100%; max-width: 420px; border-radius: 50%; /* Foto redonda estilo Perfil */
+    width: 100%; max-width: 420px; border-radius: 50%;
     border: 4px solid var(--brand-purple);
-    box-shadow: 0 0 60px rgba(109, 40, 217, 0.4); /* Glow Roxo */
+    box-shadow: 0 0 80px rgba(119, 10, 148, 0.3);
 }
 .hero-image { display: flex; justify-content: center; }
 
@@ -89,49 +90,49 @@ header {
 }
 .btn-primary { 
     background: var(--brand-purple); color: #fff; 
-    box-shadow: 0 0 20px rgba(109, 40, 217, 0.5); border: 1px solid transparent;
+    box-shadow: 0 0 20px rgba(119, 10, 148, 0.4); border: 1px solid transparent;
 }
-.btn-primary:hover { background: var(--brand-purple-dark); transform: translateY(-2px); }
+.btn-primary:hover { background: var(--brand-purple-dark); transform: translateY(-2px); box-shadow: 0 0 30px rgba(119, 10, 148, 0.6); }
 
 .btn-outline { background: transparent; border: 1px solid var(--text-muted); color: var(--text-main); }
 .btn-outline:hover { border-color: var(--brand-orange); color: var(--brand-orange); }
 
-/* --- BIO / QUEM É PAULIN --- */
-.section-header { margin-bottom: 3rem; max-width: 800px; }
-.section-header h2 { font-size: 2.5rem; margin-bottom: 1rem; }
-.bio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
-.bio-text p { margin-bottom: 1.5rem; font-size: 1.1rem; color: var(--text-body); }
-
-.stats-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
-.stat-card {
-    background: var(--bg-card); padding: 1.5rem; border-radius: var(--radius-md);
-    border-left: 4px solid var(--brand-purple);
+/* --- CARDS MODERNOS (Glassmorphism) --- */
+.card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+.modern-card {
+    background: var(--bg-card); padding: 2.5rem; border-radius: var(--radius-md);
+    border: 1px solid var(--border-light); transition: 0.3s; position: relative;
+    display: flex; flex-direction: column; height: 100%; overflow: hidden;
 }
-.stat-card h4 { color: var(--brand-orange); margin-bottom: 0.5rem; font-size: 1.1rem; }
-.stat-card p { font-size: 0.95rem; margin: 0; }
+.modern-card:hover { transform: translateY(-5px); border-color: var(--brand-orange); box-shadow: 0 10px 40px -10px rgba(219, 116, 46, 0.15); }
 
-/* --- HUB DE PROJETOS (NOVO) --- */
-.project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
-.project-card {
-    background: var(--bg-card); padding: 2rem; border-radius: var(--radius-md);
-    border: 1px solid var(--border-light); transition: 0.3s; position: relative; overflow: hidden;
-    display: flex; flex-direction: column; height: 100%;
-}
-.project-card:hover { transform: translateY(-5px); border-color: var(--brand-orange); }
+.card-icon { font-size: 2.5rem; margin-bottom: 1.5rem; }
+.card-title { font-size: 1.4rem; margin-bottom: 0.5rem; color: #fff; }
+.card-desc { color: var(--text-muted); margin-bottom: 2rem; flex-grow: 1; font-size: 0.95rem; }
+.card-link { color: var(--brand-orange); font-weight: bold; font-size: 0.9rem; display: flex; align-items: center; gap: 5px; }
+
+/* Tag Pill para Ecossistema */
 .tag-pill {
-    position: absolute; top: 1.5rem; right: 1.5rem; background: rgba(255,255,255,0.1);
-    padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: bold; color: var(--brand-orange);
+    position: absolute; top: 1.5rem; right: 1.5rem; background: rgba(255,255,255,0.05);
+    padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: bold; color: var(--brand-orange); border: 1px solid rgba(255,255,255,0.1);
 }
-.project-title { font-size: 1.4rem; margin: 1rem 0 0.5rem 0; color: #fff; }
-.project-link { margin-top: auto; color: var(--brand-purple); font-weight: bold; display: flex; align-items: center; gap: 5px; }
 
-/* --- LIVRO (Sales Style) --- */
+/* --- SEÇÃO "NA PRÁTICA" (NOVO) --- */
+.showcase-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 3rem; }
+.showcase-item {
+    background: var(--bg-card); border-radius: var(--radius-lg); overflow: hidden;
+    border: 1px solid var(--border-light); position: relative;
+}
+.showcase-content { padding: 2.5rem; background: linear-gradient(to top, rgba(5,2,13,0.9), transparent); position: absolute; bottom: 0; width: 100%; }
+.showcase-img { width: 100%; height: 400px; object-fit: cover; transition: 0.4s; opacity: 0.6; }
+.showcase-item:hover .showcase-img { transform: scale(1.05); opacity: 0.8; }
+
+/* --- LIVRO --- */
 .book-section { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 5rem; align-items: center; }
 .book-visual { display: flex; justify-content: center; position: relative; }
-/* Círculo Laranja atrás do livro para contraste */
 .book-visual::before {
     content: ''; position: absolute; width: 250px; height: 250px; background: var(--brand-orange);
-    filter: blur(90px); opacity: 0.3; z-index: 0;
+    filter: blur(90px); opacity: 0.2; z-index: 0;
 }
 .book-cover { 
     position: relative; z-index: 1; max-width: 260px; 
@@ -140,20 +141,26 @@ header {
 }
 .book-cover:hover { transform: rotate(0deg) scale(1.05); }
 
-.book-list li { margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; }
-.book-list li::before { content: 'mock'; display: none; } /* Reset */
-.check-icon { color: var(--brand-orange); font-weight: bold; font-size: 1.2rem; }
+/* --- FORM & FOOTER --- */
+.form-box { background: var(--bg-card); padding: 3rem; border-radius: var(--radius-lg); border: 1px solid var(--border-light); }
+.form-input { 
+    width: 100%; padding: 1rem; background: var(--bg-input); 
+    border: 1px solid var(--border-light); color: #fff; border-radius: 8px; font-family: inherit;
+}
+.form-input:focus { outline: none; border-color: var(--brand-orange); }
 
-/* --- FOOTER --- */
 footer { background: #020105; padding: 5rem 0 2rem 0; margin-top: 6rem; border-top: 1px solid var(--border-light); }
 .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
-.footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; display: flex; justify-content: space-between; font-size: 0.9rem; color: var(--text-muted); }
+.footer-col h4 { color: #fff; margin-bottom: 1.5rem; font-size: 1.1rem; }
+.footer-col ul li { margin-bottom: 0.8rem; }
+.footer-col a { color: var(--text-muted); display: flex; align-items: center; gap: 8px; }
+.footer-col a:hover { color: var(--brand-orange); }
 
 /* --- RESPONSIVIDADE --- */
 @media (max-width: 900px) {
-    .hero, .bio-grid, .book-section, .footer-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .hero, .book-section, .footer-grid, .showcase-grid { grid-template-columns: 1fr; gap: 3rem; }
     .hero { text-align: center; flex-direction: column-reverse; padding-top: 2rem; }
-    .hero-image { order: -1; } /* Foto primeiro no mobile */
+    .hero-image { order: -1; }
     .btn-group { justify-content: center; }
     .nav-links { display: none; }
 }
