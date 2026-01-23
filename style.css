@@ -1,47 +1,81 @@
-/* --- CSS ATUALIZADO (V 15.0) --- */
-
-/* ... Mantenha as variáveis e resets anteriores ... */
-
-/* AJUSTE: BOTÕES FLEXÍVEIS E RESPONSIVOS */
-.btn-group { 
-    display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; 
-    width: 100%; /* Garante que o container ocupe espaço */
+/* =========================================
+   1. VARIÁVEIS & RESET
+   ========================================= */
+:root {
+    --brand-purple: #770a94;
+    --brand-orange: #db742e;
+    
+    /* Fundos */
+    --bg-deep: #05010a;
+    --bg-gradient-1: linear-gradient(180deg, #05010a 0%, #0e021a 100%);
+    --bg-gradient-2: linear-gradient(180deg, #0e021a 0%, #130424 100%);
+    --bg-gradient-3: linear-gradient(180deg, #130424 0%, #05010a 100%);
+    
+    --bg-card: #0f0518;        
+    --bg-input: #1A0B2E;
+    
+    --text-main: #FFFFFF;
+    --text-body: #E2E8F0;
+    --text-muted: #A3A3A3;
+    
+    --border-light: rgba(119, 10, 148, 0.3);
+    
+    /* UI Specs */
+    --container-width: 1200px;
+    --radius-card: 16px; 
+    --radius-btn: 8px; 
+    --font-main: 'Inter', sans-serif;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.btn {
-    display: inline-flex; justify-content: center; align-items: center;
-    padding: 1.2rem 2.5rem; font-weight: 800; border-radius: var(--radius-btn); 
-    cursor: pointer; font-size: 1rem; transition: var(--transition);
-    text-transform: uppercase; letter-spacing: 0.5px;
-    text-decoration: none; text-align: center;
-    /* Flexibilidade */
-    flex: 1 1 auto; /* Cresce e encolhe conforme necessário */
-    min-width: 200px; /* Tamanho mínimo para não quebrar texto */
-    max-width: 350px; /* Tamanho máximo para não ficar gigante em telas wide */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+    background-color: var(--bg-deep);
+    color: var(--text-body);
+    font-family: var(--font-main);
+    line-height: 1.6;
+    font-size: 18px;
+    overflow-x: hidden;
 }
 
-/* No mobile, os botões ocupam 100% */
-@media (max-width: 600px) {
-    .btn { width: 100%; max-width: 100%; }
+h1, h2, h3, h4 { color: var(--text-main); font-weight: 800; line-height: 1.1; margin-bottom: 1rem; letter-spacing: -0.02em; }
+h1 { font-size: clamp(3rem, 5vw, 4.8rem); text-transform: none; }
+h2 { font-size: clamp(2.2rem, 4vw, 3.5rem); }
+p { margin-bottom: 1.5rem; }
+a { text-decoration: none; color: inherit; transition: var(--transition); }
+img { max-width: 100%; display: block; }
+ul { list-style: none; }
+
+.container { max-width: var(--container-width); margin: 0 auto; padding: 0 2rem; }
+.section-padding { padding: 9rem 0; position: relative; }
+.text-center { text-align: center; }
+.center-block { margin: 0 auto; max-width: 800px; }
+
+/* Classes de Fundo */
+.bg-1 { background: var(--bg-gradient-1); }
+.bg-2 { background: var(--bg-gradient-2); }
+.bg-3 { background: var(--bg-gradient-3); }
+
+/* =========================================
+   2. HEADER & BARRA DE PROGRESSO
+   ========================================= */
+header {
+    height: 90px; display: flex; align-items: center;
+    background: rgba(5, 1, 10, 0.95); backdrop-filter: blur(12px);
+    position: sticky; top: 0; z-index: 1000;
 }
-
-/* AJUSTE: SETAS (SCROLL INDICATORS) - LIMPEZA */
-.scroll-indicator {
-    position: absolute; left: 50%; transform: translateX(-50%);
-    width: 32px; height: 32px; border-radius: 50%;
-    background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);
-    display: flex; align-items: center; justify-content: center;
-    color: var(--text-muted); cursor: pointer; transition: var(--transition);
-    animation: bounce 2.5s infinite; z-index: 10;
-    opacity: 0.5; text-decoration: none; font-size: 0.8rem;
+.header-track { position: absolute; bottom: 0; left: 0; width: 100%; height: 1px; background: rgba(119, 10, 148, 0.3); z-index: 1001; }
+.header-progress {
+    position: absolute; bottom: 0; left: 0; height: 3px; background: var(--brand-orange);
+    width: 220px; box-shadow: 0 0 15px var(--brand-orange); z-index: 1002; transition: width 0.05s linear;
 }
-.scroll-indicator:hover { 
-    background: var(--brand-purple); color: #fff; border-color: var(--brand-purple); opacity: 1; 
-}
+.nav-flex { display: flex; justify-content: space-between; align-items: center; width: 100%; }
 
-/* Apenas seta para baixo no final das seções */
-.scroll-down { bottom: 30px; } 
+.logo-link { text-decoration: none; display: block; transition: transform 0.2s; }
+.logo-link:hover { transform: scale(1.02); opacity: 0.9; }
+.logo { font-size: 1.4rem; font-weight: 900; color: #fff; text-transform: uppercase; letter-spacing: -1px; margin: 0; }
+.logo span { color: var(--brand-purple); }
 
-/* Removemos a .scroll-top das seções intermediárias para evitar duplicação visual */
-
-/* ... Mantenha o resto do CSS (Grids, Cores, etc) ... */
+.nav-links { display: flex; gap:
