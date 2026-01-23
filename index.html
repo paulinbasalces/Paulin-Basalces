@@ -3,8 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
     <title>Paulin Basalces | UX Design Manager, Palestrante e Autor</title>
     <meta name="description" content="Site oficial de Paulin Basalces. Hub de Inclusão, DesignOps e IA.">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
@@ -34,10 +40,13 @@
         <section class="container section-padding hero">
             <div class="hero-content">
                 <h1>Atuo onde os <br><span class="highlight">sistemas falham.</span></h1>
-                <p class="lead">
-                    UX Design Manager focado em IA e Acessibilidade. 
+                <p class="lead" style="font-size: 1.15rem; line-height: 1.7;">
+                    Olá, pessoal! Sou <strong>Paulin Basalces</strong>, UX Design Manager focado em IA e Acessibilidade, autor do livro <em>"Desconstruindo o Capacitismo"</em> e criador de experiências inclusivas.
+                </p>
+                <p class="lead" style="font-size: 1.15rem; line-height: 1.7; margin-top:-1.5rem;">
                     Trabalho na intersecção entre inovação e inclusão para resolver barreiras de acesso que o mercado ignora.
                 </p>
+                
                 <div class="btn-group">
                     <a href="#mentoria-info" class="btn btn-primary">Sou Profissional</a>
                     <a href="#servicos" class="btn btn-outline">Sou Empresa</a>
@@ -55,10 +64,10 @@
                 <div class="bio-text">
                     <h2>Quem é Paulin?</h2>
                     <p>
-                        Muito além dos cargos, sou um ativista pela usabilidade real. Esta é minha casa digital, onde a vivência como <strong>PcD e trans</strong> se transforma em estratégia de produto. As redes sociais são espaços de aluguel; aqui construo a base.
+                        Sou a parceria ideal se você busca <strong>mentoria, palestras ou análises com design estratégico</strong> para ir além do checklist básico, conectando seu negócio a realidades complexas.
                     </p>
                     <p>
-                        Não acredito em "empatia" abstrata. Acredito em dados, testes e arquitetura de informação que funcione para todos.
+                        Minha casa digital é onde a vivência como <strong>PcD e trans</strong> se transforma em estratégia de produto. As redes sociais são espaços de aluguel; aqui construo a base da usabilidade real.
                     </p>
                 </div>
                 
@@ -228,7 +237,7 @@
                 <div>
                     <h3 style="color:#fff; margin-bottom:1rem;">PAULIN BASALCES</h3>
                     <p style="color:var(--text-muted); font-size:0.95rem;">
-                        Design Manager, Autor e Ativista. Inovação e inclusão radical.
+                        Design Manager, Palestrante e Autor. Inovação e inclusão radical.
                     </p>
                     <p style="color:#fff; font-weight:bold; margin-top:1rem;">paulin@basalces.digital</p>
                 </div>
@@ -266,29 +275,31 @@
             
             <div class="footer-bottom">
                 <p>&copy; 2026 Paulin Basalces. Todos os direitos reservados.</p>
-                <a href="#topo" style="color:var(--brand-orange); font-weight:bold;">↑ VOLTAR AO TOPO</a>
+                <a href="#topo" style="color:var(--brand-orange); font-weight:bold; text-decoration:none;">↑ VOLTAR AO TOPO</a>
             </div>
         </div>
     </footer>
 
     <script>
-        // Barra de Progresso
-        window.onscroll = function() { updateProgress() };
-
-        function updateProgress() {
+        // Barra de Progresso que começa já crescendo
+        window.onscroll = function() {
             var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
             var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            var scrolled = (winScroll / height) * 100;
-            document.getElementById("progressBar").style.width = scrolled + "%";
-        }
+            // 220px é a largura inicial (base do nome) + o restante calculado
+            var baseWidth = 220; 
+            var totalWidth = document.documentElement.clientWidth - baseWidth;
+            var scrolled = (winScroll / height) * totalWidth;
+            
+            document.getElementById("progressBar").style.width = (baseWidth + scrolled) + "px";
+        };
 
-        // Animação Reveal
+        // Reveal Animations
         window.addEventListener('scroll', () => {
             const reveals = document.querySelectorAll('.reveal');
             reveals.forEach(reveal => {
                 const windowHeight = window.innerHeight;
                 const revealTop = reveal.getBoundingClientRect().top;
-                if (revealTop < windowHeight - 150) {
+                if (revealTop < windowHeight - 100) {
                     reveal.classList.add('active');
                 }
             });
