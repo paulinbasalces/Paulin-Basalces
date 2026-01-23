@@ -3,13 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    
     <title>Paulin Basalces | UX Design Manager, Palestrante e Autor</title>
     <meta name="description" content="Site oficial de Paulin Basalces. Hub de Inclusão, DesignOps e IA.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="style.css">
 </head>
 <body id="topo">
@@ -17,6 +20,7 @@
     <header>
         <div class="header-track"></div>
         <div class="header-progress" id="progressBar"></div>
+        
         <div class="container nav-flex">
             <a href="#topo" class="logo-link">
                 <h1 class="logo">Paulin<span>Basalces</span></h1>
@@ -57,6 +61,8 @@
         </section>
 
         <section id="sobre" class="section-padding bg-1 reveal">
+            <a href="#topo" class="scroll-indicator scroll-top" style="top:-20px;">↑</a>
+            
             <div class="container">
                 <div class="bio-text-center">
                     <h2>Quem é Paulin?</h2>
@@ -95,6 +101,8 @@
         </section>
 
         <section id="ecossistema" class="section-padding bg-2 reveal">
+            <a href="#sobre" class="scroll-indicator scroll-top" style="top:-20px;">↑</a>
+
             <div class="container">
                 <div class="text-center center-block">
                     <h2>Ecossistema de Conteúdo</h2>
@@ -133,6 +141,8 @@
         </section>
 
         <section id="livro" class="section-padding bg-1 reveal">
+            <a href="#ecossistema" class="scroll-indicator scroll-top" style="top:-20px;">↑</a>
+
             <div class="container book-wrapper">
                 <div class="book-img-container">
                     <img src="capa-livro.png" alt="Capa Desconstruindo o Capacitismo" class="book-cover">
@@ -161,6 +171,8 @@
         </section>
 
         <section id="mentoria-info" class="section-padding bg-2 reveal">
+            <a href="#livro" class="scroll-indicator scroll-top" style="top:-20px;">↑</a>
+
             <div class="container">
                 <div class="mentoria-box center-block">
                     <h2>Mentoria Estratégica</h2>
@@ -174,6 +186,8 @@
         </section>
 
         <section id="servicos" class="section-padding bg-1 reveal">
+            <a href="#mentoria-info" class="scroll-indicator scroll-top" style="top:-20px;">↑</a>
+
             <div class="container">
                 <div class="text-center center-block">
                     <h2>Como ajudar seu negócio</h2>
@@ -204,6 +218,8 @@
         </section>
 
         <section id="pratica" class="container section-padding reveal">
+            <a href="#servicos" class="scroll-indicator scroll-top" style="top:-20px;">↑</a>
+
             <div class="text-center center-block">
                 <h2>Veja na Prática</h2>
                 <p style="color:var(--text-muted); font-size:1.2rem; margin-bottom:3rem;">Estudos de caso visuais e palestras gravadas.</p>
@@ -228,12 +244,14 @@
         </section>
 
         <section id="contato" class="section-padding bg-3 reveal">
+            <a href="#pratica" class="scroll-indicator scroll-top" style="top:-20px;">↑</a>
+
             <div class="form-box">
                 <div class="text-center" style="margin-bottom: 2rem;">
                     <h2>Vamos conectar realidades?</h2>
                     <p style="color:var(--text-muted)">Preencha para palestras ou consultorias.</p>
                 </div>
-                <form name="contato-v15" method="POST" data-netlify="true">
+                <form name="contato-v16" method="POST" data-netlify="true">
                     <input type="text" name="nome" placeholder="Seu Nome" class="form-input" required>
                     <input type="email" name="email" placeholder="E-mail Corporativo" class="form-input" required>
                     <textarea name="msg" rows="5" placeholder="Como posso ajudar seu projeto?" class="form-input" required></textarea>
@@ -295,15 +313,21 @@
     </footer>
 
     <script>
+        // Lógica da Barra de Progresso e Animações
         window.onscroll = function() {
+            // Barra
             var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
             var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            
+            // Largura Base (cobre o logo "Paulin Basalces")
             var baseWidth = 220; 
             var totalWidth = document.documentElement.clientWidth - baseWidth;
             var scrolled = (winScroll / height) * totalWidth;
+            
             document.getElementById("progressBar").style.width = (baseWidth + scrolled) + "px";
         };
 
+        // Scroll Reveal (Animação de entrada)
         window.addEventListener('scroll', () => {
             const reveals = document.querySelectorAll('.reveal');
             reveals.forEach(reveal => {
