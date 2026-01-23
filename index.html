@@ -11,33 +11,26 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
 
     <style>
-        /* --- VARIÁVEIS GLOBAIS --- */
+        /* --- VARIÁVEIS VISUAIS --- */
         :root {
-            /* Cores Oficiais */
             --brand-purple: #770a94;   
             --brand-purple-dark: #4a055c;
             --brand-orange: #db742e;   
-            --brand-orange-glow: rgba(219, 116, 46, 0.4);
             
-            /* Fundo Deep Space */
-            --bg-body: #030005;        
+            --bg-body: #05020D;        
             --bg-card: #0F0518;        
-            --bg-card-hover: #160825;
             --bg-input: #1A0B2E;
             
-            /* Texto */
             --text-main: #FFFFFF;      
             --text-body: #E0E0E0;      
             --text-muted: #A3A3A3;     
             
-            /* UI */
             --border-color: rgba(119, 10, 148, 0.3); 
-            --container-width: 1100px;   
+            --container-width: 1150px;   
             --radius-lg: 20px;
-            --radius-xl: 32px;
         }
 
-        /* --- RESET --- */
+        /* --- BASE --- */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
         
@@ -47,11 +40,8 @@
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
             font-size: 18px;
-            /* Gradiente de fundo fixo */
-            background-image: 
-                radial-gradient(circle at 15% 10%, rgba(119, 10, 148, 0.15), transparent 40%),
-                radial-gradient(circle at 85% 60%, rgba(219, 116, 46, 0.08), transparent 40%);
-            background-attachment: fixed;
+            background-image: radial-gradient(circle at 50% 0%, rgba(119, 10, 148, 0.2), transparent 60%);
+            overflow-x: hidden; /* Evita rolagem lateral */
         }
 
         h1, h2, h3, h4 { color: var(--text-main); font-weight: 900; line-height: 1.1; margin-bottom: 1rem; letter-spacing: -0.02em; }
@@ -60,200 +50,207 @@
         img { max-width: 100%; display: block; }
         ul { list-style: none; }
 
-        /* --- UTILITIES --- */
+        /* --- LAYOUT UTILITIES --- */
         .container { max-width: var(--container-width); margin: 0 auto; padding: 0 2rem; }
-        .section-padding { padding: 8rem 0; }
+        .section-padding { padding: 7rem 0; }
         .text-center { text-align: center; display: flex; flex-direction: column; align-items: center; }
         
-        /* Box Sólido (Container Padrão) */
-        .solid-box {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-lg);
-            padding: 3rem;
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.3s ease, border-color 0.3s ease;
+        /* --- ACESSIBILIDADE & ANIMAÇÃO --- */
+        /* Skip Link para Leitores de Tela */
+        .skip-link {
+            position: absolute; top: -50px; left: 0; background: var(--brand-orange); color: #000; 
+            padding: 1rem; z-index: 1000; font-weight: bold; transition: top 0.3s;
         }
-        .solid-box:hover {
-            border-color: var(--brand-purple);
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5);
+        .skip-link:focus { top: 0; }
+        
+        /* Foco Visível (Obrigatório WCAG) */
+        *:focus-visible { outline: 3px solid var(--brand-orange); outline-offset: 4px; border-radius: 4px; }
+
+        /* Animação de Scroll (Fade Up) */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* Respeita quem não quer animação (Motion Sickness) */
+        @media (prefers-reduced-motion: reduce) {
+            .reveal { opacity: 1; transform: translateY(0); transition: none; }
+            html { scroll-behavior: auto; }
         }
 
         /* --- HEADER --- */
         header {
             height: 90px; display: flex; align-items: center;
-            background: rgba(3, 0, 5, 0.9); backdrop-filter: blur(12px);
+            background: rgba(5, 2, 13, 0.9); backdrop-filter: blur(12px);
             position: sticky; top: 0; z-index: 999; border-bottom: 1px solid var(--border-color);
         }
         .nav-flex { display: flex; justify-content: space-between; align-items: center; width: 100%; }
-        .logo { font-size: 1.5rem; font-weight: 900; color: #fff; letter-spacing: -1px; text-transform: uppercase; }
+        .logo { font-size: 1.5rem; font-weight: 900; color: #fff; text-transform: uppercase; letter-spacing: -1px; }
         .logo span { color: var(--brand-purple); }
 
-        .nav-links { display: flex; gap: 2.5rem; }
-        .nav-links a { color: var(--text-muted); font-weight: 600; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px; }
+        .nav-links { display: flex; gap: 2rem; }
+        .nav-links a { color: var(--text-muted); font-weight: 600; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.5px; }
         .nav-links a:hover { color: var(--brand-orange); }
 
         /* --- HERO --- */
         .hero {
             display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; align-items: center;
-            padding-top: 6rem; padding-bottom: 8rem; min-height: 85vh;
+            padding-top: 5rem; padding-bottom: 8rem; min-height: 85vh;
         }
-        .hero-content h1 { font-size: clamp(3.5rem, 6vw, 5rem); margin-bottom: 1.5rem; }
+        .hero-content h1 { font-size: clamp(3.5rem, 6vw, 5.5rem); margin-bottom: 1.5rem; }
         .highlight { 
-            color: transparent; 
             background: linear-gradient(90deg, var(--brand-orange), #ffae6b); 
-            -webkit-background-clip: text; background-clip: text;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
         }
-        .lead { font-size: 1.25rem; color: var(--text-body); margin-bottom: 2.5rem; font-weight: 400; opacity: 0.9; }
-
         .hero-image { display: flex; justify-content: center; position: relative; }
-        /* Círculo decorativo atrás da foto */
-        .hero-image::before {
-            content: ''; position: absolute; width: 110%; height: 110%; 
-            background: var(--brand-purple); opacity: 0.2; filter: blur(60px); 
-            border-radius: 50%; z-index: 0;
-        }
         .hero-img-style {
-            width: 400px; height: 400px; border-radius: 50%; object-fit: cover;
-            border: 2px solid rgba(255,255,255,0.1); position: relative; z-index: 1;
-            background: var(--bg-card); /* Fallback */
+            width: 380px; height: 380px; border-radius: 50%; object-fit: cover;
+            border: 4px solid var(--brand-purple);
+            box-shadow: 0 0 80px rgba(119, 10, 148, 0.4);
+            background: var(--bg-card); /* Cor de fundo se imagem falhar */
         }
 
         /* --- BOTÕES --- */
         .btn-group { display: flex; gap: 1rem; flex-wrap: wrap; }
         .btn {
             display: inline-flex; justify-content: center; align-items: center;
-            padding: 1rem 2.5rem; font-weight: 700; border-radius: 50px; cursor: pointer;
+            padding: 1rem 2rem; font-weight: 700; border-radius: 50px; cursor: pointer;
             font-size: 1rem; transition: 0.3s; text-transform: uppercase; letter-spacing: 0.5px;
         }
         .btn-primary { 
             background: var(--brand-purple); color: #fff; border: 1px solid transparent;
-            box-shadow: 0 10px 30px -10px rgba(119, 10, 148, 0.5);
+            box-shadow: 0 0 20px rgba(119, 10, 148, 0.4);
         }
         .btn-primary:hover { background: var(--brand-purple-dark); transform: translateY(-3px); }
-
         .btn-outline { background: transparent; border: 1px solid rgba(255,255,255,0.3); color: #fff; }
         .btn-outline:hover { border-color: var(--brand-orange); color: var(--brand-orange); }
 
-        /* --- QUEM É PAULIN (Layout Robusto) --- */
-        /* O "Truque" do DesignOps: Container grande para segurar tudo junto */
+        /* --- QUEM É PAULIN --- */
         .bio-container {
             background: var(--bg-card); border: 1px solid var(--border-color);
-            border-radius: var(--radius-xl); padding: 4rem;
+            border-radius: var(--radius-lg); padding: 4rem;
         }
-        .bio-header { text-align: center; max-width: 800px; margin: 0 auto 4rem auto; }
-        .bio-header h2 { font-size: 3rem; margin-bottom: 1.5rem; }
-        .bio-header p { font-size: 1.2rem; color: var(--text-muted); }
-
+        .bio-intro { text-align: center; max-width: 800px; margin: 0 auto 4rem auto; }
+        .bio-intro h2 { font-size: 3rem; margin-bottom: 1.5rem; }
+        
         .bio-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
         .bio-card-item {
-            background: rgba(255,255,255,0.03); padding: 2rem; border-radius: var(--radius-lg);
+            background: rgba(255,255,255,0.03); padding: 2.5rem; border-radius: var(--radius-lg);
             border-left: 4px solid var(--brand-purple); transition: 0.3s;
         }
-        .bio-card-item:hover { background: rgba(255,255,255,0.06); }
+        .bio-card-item:hover { transform: translateY(-5px); background: rgba(255,255,255,0.06); }
         .bio-card-item h3 { font-size: 1.4rem; color: #fff; margin-bottom: 0.5rem; }
-        .bio-card-item p { font-size: 1rem; color: var(--text-muted); margin: 0; }
 
-        /* --- ECOSSISTEMA & SERVIÇOS --- */
-        .section-intro { margin-bottom: 4rem; }
-        .section-intro h2 { font-size: 3rem; margin-bottom: 1rem; }
-        .section-intro p { font-size: 1.2rem; color: var(--text-muted); }
-
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+        /* --- CARDS PADRÃO (Conteúdo & Serviços) --- */
+        .section-header { margin-bottom: 4rem; max-width: 800px; }
+        .section-header h2 { font-size: 3rem; margin-bottom: 1rem; }
         
-        .card-content {
-            padding: 3rem; background: var(--bg-card); border-radius: var(--radius-lg);
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+        .content-card {
+            background: var(--bg-card); padding: 2.5rem; border-radius: var(--radius-lg);
             border: 1px solid var(--border-color); display: flex; flex-direction: column;
             transition: 0.3s; position: relative; height: 100%;
         }
-        .card-content:hover { transform: translateY(-8px); border-color: var(--brand-orange); }
+        .content-card:hover { transform: translateY(-8px); border-color: var(--brand-orange); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+        
+        .icon-box { font-size: 2.5rem; margin-bottom: 1.5rem; color: var(--brand-purple); }
+        .card-title { font-size: 1.5rem; margin-bottom: 1rem; color: #fff; }
+        .card-desc { font-size: 1rem; color: var(--text-muted); flex-grow: 1; margin-bottom: 2rem; }
+        .card-link { color: var(--brand-orange); font-weight: 700; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; display: flex; gap: 5px; }
 
-        .icon-box { 
-            width: 60px; height: 60px; background: rgba(119, 10, 148, 0.2); 
-            border-radius: 12px; display: flex; align-items: center; justify-content: center;
-            font-size: 1.8rem; margin-bottom: 1.5rem; color: var(--brand-purple);
-        }
-        .card-title { font-size: 1.5rem; margin-bottom: 1rem; }
-        .card-text { font-size: 1rem; color: var(--text-muted); flex-grow: 1; margin-bottom: 2rem; }
-        .card-action { 
-            color: var(--brand-orange); font-weight: 700; text-transform: uppercase; 
-            letter-spacing: 1px; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; 
+        .tag-pill {
+            position: absolute; top: 2rem; right: 2rem; border: 1px solid rgba(255,255,255,0.2);
+            padding: 5px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: bold; color: var(--brand-orange);
         }
 
-        /* --- LIVRO --- */
+        /* --- LIVRO (Conteúdo Expandido) --- */
         .book-wrapper { 
-            background: linear-gradient(135deg, #240b36 0%, #0F0518 100%);
-            border-radius: var(--radius-xl); padding: 4rem;
-            display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+            background: linear-gradient(135deg, #1a0526 0%, #05020D 100%);
+            border-radius: var(--radius-lg); padding: 4rem;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
             border: 1px solid var(--border-color);
         }
-        .book-image { display: flex; justify-content: center; }
+        .book-image { display: flex; justify-content: center; position: relative; }
+        /* CORREÇÃO IMAGEM: Nome exato conforme print do GitHub */
         .book-cover-img { 
-            max-width: 300px; width: 100%; transform: rotate(-5deg); 
-            box-shadow: 0 30px 60px rgba(0,0,0,0.5); transition: 0.4s;
-            border-radius: 4px; background: var(--brand-purple); /* Fallback */
+            max-width: 320px; width: 100%; transform: rotate(-5deg); 
+            box-shadow: 0 30px 60px rgba(0,0,0,0.6); transition: 0.4s;
+            border-radius: 4px; background: var(--brand-purple); 
         }
-        .book-cover-img:hover { transform: rotate(0deg) scale(1.05); }
+        .book-cover-img:hover { transform: rotate(0deg) scale(1.02); }
+        
+        .book-list { margin: 2rem 0; }
+        .book-list li { margin-bottom: 1rem; display: flex; align-items: flex-start; gap: 10px; color: var(--text-body); }
+        .check { color: var(--brand-orange); font-weight: bold; }
 
-        /* --- VEJA NA PRÁTICA --- */
-        .showcase-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        /* --- VEJA NA PRÁTICA (Showcase) --- */
+        .showcase-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
         .showcase-card {
             background: var(--bg-card); border-radius: var(--radius-lg); 
             border: 1px solid var(--border-color); overflow: hidden; position: relative;
-            height: 400px; display: block; group:hover;
+            height: 380px; display: block; text-decoration: none;
         }
-        .showcase-bg { 
-            width: 100%; height: 100%; object-fit: cover; opacity: 0.6; 
-            transition: 0.5s; background: #2D1B4E; /* Fallback */
+        /* Fallback elegante para imagem ausente */
+        .placeholder-img {
+            width: 100%; height: 100%; background: #1F0A3A; display: flex; 
+            align-items: center; justify-content: center; font-size: 3rem; opacity: 0.5;
+            transition: 0.4s;
         }
-        .showcase-card:hover .showcase-bg { transform: scale(1.05); opacity: 0.4; }
+        .showcase-card:hover .placeholder-img { transform: scale(1.05); opacity: 0.3; }
         .showcase-info {
             position: absolute; bottom: 0; left: 0; width: 100%; padding: 2.5rem;
             background: linear-gradient(to top, #000, transparent);
         }
 
-        /* --- MANIFESTO STRIP --- */
+        /* --- MANIFESTO --- */
         .manifesto-strip {
-            background: var(--brand-purple); padding: 4rem 0; text-align: center; margin: 4rem 0;
+            background: var(--brand-purple); padding: 5rem 0; text-align: center; margin: 6rem 0;
         }
-        .manifesto-quote { font-size: 2.2rem; font-weight: 900; color: #fff; max-width: 900px; margin: 0 auto; line-height: 1.2; }
+        .manifesto-quote { font-size: 2rem; font-weight: 900; color: #fff; max-width: 900px; margin: 0 auto; line-height: 1.3; }
 
-        /* --- RODAPÉ PROFISSIONAL --- */
+        /* --- FORMULÁRIO --- */
+        .form-box { background: var(--bg-card); padding: 3rem; border-radius: var(--radius-lg); border: 1px solid var(--border-color); max-width: 800px; margin: 0 auto; }
+        .form-input { 
+            width: 100%; padding: 1.2rem; background: var(--bg-input); 
+            border: 1px solid var(--border-color); color: #fff; border-radius: 8px; font-size: 1rem; font-family: inherit;
+        }
+        .form-input:focus { outline: none; border-color: var(--brand-orange); }
+
+        /* --- RODAPÉ --- */
         footer { 
             background: #000; padding: 6rem 0 2rem 0; margin-top: 8rem; 
             border-top: 1px solid var(--border-color);
         }
         .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 4rem; margin-bottom: 4rem; }
-        .footer-brand p { color: var(--text-muted); font-size: 1rem; margin-top: 1rem; max-width: 350px; }
-        
-        .footer-heading { color: #fff; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 2rem; }
-        .footer-links a { display: block; color: var(--text-muted); margin-bottom: 1rem; font-size: 1rem; }
-        .footer-links a:hover { color: var(--brand-orange); padding-left: 5px; }
+        .footer-col h4 { color: #fff; margin-bottom: 1.5rem; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; }
+        .footer-col a { display: block; margin-bottom: 0.8rem; color: var(--text-muted); transition: 0.2s; }
+        .footer-col a:hover { color: var(--brand-orange); padding-left: 5px; }
 
-        .social-row { display: flex; gap: 1rem; margin-top: 2rem; }
+        .social-row { display: flex; gap: 1rem; margin-top: 1.5rem; }
         .social-btn { 
-            width: 48px; height: 48px; background: rgba(255,255,255,0.1); border-radius: 50%;
+            width: 45px; height: 45px; background: rgba(255,255,255,0.1); border-radius: 50%;
             display: flex; align-items: center; justify-content: center; color: #fff; transition: 0.3s;
         }
-        .social-btn:hover { background: var(--brand-purple); }
+        .social-btn:hover { background: var(--brand-purple); transform: translateY(-3px); }
+        
+        .footer-bottom { 
+            border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; 
+            display: flex; justify-content: space-between; align-items: center;
+            font-size: 0.9rem; color: var(--text-muted);
+        }
+        .back-to-top { color: var(--brand-orange); font-weight: bold; cursor: pointer; }
 
-        .copyright { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; font-size: 0.9rem; color: #666; }
-
-        /* --- RESPONSIVIDADE --- */
-        @media (max-width: 960px) {
+        /* --- MOBILE --- */
+        @media (max-width: 900px) {
             .hero, .book-wrapper, .footer-grid, .showcase-grid { grid-template-columns: 1fr; gap: 3rem; }
-            .hero { text-align: center; flex-direction: column-reverse; padding-top: 4rem; }
+            .hero { text-align: center; flex-direction: column-reverse; padding-top: 3rem; }
             .hero-image { order: -1; }
-            .nav-links { display: none; } /* Mobile simplificado */
-            .bio-container { padding: 2rem; }
-            .bio-header h2 { font-size: 2.5rem; }
-            .manifesto-quote { font-size: 1.5rem; padding: 0 1rem; }
+            .nav-links { display: none; }
+            .footer-bottom { flex-direction: column; gap: 1rem; }
         }
     </style>
 </head>
-<body>
+<body id="topo">
+
+    <a href="#conteudo-principal" class="skip-link">Pular para o conteúdo principal</a>
 
     <header>
         <div class="container nav-flex">
@@ -262,19 +259,19 @@
                 <a href="#sobre">Sobre</a>
                 <a href="#ecossistema">Conteúdo</a>
                 <a href="#servicos">Serviços</a>
-                <a href="#pratica">Portfolio</a>
+                <a href="#pratica">Na Prática</a>
             </nav>
-            <a href="https://app.ementor.com.br/pacotes/pedido/3265/" target="_blank" class="btn btn-primary" style="padding: 0.7rem 1.5rem; font-size: 0.8rem;">Agendar Mentoria</a>
+            <a href="https://app.ementor.com.br/pacotes/pedido/3265/" target="_blank" class="btn btn-primary" style="padding: 0.7rem 1.5rem; font-size: 0.85rem;">Mentoria</a>
         </div>
     </header>
 
-    <main>
+    <main id="conteudo-principal">
         
-        <section class="container hero">
+        <section class="container hero reveal">
             <div class="hero-content">
                 <h1>Atuo onde os <br><span class="highlight">sistemas falham.</span></h1>
                 <p class="lead">
-                    UX Design Manager focado na intersecção entre <strong>IA e Acessibilidade</strong>. Minha missão é resolver as barreiras complexas que o mercado ignora, transformando conformidade técnica em inovação real.
+                    UX Design Manager focado na intersecção entre <strong>Inteligência Artificial</strong> e <strong>Acessibilidade</strong>. Resolvo barreiras complexas que o mercado ignora, conectando inovação técnica e inclusão radical.
                 </p>
                 <div class="btn-group">
                     <a href="#servicos" class="btn btn-primary">Soluções Corporativas</a>
@@ -286,202 +283,46 @@
             </div>
         </section>
 
-        <section id="sobre" class="section-padding">
+        <section id="sobre" class="section-padding reveal">
             <div class="container bio-container">
-                <div class="bio-header">
+                <div class="bio-intro">
                     <h2>Quem é Paulin?</h2>
                     <p>
                         Não sou apenas um gestor. Sou um <strong>ativista técnico</strong>. Como pessoa com deficiência e LGBTQIA+, trago a urgência de quem vive as barreiras do digital na pele.
                     </p>
                 </div>
-
                 <div class="bio-cards">
-                    <div class="bio-card-item">
+                    <article class="bio-card-item">
                         <h3>DesignOps & IA</h3>
-                        <p>Processos escaláveis. Uso IA para garantir que a acessibilidade seja o padrão (default), não a exceção.</p>
-                    </div>
-                    <div class="bio-card-item">
+                        <p>Processos escaláveis. Uso IA para garantir que a inclusão seja o padrão (default), não a exceção.</p>
+                    </article>
+                    <article class="bio-card-item">
                         <h3>Ativismo Técnico</h3>
                         <p>Transformo vivência em estratégia. Vejo inovação onde o mercado vê apenas "problemas de borda".</p>
-                    </div>
-                    <div class="bio-card-item">
+                    </article>
+                    <article class="bio-card-item">
                         <h3>Liderança Real</h3>
-                        <p>Segurança psicológica inegociável. Construo times diversos focados em alto impacto de negócio.</p>
-                    </div>
+                        <p>Segurança psicológica inegociável. Construo times diversos de alta performance.</p>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <section id="ecossistema" class="section-padding container">
-            <div class="text-center section-intro">
+        <section id="ecossistema" class="section-padding container reveal">
+            <div class="text-center section-header">
                 <h2>Ecossistema de Conteúdo</h2>
                 <p>Conhecimento aberto para fortalecer a comunidade.</p>
             </div>
-            
             <div class="grid-3">
-                <a href="https://cripplepunkbrasil.substack.com/" target="_blank" class="card-content">
+                <a href="https://cripplepunkbrasil.substack.com/" target="_blank" class="content-card">
+                    <span class="tag-pill">Movimento</span>
                     <div class="icon-box">🔥</div>
                     <h3 class="card-title">CripplePunk Brasil</h3>
-                    <p class="card-text">Newsletter sobre a resistência anticapacitista. Cultura, política e design radical.</p>
-                    <span class="card-action">Ler Manifesto &rarr;</span>
+                    <p class="card-desc">Newsletter e manifesto sobre a resistência anticapacitista. Cultura e design radical.</p>
+                    <span class="card-link">Ler Manifesto &rarr;</span>
                 </a>
-
-                <a href="https://paulinbasalces.substack.com/" target="_blank" class="card-content">
+                <a href="https://paulinbasalces.substack.com/" target="_blank" class="content-card">
+                    <span class="tag-pill">Ensaios</span>
                     <div class="icon-box">✍️</div>
                     <h3 class="card-title">Paulin Escreve</h3>
-                    <p class="card-text">Ensaios sobre tecnologia, sociedade e as interseções da minha vivência.</p>
-                    <span class="card-action">Assinar Grátis &rarr;</span>
-                </a>
-
-                <a href="https://tr.ee/KAan8iXL0I" target="_blank" class="card-content">
-                    <div class="icon-box">📂</div>
-                    <h3 class="card-title">Kit Produtor Cultural</h3>
-                    <p class="card-text">Templates e recursos para criar eventos verdadeiramente acessíveis.</p>
-                    <span class="card-action">Baixar Materiais &rarr;</span>
-                </a>
-            </div>
-        </section>
-
-        <section id="livro" class="section-padding container">
-            <div class="book-wrapper">
-                <div class="book-image">
-                    <img src="capa.jpg" alt="Capa Desconstruindo o Capacitismo" class="book-cover-img">
-                </div>
-                <div class="book-info">
-                    <span style="color:var(--brand-orange); font-weight:bold; letter-spacing:1px; text-transform:uppercase;">Obra de Referência</span>
-                    <h2 style="font-size: 2.5rem; margin-top: 1rem;">O manual que o mercado ignora.</h2>
-                    <p style="font-size: 1.1rem; margin-bottom: 2rem;">
-                        "Desconstruindo o Capacitismo" é um <strong>guia de sobrevivência</strong>. Entenda as estruturas de opressão no design e aprenda a criar experiências que respeitam a diversidade humana real.
-                    </p>
-                    <a href="#" class="btn btn-primary">Comprar na Amazon</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="servicos" class="section-padding container">
-            <div class="text-center section-intro">
-                <h2>Como ajudar seu negócio</h2>
-                <p>Estratégia de alto nível para maturidade em design.</p>
-            </div>
-            <div class="grid-3">
-                <div class="card-content">
-                    <div class="icon-box">🚀</div>
-                    <h3 class="card-title">Mentoria de Carreira</h3>
-                    <p class="card-text">Aceleração para designers que buscam senioridade e liderança técnica em Acessibilidade.</p>
-                    <a href="https://app.ementor.com.br/pacotes/pedido/3265/" target="_blank" class="card-action">Ver Planos &rarr;</a>
-                </div>
-                <div class="card-content" style="border-color: var(--brand-purple);">
-                    <div class="icon-box">🎤</div>
-                    <h3 class="card-title">Palestras & Talks</h3>
-                    <p class="card-text">Conteúdo provocativo sobre Futuro do Trabalho, IA Ética e Anticapacitismo.</p>
-                    <a href="#contato" class="card-action">Solicitar Proposta &rarr;</a>
-                </div>
-                <div class="card-content">
-                    <div class="icon-box">⚙️</div>
-                    <h3 class="card-title">Consultoria Ops</h3>
-                    <p class="card-text">Auditoria de processos e implementação de Design Systems acessíveis.</p>
-                    <a href="#contato" class="card-action">Conversar &rarr;</a>
-                </div>
-            </div>
-        </section>
-
-        <div class="manifesto-strip">
-            <div class="container">
-                <p class="manifesto-quote">"Acessibilidade é um direito humano, não uma feature de backlog."</p>
-            </div>
-        </div>
-
-        <section id="pratica" class="container section-padding">
-            <div class="text-center section-intro">
-                <h2>Veja na Prática</h2>
-                <p>Estudos de caso visuais e palestras gravadas.</p>
-            </div>
-            <div class="showcase-grid">
-                <a href="https://paulinbasalces.framer.ai/" target="_blank" class="showcase-card">
-                    <img src="image_022221.jpg" alt="Portfolio Visual" class="showcase-bg">
-                    <div class="showcase-info">
-                        <h3>Portfólio Visual UX/UI</h3>
-                        <p style="color:#ccc">Interfaces e Design Systems no Framer.</p>
-                    </div>
-                </a>
-                <a href="https://tr.ee/CTcWKfBxUY" target="_blank" class="showcase-card">
-                    <img src="image_f82254.jpg" alt="Talk Sexualidade" class="showcase-bg">
-                    <div class="showcase-info">
-                        <h3>Talk: Sexualidade & Acesso</h3>
-                        <p style="color:#ccc">Palestra completa sobre corpos e barreiras.</p>
-                    </div>
-                </a>
-            </div>
-        </section>
-
-        <section id="contato" class="section-padding container">
-            <div class="solid-box" style="max-width: 800px; margin: 0 auto;">
-                <div class="text-center" style="margin-bottom: 2rem;">
-                    <h2>Vamos conectar?</h2>
-                    <p style="color:var(--text-muted)">Preencha para palestras ou consultorias.</p>
-                </div>
-                <form name="contato-v9" method="POST" data-netlify="true" style="display:grid; gap:1.5rem;">
-                    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1.5rem;">
-                        <input type="text" name="nome" placeholder="Seu Nome" class="form-input" style="width:100%; padding:1rem; background:var(--bg-input); border:1px solid var(--border-color); color:#fff; border-radius:8px;">
-                        <input type="email" name="email" placeholder="Email Corporativo" class="form-input" style="width:100%; padding:1rem; background:var(--bg-input); border:1px solid var(--border-color); color:#fff; border-radius:8px;">
-                    </div>
-                    <textarea name="msg" rows="5" placeholder="Como posso ajudar seu projeto?" style="width:100%; padding:1rem; background:var(--bg-input); border:1px solid var(--border-color); color:#fff; border-radius:8px; font-family:inherit;"></textarea>
-                    <button type="submit" class="btn btn-primary" style="width:100%">Enviar Mensagem</button>
-                </form>
-            </div>
-        </section>
-
-    </main>
-
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-cols">
-                    <div>
-                        <h3 style="color:#fff; margin-bottom:1rem;">Paulin Basalces</h3>
-                        <p style="color:var(--text-muted); font-size:0.95rem;">
-                            Design Manager, Autor e Ativista. Inovação e inclusão radical.
-                        </p>
-                        <div class="social-row">
-                            <a href="https://linkedin.com/in/paulinbasalces" target="_blank" class="social-btn" aria-label="LinkedIn">
-                                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                            </a>
-                            <a href="https://paulinbasalces.substack.com/" target="_blank" class="social-btn" aria-label="Substack">
-                               <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/></svg>
-                            </a>
-                            <a href="https://tr.ee/paulinbasalces" target="_blank" class="social-btn" aria-label="LinkTree">
-                                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2L12 22M5 12L19 12M5 7L19 7M5 17L19 17" stroke-linecap="round"/></svg>
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div>
-                        <h4 class="footer-heading">Navegação</h4>
-                        <div class="footer-links">
-                            <a href="#">Início</a>
-                            <a href="#sobre">Sobre Mim</a>
-                            <a href="#ecossistema">Conteúdo</a>
-                            <a href="#pratica">Portfolio</a>
-                        </div>
-                    </div>
-
-                    <div>
-                        <h4 class="footer-heading">Contato</h4>
-                        <div class="footer-links">
-                            <a href="#servicos">Contratar</a>
-                            <a href="#contato">Falar Comigo</a>
-                            <a href="mailto:seuemail@dominio.com">E-mail</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="copyright text-center">
-                <p>&copy; 2026 Paulin Basalces. Todos os direitos reservados.</p>
-                <p>Desenvolvido com foco em Acessibilidade (WCAG AAA).</p>
-            </div>
-        </div>
-    </footer>
-
-</body>
-</html>
+                    <p class="card-
