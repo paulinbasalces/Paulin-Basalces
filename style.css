@@ -1,53 +1,149 @@
-/* --- AJUSTE: SCROLL INDICATORS (Mais sutis) --- */
+/* --- VARIÁVEIS OFICIAIS (V 15.0) --- */
+:root {
+    --brand-purple: #770a94;
+    --brand-orange: #db742e;
+    
+    /* Fundos */
+    --bg-deep: #05010a;
+    --bg-gradient-1: linear-gradient(180deg, #05010a 0%, #0e021a 100%);
+    --bg-gradient-2: linear-gradient(180deg, #0e021a 0%, #130424 100%);
+    --bg-gradient-3: linear-gradient(180deg, #130424 0%, #05010a 100%);
+    
+    --bg-card: #0f0518;        
+    --bg-input: #1A0B2E;
+    
+    --text-main: #FFFFFF;
+    --text-body: #E2E8F0;
+    --text-muted: #A3A3A3;
+    
+    --border-light: rgba(119, 10, 148, 0.3);
+    
+    /* UI Specs */
+    --container-width: 1200px;
+    --radius-card: 16px; 
+    --radius-btn: 8px; 
+    --font-main: 'Inter', sans-serif;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- BASE --- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+    background-color: var(--bg-deep);
+    color: var(--text-body);
+    font-family: var(--font-main);
+    line-height: 1.6;
+    font-size: 18px;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4 { color: var(--text-main); font-weight: 800; line-height: 1.1; margin-bottom: 1rem; letter-spacing: -0.02em; }
+h1 { font-size: clamp(3rem, 5vw, 4.8rem); text-transform: none; }
+h2 { font-size: clamp(2.2rem, 4vw, 3.5rem); }
+p { margin-bottom: 1.5rem; }
+a { text-decoration: none; color: inherit; transition: var(--transition); }
+img { max-width: 100%; display: block; }
+ul { list-style: none; }
+
+.container { max-width: var(--container-width); margin: 0 auto; padding: 0 2rem; }
+.section-padding { padding: 9rem 0; position: relative; } /* Relativo para posicionar setas */
+.text-center { text-align: center; }
+.center-block { margin: 0 auto; max-width: 800px; }
+
+/* Classes de Fundo */
+.bg-1 { background: var(--bg-gradient-1); }
+.bg-2 { background: var(--bg-gradient-2); }
+.bg-3 { background: var(--bg-gradient-3); }
+
+/* --- HEADER & BARRA --- */
+header {
+    height: 90px; display: flex; align-items: center;
+    background: rgba(5, 1, 10, 0.95); backdrop-filter: blur(12px);
+    position: sticky; top: 0; z-index: 1000;
+}
+.header-track { position: absolute; bottom: 0; left: 0; width: 100%; height: 1px; background: rgba(119, 10, 148, 0.3); z-index: 1001; }
+.header-progress {
+    position: absolute; bottom: 0; left: 0; height: 3px; background: var(--brand-orange);
+    width: 220px; box-shadow: 0 0 15px var(--brand-orange); z-index: 1002; transition: width 0.05s linear;
+}
+.nav-flex { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+
+/* Logo Link */
+.logo-link { text-decoration: none; display: block; transition: transform 0.2s; }
+.logo-link:hover { transform: scale(1.02); opacity: 0.9; }
+.logo { font-size: 1.4rem; font-weight: 900; color: #fff; text-transform: uppercase; letter-spacing: -1px; margin: 0; }
+.logo span { color: var(--brand-purple); }
+
+.nav-links { display: flex; gap: 2rem; align-items: center; }
+.nav-links a { color: var(--text-muted); font-weight: 600; font-size: 0.9rem; text-transform: uppercase; }
+.nav-links a:hover { color: var(--brand-orange); }
+
+/* --- SCROLL INDICATORS (Setas Sutis) --- */
 .scroll-indicator {
     position: absolute; left: 50%; transform: translateX(-50%);
-    width: 32px; height: 32px; /* Menor */
-    border-radius: 50%;
-    background: rgba(255,255,255,0.02); /* Quase transparente */
-    border: 1px solid rgba(255,255,255,0.05);
+    width: 32px; height: 32px; border-radius: 50%;
+    background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);
     display: flex; align-items: center; justify-content: center;
     color: var(--text-muted); cursor: pointer; transition: var(--transition);
     animation: bounce 2.5s infinite; z-index: 10;
-    opacity: 0.6; /* Mais opaco por padrão */
-    font-size: 0.8rem;
-    text-decoration: none;
+    opacity: 0.5; text-decoration: none; font-size: 0.8rem;
 }
 .scroll-indicator:hover { 
-    background: var(--brand-purple); color: #fff; 
-    border-color: var(--brand-purple); opacity: 1; 
+    background: var(--brand-purple); color: #fff; border-color: var(--brand-purple); opacity: 1; 
 }
-.scroll-down { bottom: 20px; } 
-/* Removi a classe .scroll-top duplicada para limpar o visual */
+.scroll-down { bottom: 30px; } 
 
-/* --- AJUSTE: GRIDS ESPECÍFICOS (Resolvendo o 3+1) --- */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateX(-50%) translateY(0);}
+    40% {transform: translateX(-50%) translateY(-10px);}
+    60% {transform: translateX(-50%) translateY(-5px);}
+}
 
-/* Grid para 4 itens (Quem é Paulin) */
+/* --- HERO SECTION --- */
+.hero { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; align-items: center; padding-top: 6rem; padding-bottom: 8rem; min-height: 85vh; position: relative; }
+.highlight { color: var(--brand-purple); }
+
+.hero-image-wrapper { 
+    position: relative; width: 380px; height: 380px; display: flex; align-items: center; justify-content: center; border-radius: 50%;
+}
+.hero-image-wrapper::before {
+    content: ''; position: absolute; inset: -6px; border-radius: 50%;
+    background: linear-gradient(45deg, var(--brand-purple), var(--brand-orange), var(--brand-purple));
+    background-size: 200% 200%; animation: borderSpin 4s linear infinite; z-index: 0;
+}
+/* Efeito Moonlight */
+.hero-image-wrapper::after {
+    content: ''; position: absolute; inset: -20px; border-radius: 50%; z-index: -1;
+    background: conic-gradient(from 0deg, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%);
+    filter: blur(20px); animation: moonlightSpin 8s linear infinite;
+}
+@keyframes borderSpin { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+@keyframes moonlightSpin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+.hero-img-style { 
+    width: 100%; height: 100%; border-radius: 50%; object-fit: cover; 
+    border: 6px solid var(--bg-deep); position: relative; z-index: 1;
+}
+
+/* --- BOTÕES --- */
+.btn {
+    display: inline-flex; justify-content: center; align-items: center;
+    padding: 1rem 2.5rem; font-weight: 700; border-radius: var(--radius-btn); 
+    cursor: pointer; font-size: 1rem; transition: var(--transition);
+    text-transform: uppercase; letter-spacing: 0.5px;
+}
+.btn-primary { 
+    background: var(--brand-purple); color: #fff; border: 1px solid transparent;
+    box-shadow: 0 4px 20px rgba(119, 10, 148, 0.4);
+}
+.btn-primary:hover { background: #5e0676; transform: translateY(-3px); box-shadow: 0 10px 30px rgba(119, 10, 148, 0.6); }
+.btn-outline { background: transparent; border: 1px solid rgba(255,255,255,0.3); color: #fff; }
+.btn-outline:hover { border-color: var(--brand-orange); color: var(--brand-orange); }
+.btn-group { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
+
+/* --- CARDS & GRIDS INTELIGENTES --- */
+/* Grid de 4 Colunas (Quem é Paulin) */
 .grid-4-cols {
-    display: grid; gap: 1.5rem; margin-top: 3rem;
-    grid-template-columns: 1fr; /* Mobile: 1 por linha */
-}
-
-/* Grid para 3 itens (Ecossistema) */
-.grid-3-cols {
-    display: grid; gap: 2rem; margin-top: 3rem;
-    grid-template-columns: 1fr; /* Mobile: 1 por linha */
-}
-
-/* TABLET (min-width: 768px) */
-@media (min-width: 768px) {
-    .grid-4-cols { grid-template-columns: 1fr 1fr; } /* Tablet: 2x2 (Fica organizado) */
-    .grid-3-cols { grid-template-columns: 1fr 1fr 1fr; } /* Tablet: 3 em linha */
-}
-
-/* DESKTOP (min-width: 1100px) */
-@media (min-width: 1100px) {
-    .grid-4-cols { grid-template-columns: 1fr 1fr 1fr 1fr; } /* Desktop: 4 em linha (Perfeito) */
-    /* Ecossistema mantém 3 colunas */
-}
-
-/* Ajuste de Texto Centralizado */
-.bio-text-center {
-    text-align: center;
-    max-width: 900px;
-    margin: 0 auto 4rem auto;
-}
+    display: grid; gap: 1.5rem; margin-top:
