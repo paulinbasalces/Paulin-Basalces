@@ -255,7 +255,7 @@ header {
 }
 .mentoria-item span { color: var(--brand-orange); font-weight: bold; }
 
-/* Showcase */
+/* Showcase (Veja na Prática) */
 .showcase-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
 .showcase-card {
     background: var(--bg-card); border-radius: var(--radius-card); 
@@ -267,6 +267,14 @@ header {
     position: absolute; bottom: 0; left: 0; width: 100%; padding: 2rem;
     background: linear-gradient(to top, #000, transparent);
 }
+/* Ícone de Play Overlay (Para Talks) */
+.play-overlay::before {
+    content: '▶';
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0);
+    font-size: 3rem; color: #fff; opacity: 0; transition: all 0.4s ease; z-index: 2;
+    text-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+.showcase-card:hover .play-overlay::before { transform: translate(-50%, -50%) scale(1); opacity: 1; }
 
 /* Formulário */
 .form-box { background: var(--bg-card); padding: 3rem; border-radius: var(--radius-card); border: 1px solid var(--border-light); max-width: 800px; margin: 0 auto; }
