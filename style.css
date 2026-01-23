@@ -21,7 +21,7 @@
     /* UI Specs */
     --container-width: 1200px;
     --radius-card: 16px; 
-    --radius-btn: 8px; /* Botões profissionais (menos ovais) */
+    --radius-btn: 8px; 
     --font-main: 'Inter', sans-serif;
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -48,80 +48,79 @@ img { max-width: 100%; display: block; }
 ul { list-style: none; }
 
 .container { max-width: var(--container-width); margin: 0 auto; padding: 0 2rem; }
-.section-padding { padding: 9rem 0; }
+.section-padding { padding: 9rem 0; position: relative; } /* Posição relativa para as setas */
 .text-center { text-align: center; }
 .center-block { margin: 0 auto; max-width: 800px; }
 
-/* Backgrounds Dinâmicos */
+/* Classes de Fundo */
 .bg-1 { background: var(--bg-gradient-1); }
 .bg-2 { background: var(--bg-gradient-2); }
 .bg-3 { background: var(--bg-gradient-3); }
 
-/* --- HEADER & BARRA DE PROGRESSO --- */
+/* --- SCROLL INDICATORS (NOVO) --- */
+.scroll-indicator {
+    position: absolute; left: 50%; transform: translateX(-50%);
+    width: 40px; height: 40px; border-radius: 50%;
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-muted); cursor: pointer; transition: var(--transition);
+    animation: bounce 2s infinite; z-index: 10;
+}
+.scroll-indicator:hover { background: var(--brand-purple); color: #fff; border-color: var(--brand-purple); }
+.scroll-top { top: -20px; } /* Seta para subir (no topo da seção) */
+.scroll-down { bottom: 30px; } /* Seta para descer (na base da seção) */
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateX(-50%) translateY(0);}
+    40% {transform: translateX(-50%) translateY(-10px);}
+    60% {transform: translateX(-50%) translateY(-5px);}
+}
+
+/* --- HEADER & BARRA --- */
 header {
     height: 90px; display: flex; align-items: center;
     background: rgba(5, 1, 10, 0.95); backdrop-filter: blur(12px);
     position: sticky; top: 0; z-index: 1000;
 }
-
-.header-track {
-    position: absolute; bottom: 0; left: 0; width: 100%; height: 1px;
-    background: rgba(119, 10, 148, 0.3); z-index: 1001;
-}
-
+.header-track { position: absolute; bottom: 0; left: 0; width: 100%; height: 1px; background: rgba(119, 10, 148, 0.3); z-index: 1001; }
 .header-progress {
-    position: absolute; bottom: 0; left: 0; height: 3px;
-    background: var(--brand-orange);
-    width: 220px; /* Largura inicial fixa sob o nome */
-    box-shadow: 0 0 15px var(--brand-orange);
-    z-index: 1002;
-    transition: width 0.05s linear; /* Movimento mais rápido e linear */
+    position: absolute; bottom: 0; left: 0; height: 3px; background: var(--brand-orange);
+    width: 220px; box-shadow: 0 0 15px var(--brand-orange); z-index: 1002; transition: width 0.05s linear;
 }
-
 .nav-flex { display: flex; justify-content: space-between; align-items: center; width: 100%; }
 .logo { font-size: 1.4rem; font-weight: 900; color: #fff; text-transform: uppercase; letter-spacing: -1px; }
 .logo span { color: var(--brand-purple); }
-
 .nav-links { display: flex; gap: 2rem; align-items: center; }
 .nav-links a { color: var(--text-muted); font-weight: 600; font-size: 0.9rem; text-transform: uppercase; }
 .nav-links a:hover { color: var(--brand-orange); }
 
 /* --- HERO SECTION --- */
-.hero { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; align-items: center; padding-top: 6rem; padding-bottom: 8rem; min-height: 85vh; }
+.hero { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; align-items: center; padding-top: 6rem; padding-bottom: 8rem; min-height: 85vh; position: relative; }
 .highlight { color: var(--brand-purple); }
 
-/* --- FOTO COM BORDA E GLOW "MOONLIGHT" --- */
 .hero-image-wrapper { 
-    position: relative; width: 380px; height: 380px; display: flex; align-items: center; justify-content: center;
-    border-radius: 50%;
+    position: relative; width: 380px; height: 380px; display: flex; align-items: center; justify-content: center; border-radius: 50%;
 }
-
-/* 1. Borda Animada (Mais Grossa) */
 .hero-image-wrapper::before {
-    content: ''; position: absolute; inset: -6px; /* Borda mais espessa */
-    border-radius: 50%;
+    content: ''; position: absolute; inset: -6px; border-radius: 50%;
     background: linear-gradient(45deg, var(--brand-purple), var(--brand-orange), var(--brand-purple));
     background-size: 200% 200%; animation: borderSpin 4s linear infinite; z-index: 0;
 }
-
-/* 2. Efeito "Moonlight" (Luz de Fundo) */
+/* Efeito Moonlight */
 .hero-image-wrapper::after {
     content: ''; position: absolute; inset: -20px; border-radius: 50%; z-index: -1;
     background: conic-gradient(from 0deg, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%);
-    filter: blur(20px);
-    animation: moonlightSpin 8s linear infinite;
+    filter: blur(20px); animation: moonlightSpin 8s linear infinite;
 }
-
 @keyframes borderSpin { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
 @keyframes moonlightSpin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
 .hero-img-style { 
     width: 100%; height: 100%; border-radius: 50%; object-fit: cover; 
-    border: 6px solid var(--bg-deep); /* Espaço entre a foto e a borda colorida */
-    position: relative; z-index: 1;
+    border: 6px solid var(--bg-deep); position: relative; z-index: 1;
 }
 
-/* --- BOTÕES (Formatados Profissionalmente) --- */
+/* --- BOTÕES --- */
 .btn {
     display: inline-flex; justify-content: center; align-items: center;
     padding: 1rem 2.5rem; font-weight: 700; border-radius: var(--radius-btn); 
@@ -133,26 +132,22 @@ header {
     box-shadow: 0 4px 20px rgba(119, 10, 148, 0.4);
 }
 .btn-primary:hover { background: #5e0676; transform: translateY(-3px); box-shadow: 0 10px 30px rgba(119, 10, 148, 0.6); }
-
 .btn-outline { background: transparent; border: 1px solid rgba(255,255,255,0.3); color: #fff; }
 .btn-outline:hover { border-color: var(--brand-orange); color: var(--brand-orange); }
 .btn-group { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
 
-/* --- BLOCOS / CARDS --- */
+/* --- CARDS & BLOCOS --- */
 .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem; }
-
 .std-card {
     background: var(--bg-card); padding: 2.5rem; border-radius: var(--radius-card);
     border: 1px solid var(--border-light); display: flex; flex-direction: column;
     transition: var(--transition); position: relative; height: 100%;
 }
 .std-card:hover { transform: translateY(-8px); border-color: var(--brand-orange); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-
 .card-icon { font-size: 2.5rem; margin-bottom: 1.5rem; display: block; }
 .card-title { font-size: 1.4rem; margin-bottom: 1rem; color: #fff; }
 .card-desc { font-size: 1rem; color: var(--text-muted); flex-grow: 1; margin-bottom: 2rem; }
 .card-link { color: var(--brand-orange); font-weight: 700; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; }
-
 .tag-pill {
     position: absolute; top: 1.5rem; right: 1.5rem; border: 1px solid rgba(255,255,255,0.1);
     padding: 4px 10px; border-radius: 20px; font-size: 0.7rem; font-weight: bold; color: var(--brand-orange);
@@ -166,23 +161,18 @@ header {
 .book-img-container { display: flex; justify-content: center; }
 .book-cover { 
     max-width: 320px; width: 100%; transform: rotate(-5deg); 
-    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.6)); 
-    transition: var(--transition);
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.6)); transition: var(--transition);
 }
 .book-cover:hover { transform: rotate(0deg) scale(1.05); }
 
 /* --- MENTORIA INFO --- */
-.mentoria-box {
-    background: #150520; border: 1px solid var(--brand-purple); 
-    border-radius: var(--radius-card); padding: 4rem; text-align: center;
-}
+.mentoria-box { background: #150520; border: 1px solid var(--brand-purple); border-radius: var(--radius-card); padding: 4rem; text-align: center; }
 
 /* --- VEJA NA PRÁTICA --- */
 .showcase-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
 .showcase-card {
     background: var(--bg-card); border-radius: var(--radius-card); 
-    border: 1px solid var(--border-light); overflow: hidden; position: relative;
-    height: 400px; display: block;
+    border: 1px solid var(--border-light); overflow: hidden; position: relative; height: 400px; display: block;
 }
 .showcase-bg { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; transition: 0.5s; }
 .showcase-card:hover .showcase-bg { transform: scale(1.05); opacity: 0.8; }
@@ -199,28 +189,19 @@ header {
 }
 .form-input:focus { outline: none; border-color: var(--brand-orange); }
 
-/* --- RODAPÉ PROFISSIONAL --- */
-footer { 
-    background: #020005; padding: 6rem 0 2rem 0; margin-top: 0; 
-    border-top: 4px solid var(--brand-purple);
-}
+/* --- RODAPÉ --- */
+footer { background: #020005; padding: 6rem 0 2rem 0; margin-top: 0; border-top: 4px solid var(--brand-purple); }
 .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 4rem; margin-bottom: 4rem; }
 .footer-col h4 { color: #fff; margin-bottom: 1.5rem; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; }
 .footer-col a { display: block; margin-bottom: 0.8rem; color: var(--text-muted); transition: 0.2s; font-size: 0.95rem; }
 .footer-col a:hover { color: var(--brand-orange); padding-left: 5px; }
-
 .social-icons { display: flex; gap: 1rem; margin-top: 1rem; }
 .social-icon { 
     width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 50%;
     display: flex; align-items: center; justify-content: center; color: #fff; transition: 0.3s;
 }
 .social-icon:hover { background: var(--brand-purple); transform: translateY(-3px); }
-
-.footer-bottom { 
-    border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; 
-    display: flex; justify-content: space-between; align-items: center;
-    font-size: 0.9rem; color: var(--text-muted);
-}
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.9rem; color: var(--text-muted); }
 
 /* --- ANIMAÇÕES --- */
 .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
@@ -232,4 +213,5 @@ footer {
     .hero-image-wrapper { margin: 0 auto; width: 280px; height: 280px; }
     .nav-links { display: none; } 
     .footer-bottom { flex-direction: column; gap: 1rem; }
+    .scroll-indicator { display: none; } /* Ocultar setas no mobile para não poluir */
 }
