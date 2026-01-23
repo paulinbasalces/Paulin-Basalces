@@ -21,7 +21,7 @@
     --border-light: rgba(119, 10, 148, 0.3);
     
     /* UI Specs */
-    --container-width: 1200px;
+    --container-width: 1240px;
     --radius-card: 16px; 
     --radius-btn: 8px; 
     --font-main: 'Inter', sans-serif;
@@ -41,7 +41,7 @@ body {
 }
 
 h1, h2, h3, h4 { color: var(--text-main); font-weight: 800; line-height: 1.1; margin-bottom: 1rem; letter-spacing: -0.02em; }
-h1 { font-size: clamp(3rem, 5vw, 4.8rem); text-transform: none; }
+h1 { font-size: clamp(2.8rem, 5vw, 4.8rem); text-transform: none; }
 h2 { font-size: clamp(2.2rem, 4vw, 3.5rem); }
 p { margin-bottom: 1.5rem; }
 a { text-decoration: none; color: inherit; transition: var(--transition); }
@@ -75,11 +75,14 @@ header {
 
 .logo-link { text-decoration: none; display: block; transition: transform 0.2s; }
 .logo-link:hover { transform: scale(1.02); opacity: 0.9; }
-.logo { font-size: 1.4rem; font-weight: 900; color: #fff; text-transform: uppercase; letter-spacing: -1px; margin: 0; }
+.logo { font-size: 1.3rem; font-weight: 900; color: #fff; text-transform: uppercase; letter-spacing: -1px; margin: 0; }
 .logo span { color: var(--brand-purple); }
 
-.nav-links { display: flex; gap: 2rem; align-items: center; }
-.nav-links a { color: var(--text-muted); font-weight: 600; font-size: 0.9rem; text-transform: uppercase; }
+.nav-links { display: flex; gap: 1.5rem; align-items: center; }
+.nav-links a { 
+    color: var(--text-muted); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; 
+    position: relative;
+}
 .nav-links a:hover { color: var(--brand-orange); }
 
 /* =========================================
@@ -114,8 +117,7 @@ header {
    ========================================= */
 /* Botões Flexíveis */
 .btn-group { 
-    display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; 
-    width: 100%;
+    display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; width: 100%;
 }
 .btn {
     display: inline-flex; justify-content: center; align-items: center;
@@ -191,6 +193,16 @@ header {
 
 /* Mentoria */
 .mentoria-box { background: #150520; border: 1px solid var(--brand-purple); border-radius: var(--radius-card); padding: 4rem; text-align: center; }
+.mentoria-features {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem;
+    margin: 2.5rem 0; text-align: left;
+}
+.mentoria-item {
+    background: rgba(255,255,255,0.05); padding: 0.8rem 1.5rem;
+    border-radius: 50px; font-size: 0.95rem; color: #fff;
+    display: flex; align-items: center; gap: 10px;
+}
+.mentoria-item span { color: var(--brand-orange); font-weight: bold; }
 
 /* Showcase */
 .showcase-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
@@ -232,7 +244,7 @@ footer { background: #020005; padding: 6rem 0 2rem 0; margin-top: 0; border-top:
 .reveal.active { opacity: 1; transform: translateY(0); }
 
 /* =========================================
-   7. RESPONSIVIDADE
+   6. RESPONSIVIDADE
    ========================================= */
 @media (min-width: 768px) {
     .grid-4-cols { grid-template-columns: 1fr 1fr; } 
@@ -251,7 +263,7 @@ footer { background: #020005; padding: 6rem 0 2rem 0; margin-top: 0; border-top:
     .scroll-indicator { display: none; }
     .grid-3-cols, .grid-4-cols { grid-template-columns: 1fr; }
     
-    /* CORREÇÃO CRÍTICA MOBILE: Botões empilhados */
+    /* Botões Mobile */
     .btn-group { flex-direction: column; }
     .btn { width: 100%; max-width: 100%; margin-bottom: 0.5rem; }
 }
