@@ -1,77 +1,276 @@
-<section id="sobre" class="section-padding bg-1 reveal">
-    <div class="container">
-        
-        <div class="bio-text-center">
-            <h2>Quem é Paulin?</h2>
-            <p style="font-size: 1.15rem; color: var(--text-body); line-height: 1.8;">
-                Muito além dos cargos, sou um ativista pela usabilidade real. Com mais de uma década liderando design em grandes empresas, minha atuação vai do <strong>DesignOps estratégico</strong> à pesquisa técnica em <strong>Inteligência Artificial</strong>.
-            </p>
-            <p style="font-size: 1.15rem; color: var(--text-body); line-height: 1.8;">
-                Como pessoa com deficiência e trans, trago uma perspectiva única: não projeto <em>para</em> usuários, projeto <em>com</em> realidades. Acredito que a acessibilidade não é uma feature de backlog, mas o motor de inovação que diferencia produtos medíocres de experiências memoráveis.
-            </p>
-        </div>
-        
-        <div class="grid-4-cols">
-            <article class="std-card">
-                <span class="card-icon">🎤</span>
-                <h3 class="card-title">Palestrante</h3>
-                <p class="card-desc">Talks provocativos que conectam vivência pessoal e rigor técnico para inspirar mudanças culturais em times globais.</p>
-            </article>
-            <article class="std-card">
-                <span class="card-icon">🧠</span>
-                <h3 class="card-title">DesignOps & IA</h3>
-                <p class="card-desc">Implementação de fluxos onde a inclusão é "default". Uso IA para escalar a acessibilidade sem gargalos.</p>
-            </article>
-            <article class="std-card">
-                <span class="card-icon">♿️</span>
-                <h3 class="card-title">Ativismo Técnico</h3>
-                <p class="card-desc">Transformo "casos de borda" em expansão de mercado. Tecnologia deve servir a todos os corpos.</p>
-            </article>
-            <article class="std-card">
-                <span class="card-icon">🚀</span>
-                <h3 class="card-title">Liderança</h3>
-                <p class="card-desc">Gestão baseada em segurança psicológica. Times diversos entregam produtos mais robustos e rentáveis.</p>
-            </article>
-        </div>
-    </div>
-    <a href="#ecossistema" class="scroll-indicator scroll-down" aria-label="Ir para Ecossistema">↓</a>
-</section>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <title>Paulin Basalces | Design Manager, Palestrante e Autor</title>
+    <meta name="description" content="Site oficial de Paulin Basalces. Hub de Inclusão, DesignOps e IA.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body id="topo">
 
-<section id="ecossistema" class="section-padding bg-2 reveal">
-    <div class="container">
-        <div class="text-center center-block section-header">
-            <h2>Ecossistema de Conteúdo</h2>
-            <p style="color:var(--text-muted); font-size:1.2rem;">
-                Minha produção intelectual não fica trancada em salas de reunião. <br>
-                Compartilho ferramentas e conhecimento aberto para fortalecer a comunidade.
-            </p>
+    <header>
+        <div class="header-track"></div>
+        <div class="header-progress" id="progressBar"></div>
+        <div class="container nav-flex">
+            <a href="#topo" class="logo-link">
+                <h1 class="logo">Paulin<span>Basalces</span></h1>
+            </a>
+            <nav class="nav-links">
+                <a href="#sobre">Sobre</a>
+                <a href="#livro">Livro</a>
+                <a href="#servicos">Serviços</a>
+                <a href="#ecossistema">Conteúdo</a>
+                <a href="#contato">Contato</a>
+            </nav>
+            <a href="#mentoria-info" class="btn btn-primary" style="padding: 0.6rem 1.2rem; font-size: 0.85rem;">Mentoria</a>
         </div>
+    </header>
+
+    <main>
         
-        <div class="grid-3-cols">
-            <a href="https://cripplepunkbrasil.substack.com/" target="_blank" class="std-card">
-                <span class="tag-pill">Movimento</span>
-                <div class="card-icon">🔥</div>
-                <h3 class="card-title">CripplePunk Brasil</h3>
-                <p class="card-desc">A newsletter da resistência anticapacitista. Cultura, política e design sob uma ótica radical e necessária.</p>
-                <span class="card-link">Ler Manifesto &rarr;</span>
-            </a>
+        <section class="container section-padding hero">
+            <div class="hero-content">
+                <h1>Atuo onde os <br><span class="highlight">sistemas falham.</span></h1>
+                <p class="lead" style="font-size: 1.15rem; line-height: 1.7;">
+                    UX Design Manager focado em IA e Acessibilidade, autor do livro <em>"Desconstruindo o Capacitismo"</em> e criador de experiências inclusivas.
+                </p>
+                <p class="lead" style="font-size: 1.15rem; line-height: 1.7; margin-top:-1.5rem;">
+                    Trabalho na intersecção entre inovação e inclusão para resolver barreiras de acesso que o mercado ignora.
+                </p>
+                <div class="btn-group">
+                    <a href="#mentoria-info" class="btn btn-primary">Para Profissionais</a>
+                    <a href="#servicos" class="btn btn-outline">Para Empresas</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-image-wrapper">
+                    <img src="foto-perfil.png" alt="Paulin Basalces" class="hero-img-style">
+                </div>
+            </div>
+            <a href="#sobre" class="scroll-indicator scroll-down" aria-label="Rolar para baixo">↓</a>
+        </section>
 
-            <a href="https://paulinbasalces.substack.com/" target="_blank" class="std-card">
-                <span class="tag-pill">Ensaios</span>
-                <div class="card-icon">✍️</div>
-                <h3>Paulin Escreve</h3>
-                <p class="card-desc">Reflexões profundas sobre as interseções entre tecnologia, sociedade e a vivência trans/PcD.</p>
-                <span class="card-link">Assinar Grátis &rarr;</span>
-            </a>
+        <section id="sobre" class="section-padding bg-1 reveal">
+            <a href="#topo" class="scroll-indicator scroll-top" style="top:-20px;">↑</a>
+            
+            <div class="container">
+                <div class="bio-text-center">
+                    <h2>Quem é Paulin?</h2>
+                    <p style="font-size: 1.15rem; color: var(--text-body); line-height: 1.8;">
+                        Muito além dos cargos, sou um ativista pela usabilidade real. Com mais de uma década liderando design em grandes empresas, minha atuação vai do <strong>DesignOps estratégico</strong> à pesquisa técnica em <strong>Inteligência Artificial</strong>.
+                    </p>
+                    <p style="font-size: 1.15rem; color: var(--text-body); line-height: 1.8;">
+                        Como pessoa com deficiência e trans, trago uma perspectiva única: não projeto <em>para</em> usuários, projeto <em>com</em> realidades. Acredito que a acessibilidade não é uma feature de backlog, mas o motor de inovação que diferencia produtos medíocres de experiências memoráveis.
+                    </p>
+                </div>
+                
+                <div class="grid-4-cols">
+                    <article class="std-card">
+                        <span class="card-icon">🎤</span>
+                        <h3 class="card-title">Palestrante</h3>
+                        <p class="card-desc">Talks provocativos que conectam vivência pessoal e rigor técnico para inspirar mudanças culturais.</p>
+                    </article>
+                    <article class="std-card">
+                        <span class="card-icon">🧠</span>
+                        <h3 class="card-title">DesignOps & IA</h3>
+                        <p class="card-desc">Implementação de fluxos onde a inclusão é "default". Uso IA para escalar a acessibilidade.</p>
+                    </article>
+                    <article class="std-card">
+                        <span class="card-icon">♿️</span>
+                        <h3 class="card-title">Ativismo Técnico</h3>
+                        <p class="card-desc">Transformo "casos de borda" em expansão de mercado. Tecnologia deve servir a todos.</p>
+                    </article>
+                    <article class="std-card">
+                        <span class="card-icon">🚀</span>
+                        <h3 class="card-title">Liderança</h3>
+                        <p class="card-desc">Gestão baseada em segurança psicológica. Times diversos entregam produtos mais robustos.</p>
+                    </article>
+                </div>
+            </div>
+            <a href="#ecossistema" class="scroll-indicator scroll-down">↓</a>
+        </section>
 
-            <a href="https://tr.ee/paulinbasalces" target="_blank" class="std-card">
-                <span class="tag-pill">Linktree</span>
-                <div class="card-icon">🎨</div>
-                <h3>Produtor Cultural</h3>
-                <p class="card-desc">Acesso centralizado ao meu portfólio, clipping de imprensa, kits de mídia e curadoria.</p>
-                <span class="card-link">Acessar Tudo &rarr;</span>
-            </a>
-        </div>
-    </div>
-    <a href="#livro" class="scroll-indicator scroll-down" aria-label="Ir para Livro">↓</a>
-</section>
+        <section id="ecossistema" class="section-padding bg-2 reveal">
+            <a href="#sobre" class="scroll-indicator scroll-top" style="top:-20px;">↑</a>
+
+            <div class="container">
+                <div class="text-center center-block">
+                    <h2>Ecossistema de Conteúdo</h2>
+                    <p style="color:var(--text-muted); font-size:1.2rem; margin-bottom:3rem;">
+                        Minha produção intelectual não fica trancada em salas de reunião.<br>Conhecimento aberto para a comunidade.
+                    </p>
+                </div>
+                
+                <div class="grid-3-cols">
+                    <a href="https://cripplepunkbrasil.substack.com/" target="_blank" class="std-card">
+                        <span class="tag-pill">Movimento</span>
+                        <div class="card-icon">🔥</div>
+                        <h3 class="card-title">CripplePunk Brasil</h3>
+                        <p class="card-desc">A newsletter da resistência anticapacitista. Cultura, política e design sob uma ótica radical e necessária.</p>
+                        <span class="card-link">Ler Manifesto &rarr;</span>
+                    </a>
+
+                    <a href="https://paulinbasalces.substack.com/" target="_blank" class="std-card">
+                        <span class="tag-pill">Ensaios</span>
+                        <div class="card-icon">✍️</div>
+                        <h3>Paulin Escreve</h3>
+                        <p class="card-desc">Reflexões profundas sobre as interseções entre tecnologia, sociedade e a vivência trans/PcD.</p>
+                        <span class="card-link">Assinar Grátis &rarr;</span>
+                    </a>
+
+                    <a href="https://tr.ee/paulinbasalces" target="_blank" class="std-card">
+                        <span class="tag-pill">Linktree</span>
+                        <div class="card-icon">🎨</div>
+                        <h3>Produtor Cultural</h3>
+                        <p class="card-desc">Acesso centralizado ao meu portfólio, clipping de imprensa, kits de mídia e curadoria.</p>
+                        <span class="card-link">Acessar Tudo &rarr;</span>
+                    </a>
+                </div>
+            </div>
+            <a href="#livro" class="scroll-indicator scroll-down">↓</a>
+        </section>
+
+        <section id="livro" class="section-padding bg-1 reveal">
+            <a href="#ecossistema" class="scroll-indicator scroll-top" style="top:-20px;">↑</a>
+
+            <div class="container book-wrapper">
+                <div class="book-img-container">
+                    <img src="capa-livro.png" alt="Capa Desconstruindo o Capacitismo" class="book-cover">
+                </div>
+                <div class="book-info">
+                    <span style="color:var(--brand-orange); font-weight:bold; letter-spacing:2px; text-transform:uppercase; font-size: 0.9rem;">Obra de Referência</span>
+                    <h2 style="font-size: 2.5rem; margin-top: 1rem; text-align: left;">O manual que o mercado ignora.</h2>
+                    <p style="font-size: 1.1rem; margin-bottom: 2rem;">
+                        <strong>"Desconstruindo o Capacitismo"</strong> é um guia de ação. Entenda como as estruturas de opressão são codificadas no design e aprenda a criar experiências que respeitam a diversidade humana real.
+                    </p>
+                    <div class="btn-group">
+                        <a href="https://amzn.to/45pwStD" target="_blank" class="btn btn-primary">Livro Impresso</a>
+                        <a href="https://amzn.to/45pwStD" target="_blank" class="btn btn-outline">Versão Kindle</a>
+                    </div>
+                </div>
+            </div>
+            <a href="#mentoria-info" class="scroll-indicator scroll-down">↓</a>
+        </section>
+
+        <section id="mentoria-info" class="section-padding bg-2 reveal">
+            <a href="#livro" class="scroll-indicator scroll-top" style="top:-20px;">↑</a>
+
+            <div class="container">
+                <div class="mentoria-box center-block">
+                    <h2>Mentoria Estratégica</h2>
+                    <p style="margin: 1.5rem auto; color: #ddd; font-size: 1.1rem;">
+                        Quer acelerar sua carreira em UX? Minha mentoria foca em <strong>Liderança, Design Inclusivo e IA</strong>. Transforme seu perfil técnico em uma força estratégica no mercado.
+                    </p>
+                    <a href="https://app.ementor.com.br/pacotes/pedido/3265/" target="_blank" class="btn btn-primary">Ver Planos e Agendar</a>
+                </div>
+            </div>
+            <a href="#servicos" class="scroll-indicator scroll-down">↓</a>
+        </section>
+
+        <section id="servicos" class="section-padding bg-1 reveal">
+            <a href="#mentoria-info" class="scroll-indicator scroll-top" style="top:-20px;">↑</a>
+
+            <div class="container">
+                <div class="text-center center-block">
+                    <h2>Como ajudar seu negócio</h2>
+                    <p style="color:var(--text-muted); font-size:1.2rem; margin-bottom:3rem;">Soluções estratégicas para maturidade em design.</p>
+                </div>
+                <div class="grid-3-cols">
+                    <div class="std-card">
+                        <span class="card-icon">⚙️</span>
+                        <h3>Consultoria Ops</h3>
+                        <p class="card-desc">Auditoria de processos e implementação de Design Systems acessíveis para escalar qualidade.</p>
+                        <a href="#contato" class="btn btn-outline" style="width:100%; justify-content:center;">Saber mais</a>
+                    </div>
+                    <div class="std-card" style="border-color: var(--brand-purple);">
+                        <span class="card-icon">🎤</span>
+                        <h3>Palestras & Talks</h3>
+                        <p class="card-desc">Conteúdo provocativo sobre Futuro do Trabalho, IA Ética e Anticapacitismo.</p>
+                        <a href="#contato" class="btn btn-primary" style="width:100%; justify-content:center;">Contratar</a>
+                    </div>
+                    <div class="std-card">
+                        <span class="card-icon">🚀</span>
+                        <h3>Mentoria B2B</h3>
+                        <p class="card-desc">Programas de treinamento in-company para times de design e produto.</p>
+                        <a href="#contato" class="btn btn-outline" style="width:100%; justify-content:center;">Conversar</a>
+                    </div>
+                </div>
+            </div>
+            <a href="#pratica" class="scroll-indicator scroll-down">↓</a>
+        </section>
+
+        <section id="pratica" class="container section-padding reveal">
+            <a href="#servicos" class="scroll-indicator scroll-top" style="top:-20px;">↑</a>
+
+            <div class="text-center center-block">
+                <h2>Veja na Prática</h2>
+                <p style="color:var(--text-muted); font-size:1.2rem; margin-bottom:3rem;">Estudos de caso visuais e palestras gravadas.</p>
+            </div>
+            <div class="showcase-grid">
+                <a href="https://paulinbasalces.framer.ai/" target="_blank" class="showcase-card">
+                    <img src="image_022221.jpg" alt="Portfolio Visual" class="showcase-bg">
+                    <div class="showcase-info">
+                        <h3>Portfólio Visual UX/UI</h3>
+                        <p style="color:#ccc">Interfaces e Design Systems no Framer.</p>
+                    </div>
+                </a>
+                <a href="https://tr.ee/CTcWKfBxUY" target="_blank" class="showcase-card">
+                    <img src="image_f82254.jpg" alt="Talk Sexualidade" class="showcase-bg">
+                    <div class="showcase-info">
+                        <h3>Talk: Sexualidade & Acesso</h3>
+                        <p style="color:#ccc">Palestra completa sobre corpos e barreiras.</p>
+                    </div>
+                </a>
+            </div>
+            <a href="#contato" class="scroll-indicator scroll-down">↓</a>
+        </section>
+
+        <section id="contato" class="section-padding bg-3 reveal">
+            <a href="#pratica" class="scroll-indicator scroll-top" style="top:-20px;">↑</a>
+
+            <div class="form-box">
+                <div class="text-center" style="margin-bottom: 2rem;">
+                    <h2>Vamos conectar realidades?</h2>
+                    <p style="color:var(--text-muted)">Preencha para palestras ou consultorias.</p>
+                </div>
+                <form name="contato-v15" method="POST" data-netlify="true">
+                    <input type="text" name="nome" placeholder="Seu Nome" class="form-input" required>
+                    <input type="email" name="email" placeholder="E-mail Corporativo" class="form-input" required>
+                    <textarea name="msg" rows="5" placeholder="Como posso ajudar seu projeto?" class="form-input" required></textarea>
+                    <button type="submit" class="btn btn-primary" style="width:100%">Enviar Mensagem</button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3 style="color:#fff; margin-bottom:1rem;">PAULIN BASALCES</h3>
+                    <p style="color:var(--text-muted); font-size:0.95rem;">
+                        Design Manager, Autor e Ativista. Inovação e inclusão radical.
+                    </p>
+                    <p style="color:#fff; font-weight:bold; margin-top:1rem;">paulin@basalces.digital</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Mapa do Site</h4>
+                    <a href="#topo">Início</a>
+                    <a href="#sobre">Sobre Mim</a>
+                    <a href="#livro">Livro</a>
+                    <a href="#servicos">Serviços</a>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Redes Sociais</h4>
+                    <div class="social-icons">
+                        <a href="https://linkedin.com/in/paulinbasalces" target="_blank" class="social-icon" aria-label="LinkedIn">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-
