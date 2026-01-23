@@ -1,14 +1,16 @@
-/* --- VARIÁVEIS OFICIAIS (Baseadas no Layout Aprovado) --- */
+/* --- VARIÁVEIS DO SISTEMA (V 12.0 - Final Fix) --- */
 :root {
     --brand-purple: #770a94;
     --brand-orange: #db742e;
     
-    /* Fundos para Efeito Aquarela/Degradê entre seções */
-    --bg-body: #05010a;
-    --bg-alt: #0e021a; /* Roxo muito escuro */
+    /* Fundos para Transição Suave */
+    --bg-deep: #05010a;
+    --bg-gradient-1: linear-gradient(180deg, #05010a 0%, #0e021a 100%);
+    --bg-gradient-2: linear-gradient(180deg, #0e021a 0%, #130424 100%);
+    --bg-gradient-3: linear-gradient(180deg, #130424 0%, #05010a 100%);
     
-    --bg-card: #130424; /* Fundo dos Blocos */
-    --bg-input: #1F0A3A;
+    --bg-card: #0f0518;        /* Fundo dos Cards */
+    --bg-input: #1A0B2E;
     
     --text-main: #FFFFFF;
     --text-body: #E2E8F0;
@@ -16,20 +18,20 @@
     
     --border-light: rgba(119, 10, 148, 0.3);
     
-    /* Layout & UI */
+    /* UI Specs */
     --container-width: 1200px;
     --radius-card: 16px; 
-    --radius-btn: 8px; /* Menos ovalado conforme pedido */
+    --radius-btn: 8px; /* Profissional, pouco arredondado */
     --font-main: 'Inter', sans-serif;
-    --transition: all 0.3s ease;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* --- RESET --- */
+/* --- BASE --- */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 
 body {
-    background-color: var(--bg-body);
+    background-color: var(--bg-deep);
     color: var(--text-body);
     font-family: var(--font-main);
     line-height: 1.6;
@@ -37,8 +39,8 @@ body {
     overflow-x: hidden;
 }
 
-h1, h2, h3, h4 { color: var(--text-main); font-weight: 800; line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 1rem; }
-h1 { font-size: clamp(3rem, 5vw, 4.5rem); }
+h1, h2, h3, h4 { color: var(--text-main); font-weight: 800; line-height: 1.1; margin-bottom: 1rem; letter-spacing: -0.02em; }
+h1 { font-size: clamp(3rem, 5vw, 4.8rem); text-transform: none; }
 h2 { font-size: clamp(2.2rem, 4vw, 3.5rem); }
 p { margin-bottom: 1.5rem; }
 a { text-decoration: none; color: inherit; transition: var(--transition); }
@@ -46,9 +48,14 @@ img { max-width: 100%; display: block; }
 ul { list-style: none; }
 
 .container { max-width: var(--container-width); margin: 0 auto; padding: 0 2rem; }
-.section-padding { padding: 8rem 0; }
+.section-padding { padding: 9rem 0; }
 .text-center { text-align: center; }
-.center-block { margin-left: auto; margin-right: auto; max-width: 800px; }
+.center-block { margin: 0 auto; max-width: 800px; }
+
+/* Classes de Fundo para Alternância */
+.bg-1 { background: var(--bg-gradient-1); }
+.bg-2 { background: var(--bg-gradient-2); }
+.bg-3 { background: var(--bg-gradient-3); }
 
 /* --- HEADER --- */
 header {
@@ -65,49 +72,46 @@ header {
 .nav-links a:hover { color: var(--brand-orange); }
 
 /* --- HERO SECTION --- */
-.hero { 
-    display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; align-items: center; 
-    padding-top: 6rem; padding-bottom: 8rem; min-height: 85vh;
-    /* Efeito sutil de fundo no Hero */
-    background: radial-gradient(circle at 70% 20%, rgba(119, 10, 148, 0.15), transparent 60%);
-}
+.hero { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; align-items: center; padding-top: 6rem; padding-bottom: 8rem; min-height: 85vh; }
 .highlight { color: var(--brand-purple); }
 
-/* Foto com Borda Animada (Somente a Borda) */
+/* FOTO COM BORDA ANIMADA (Correção: Animação apenas no pseudo-elemento) */
 .hero-image-wrapper { 
     position: relative; width: 380px; height: 380px; display: flex; align-items: center; justify-content: center;
     border-radius: 50%;
-    background: linear-gradient(45deg, var(--brand-purple), var(--brand-orange));
-    padding: 4px; /* Espessura da borda */
-    animation: spinBorder 4s linear infinite;
 }
-@keyframes spinBorder { 100% { filter: hue-rotate(360deg); } }
+.hero-image-wrapper::before {
+    content: ''; position: absolute; inset: -4px; border-radius: 50%;
+    background: linear-gradient(45deg, var(--brand-purple), var(--brand-orange), var(--brand-purple));
+    background-size: 200% 200%; animation: borderSpin 4s linear infinite; z-index: 0;
+}
+@keyframes borderSpin { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
 
 .hero-img-style { 
     width: 100%; height: 100%; border-radius: 50%; object-fit: cover; 
-    border: 4px solid var(--bg-body); /* Separa a foto da borda colorida */
-    background: var(--bg-card); /* Fallback */
+    border: 5px solid var(--bg-deep); /* Separa a foto da borda colorida */
+    position: relative; z-index: 1;
 }
 
-/* --- BOTÕES (Refinados) --- */
+/* --- BOTÕES (Style Profissional) --- */
 .btn {
     display: inline-flex; justify-content: center; align-items: center;
-    padding: 1rem 2rem; font-weight: 700; border-radius: var(--radius-btn); 
+    padding: 1rem 2.5rem; font-weight: 700; border-radius: var(--radius-btn); 
     cursor: pointer; font-size: 1rem; transition: var(--transition);
     text-transform: uppercase; letter-spacing: 0.5px;
 }
 .btn-primary { 
     background: var(--brand-purple); color: #fff; border: 1px solid transparent;
-    box-shadow: 0 4px 15px rgba(119, 10, 148, 0.4);
+    box-shadow: 0 4px 20px rgba(119, 10, 148, 0.4);
 }
-.btn-primary:hover { background: #5e0676; transform: translateY(-3px); }
+.btn-primary:hover { background: #5e0676; transform: translateY(-3px); box-shadow: 0 10px 30px rgba(119, 10, 148, 0.6); }
 
 .btn-outline { background: transparent; border: 1px solid rgba(255,255,255,0.3); color: #fff; }
 .btn-outline:hover { border-color: var(--brand-orange); color: var(--brand-orange); }
-.btn-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn-group { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
 
-/* --- BLOCOS / CARDS (O estilo que você gostou) --- */
-.card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem; }
+/* --- BLOCOS / CARDS (Design "Boxed" Restaurado) --- */
+.card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 3rem; }
 
 .std-card {
     background: var(--bg-card); padding: 2.5rem; border-radius: var(--radius-card);
@@ -126,34 +130,33 @@ header {
     padding: 4px 10px; border-radius: 20px; font-size: 0.7rem; font-weight: bold; color: var(--brand-orange);
 }
 
-/* --- SEÇÕES COM FUNDO AQUARELA (Degradê Sutil) --- */
-/* Alternância de fundos para dar profundidade */
-.bg-gradient-1 { background: linear-gradient(180deg, var(--bg-body) 0%, var(--bg-alt) 100%); }
-.bg-gradient-2 { background: linear-gradient(180deg, var(--bg-alt) 0%, var(--bg-body) 100%); }
-
 /* --- QUEM É PAULIN --- */
-.bio-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; } /* Layout vertical para mobile first, ajustado abaixo */
+.bio-text { font-size: 1.15rem; color: var(--text-body); max-width: 900px; margin-bottom: 3rem; }
 
-/* --- LIVRO --- */
-.book-wrapper { 
-    display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 5rem; align-items: center; 
-}
+/* --- SEÇÃO LIVRO --- */
+.book-wrapper { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 5rem; align-items: center; }
 .book-img-container { display: flex; justify-content: center; }
 .book-cover { 
-    max-width: 300px; width: 100%; transform: rotate(-5deg); 
-    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.6)); /* Sombra no elemento, fundo transparente */
+    max-width: 320px; width: 100%; transform: rotate(-5deg); 
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.6)); 
     transition: var(--transition);
 }
 .book-cover:hover { transform: rotate(0deg) scale(1.05); }
+
+/* --- MENTORIA INFO (Funil) --- */
+.mentoria-box {
+    background: #150520; border: 1px solid var(--brand-purple); 
+    border-radius: var(--radius-card); padding: 4rem; text-align: center;
+}
 
 /* --- VEJA NA PRÁTICA --- */
 .showcase-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
 .showcase-card {
     background: var(--bg-card); border-radius: var(--radius-card); 
     border: 1px solid var(--border-light); overflow: hidden; position: relative;
-    height: 380px; display: block;
+    height: 400px; display: block;
 }
-.showcase-bg { width: 100%; height: 100%; object-fit: cover; opacity: 0.5; transition: 0.5s; }
+.showcase-bg { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; transition: 0.5s; }
 .showcase-card:hover .showcase-bg { transform: scale(1.05); opacity: 0.8; }
 .showcase-info {
     position: absolute; bottom: 0; left: 0; width: 100%; padding: 2rem;
@@ -170,10 +173,10 @@ header {
 
 /* --- RODAPÉ PROFISSIONAL --- */
 footer { 
-    background: #020005; padding: 6rem 0 2rem 0; margin-top: 6rem; 
-    border-top: 4px solid var(--brand-purple); /* Marcador roxo solicitado */
+    background: #020005; padding: 6rem 0 2rem 0; margin-top: 0; 
+    border-top: 4px solid var(--brand-purple); /* Marcador de final */
 }
-.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 4rem; margin-bottom: 4rem; }
+.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 4rem; margin-bottom: 4rem; }
 .footer-col h4 { color: #fff; margin-bottom: 1.5rem; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; }
 .footer-col a { display: block; margin-bottom: 0.8rem; color: var(--text-muted); transition: 0.2s; font-size: 0.95rem; }
 .footer-col a:hover { color: var(--brand-orange); padding-left: 5px; }
@@ -190,6 +193,10 @@ footer {
     display: flex; justify-content: space-between; align-items: center;
     font-size: 0.9rem; color: var(--text-muted);
 }
+
+/* --- ANIMAÇÕES --- */
+.reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+.reveal.active { opacity: 1; transform: translateY(0); }
 
 /* --- RESPONSIVIDADE --- */
 @media (max-width: 900px) {
