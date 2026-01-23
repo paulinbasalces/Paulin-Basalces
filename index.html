@@ -3,16 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    
     <title>Paulin Basalces | UX Design Manager, Palestrante e Autor</title>
     <meta name="description" content="Site oficial de Paulin Basalces. Hub de Inclusão, DesignOps e IA.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="style.css">
 </head>
 <body id="topo">
@@ -20,7 +17,6 @@
     <header>
         <div class="header-track"></div>
         <div class="header-progress" id="progressBar"></div>
-        
         <div class="container nav-flex">
             <a href="#topo" class="logo-link">
                 <h1 class="logo">Paulin<span>Basalces</span></h1>
@@ -191,26 +187,30 @@
             <div class="container">
                 <div class="text-center center-block">
                     <h2>Como ajudar seu negócio</h2>
-                    <p style="color:var(--text-muted); font-size:1.2rem; margin-bottom:3rem;">Soluções estratégicas para maturidade em design.</p>
+                    <p style="color:var(--text-muted); font-size:1.2rem; margin-bottom:3rem;">
+                        Soluções estratégicas para empresas que buscam maturidade real em inclusão.
+                    </p>
                 </div>
                 <div class="grid-3-cols">
-                    <div class="std-card">
+                    <div class="std-card" style="border-color: rgba(255,255,255,0.2);">
                         <span class="card-icon">⚙️</span>
-                        <h3>Consultoria Ops</h3>
-                        <p class="card-desc">Auditoria de processos e implementação de Design Systems acessíveis para escalar qualidade.</p>
-                        <a href="#contato" class="btn btn-outline" style="width:100%; justify-content:center;">Saber mais</a>
+                        <h3>Consultoria DesignOps</h3>
+                        <p class="card-desc">Auditoria técnica e reestruturação de processos. Transformo a acessibilidade de um "gargalo" em diferencial competitivo escalável.</p>
+                        <a href="#contato" class="btn btn-outline" style="width:100%; justify-content:center;">Agendar Diagnóstico</a>
                     </div>
+                    
                     <div class="std-card" style="border-color: var(--brand-purple);">
                         <span class="card-icon">🎤</span>
-                        <h3>Palestras & Talks</h3>
-                        <p class="card-desc">Conteúdo provocativo sobre Futuro do Trabalho, IA Ética e Anticapacitismo.</p>
-                        <a href="#contato" class="btn btn-primary" style="width:100%; justify-content:center;">Contratar</a>
+                        <h3>Palestras & Treinamentos</h3>
+                        <p class="card-desc">Leve a discussão sobre IA Ética e Anticapacitismo para o centro da sua empresa. Conteúdo que muda a cultura e prepara times.</p>
+                        <a href="#contato" class="btn btn-primary" style="width:100%; justify-content:center;">Cotar Palestra</a>
                     </div>
-                    <div class="std-card">
+                    
+                    <div class="std-card" style="border-color: var(--brand-orange);">
                         <span class="card-icon">🚀</span>
-                        <h3>Mentoria B2B</h3>
-                        <p class="card-desc">Programas de treinamento in-company para times de design e produto.</p>
-                        <a href="#contato" class="btn btn-outline" style="width:100%; justify-content:center;">Conversar</a>
+                        <h3>Mentoria de Liderança</h3>
+                        <p class="card-desc">Não é apenas sobre portfólio. É sobre posicionamento político, estratégia e como navegar a complexidade corporativa.</p>
+                        <a href="https://app.ementor.com.br/pacotes/pedido/3265/" target="_blank" class="btn btn-outline" style="width:100%; justify-content:center;">Aplicar para Mentoria</a>
                     </div>
                 </div>
             </div>
@@ -251,7 +251,7 @@
                     <h2>Vamos conectar realidades?</h2>
                     <p style="color:var(--text-muted)">Preencha para palestras ou consultorias.</p>
                 </div>
-                <form name="contato-v16" method="POST" data-netlify="true">
+                <form name="contato-v17" method="POST" data-netlify="true">
                     <input type="text" name="nome" placeholder="Seu Nome" class="form-input" required>
                     <input type="email" name="email" placeholder="E-mail Corporativo" class="form-input" required>
                     <textarea name="msg" rows="5" placeholder="Como posso ajudar seu projeto?" class="form-input" required></textarea>
@@ -313,21 +313,15 @@
     </footer>
 
     <script>
-        // Lógica da Barra de Progresso e Animações
         window.onscroll = function() {
-            // Barra
             var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
             var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            
-            // Largura Base (cobre o logo "Paulin Basalces")
             var baseWidth = 220; 
             var totalWidth = document.documentElement.clientWidth - baseWidth;
             var scrolled = (winScroll / height) * totalWidth;
-            
             document.getElementById("progressBar").style.width = (baseWidth + scrolled) + "px";
         };
 
-        // Scroll Reveal (Animação de entrada)
         window.addEventListener('scroll', () => {
             const reveals = document.querySelectorAll('.reveal');
             reveals.forEach(reveal => {
