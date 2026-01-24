@@ -26,15 +26,17 @@
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* ==========================================================================
+   2. RESET & BASE
+   ========================================================================== */
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; font-size: 18px; /* Tamanho base para REM */ }
 
 body {
     background-color: var(--bg-deep);
     color: var(--text-body);
     font-family: var(--font-main);
     line-height: 1.6;
-    font-size: 18px;
     overflow-x: hidden;
 }
 
@@ -56,7 +58,7 @@ ul { list-style: none; }
 .bg-3 { background: var(--bg-gradient-3); }
 
 /* ==========================================================================
-   2. HEADER & BARRA DE PROGRESSO
+   3. HEADER & BARRA DE PROGRESSO
    ========================================================================== */
 header {
     height: 90px; display: flex; align-items: center;
@@ -80,7 +82,7 @@ header {
 .nav-links a:hover { color: var(--brand-orange); }
 
 /* ==========================================================================
-   3. HERO SECTION
+   4. HERO SECTION
    ========================================================================== */
 .hero { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; align-items: center; padding-top: 6rem; padding-bottom: 8rem; min-height: 85vh; position: relative; }
 .highlight { color: var(--brand-purple); }
@@ -101,13 +103,10 @@ header {
 @keyframes borderSpin { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
 @keyframes moonlightSpin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-.hero-img-style { 
-    width: 100%; height: 100%; border-radius: 50%; object-fit: cover; 
-    border: 6px solid var(--bg-deep); position: relative; z-index: 1;
-}
+.hero-img-style { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 6px solid var(--bg-deep); position: relative; z-index: 1; }
 
 /* ==========================================================================
-   4. COMPONENTES DE UI
+   5. COMPONENTES DE UI
    ========================================================================== */
 .btn-group { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; width: 100%; }
 .btn {
@@ -185,7 +184,6 @@ header {
 .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; background: rgba(0,0,0,0.3); }
 .faq-answer p { padding: 0 1.5rem 1.5rem 1.5rem; color: #d1d1d1; font-size: 1rem; line-height: 1.6; margin: 0; }
 
-/* FAIXA DE DESTAQUE (QUOTE - Nova Posição) */
 .quote-stripe {
     background: linear-gradient(90deg, var(--brand-orange) 0%, var(--brand-purple) 100%);
     padding: 4rem 0; margin-bottom: 2rem; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;
@@ -207,15 +205,15 @@ header {
 footer { background: #020005; padding: 6rem 0 2rem 0; margin-top: 0; border-top: 4px solid var(--brand-purple); }
 .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 4rem; margin-bottom: 4rem; }
 
-/* Logo Vazada (Ghost Style) */
+/* Logo Vazada - APENAS TRAÇOS */
 .footer-logo {
     font-size: 1.8rem; font-weight: 900; margin: 0 0 1rem 0;
     text-transform: uppercase; letter-spacing: -1px;
-    color: transparent; /* Texto transparente */
-    -webkit-text-stroke: 1px rgba(255,255,255,0.8); /* Borda branca fina */
-    opacity: 0.8;
+    color: transparent; 
+    -webkit-text-stroke: 1px #fff; /* Apenas contorno branco sólido */
+    opacity: 0.9;
 }
-.footer-logo span { -webkit-text-stroke: 1px rgba(255,255,255,0.8); color: transparent; }
+.footer-logo span { -webkit-text-stroke: 1px #fff; color: transparent; }
 
 .footer-newsletter { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem; }
 .footer-newsletter label { font-size: 0.85rem; color: var(--text-muted); }
@@ -227,7 +225,7 @@ footer { background: #020005; padding: 6rem 0 2rem 0; margin-top: 0; border-top:
 .footer-col a { display: block; margin-bottom: 0.8rem; color: var(--text-muted); transition: 0.2s; font-size: 0.95rem; }
 .footer-col a:hover { color: var(--brand-orange); padding-left: 5px; }
 
-/* ÍCONES SOCIAIS (CORREÇÃO FINAL DE ALINHAMENTO) */
+/* ÍCONES SOCIAIS (CORRIGIDO V30) */
 .social-icons { display: flex; gap: 1rem; margin-top: 1.5rem; }
 .social-icon { 
     width: 40px; height: 40px; min-width: 40px;
@@ -238,14 +236,23 @@ footer { background: #020005; padding: 6rem 0 2rem 0; margin-top: 0; border-top:
 .social-icon svg { width: 18px; height: 18px; fill: currentColor; display: block; }
 .social-icon:hover { background: var(--brand-purple); transform: translateY(-3px); }
 
-.footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.9rem; color: var(--text-muted); }
+/* Rodapé Inferior com Acessibilidade */
+.footer-bottom { 
+    border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; 
+    display: flex; justify-content: space-between; align-items: center; 
+    font-size: 0.9rem; color: var(--text-muted); 
+}
+.footer-actions { display: flex; gap: 1.5rem; align-items: center; }
+.a11y-btn {
+    background: transparent; border: 1px solid rgba(255,255,255,0.2);
+    color: var(--brand-orange); cursor: pointer; padding: 5px 10px;
+    border-radius: 4px; font-weight: bold; font-size: 0.9rem; transition: 0.2s;
+}
+.a11y-btn:hover { background: rgba(255,255,255,0.1); }
 
 .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
 .reveal.active { opacity: 1; transform: translateY(0); }
 
-/* ==========================================================================
-   7. RESPONSIVIDADE
-   ========================================================================== */
 @media (min-width: 768px) {
     .grid-4-cols { grid-template-columns: 1fr 1fr; } 
     .grid-3-cols { grid-template-columns: 1fr 1fr 1fr; }
@@ -263,7 +270,6 @@ footer { background: #020005; padding: 6rem 0 2rem 0; margin-top: 0; border-top:
     .grid-3-cols, .grid-4-cols { grid-template-columns: 1fr; }
     .btn-group { flex-direction: column; }
     .btn { width: 100%; max-width: 100%; margin-bottom: 0.5rem; }
-    
     .quote-stripe p { font-size: 1.2rem; padding: 0 1rem; }
     .quote-icon-bg { font-size: 8rem; }
 }
