@@ -75,14 +75,14 @@ header {
 .logo { font-size: 1.3rem; font-weight: 900; color: #fff; text-transform: uppercase; letter-spacing: -1px; margin: 0; }
 .logo span { color: var(--brand-purple); }
 
-.nav-links { display: flex; gap: 1.5rem; align-items: center; }
+.nav-links { display: flex; gap: 1.2rem; align-items: center; }
 .nav-links a { color: var(--text-muted); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; position: relative; transition: color 0.3s; }
 .nav-links a:hover { color: var(--brand-orange); }
 
 /* ==========================================================================
    3. HERO SECTION
    ========================================================================== */
-.hero { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; align-items: center; padding-top: 6rem; padding-bottom: 8rem; min-height: 85vh; position: relative; }
+.hero { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; align-items: center; padding-top: 6rem; padding-bottom: 6rem; min-height: 85vh; position: relative; }
 .highlight { color: var(--brand-purple); }
 
 .hero-image-wrapper { 
@@ -101,13 +101,27 @@ header {
 @keyframes borderSpin { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
 @keyframes moonlightSpin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-.hero-img-style { 
-    width: 100%; height: 100%; border-radius: 50%; object-fit: cover; 
-    border: 6px solid var(--bg-deep); position: relative; z-index: 1;
+.hero-img-style { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 6px solid var(--bg-deep); position: relative; z-index: 1; }
+
+/* --- QUOTE STRIPE (Faixa de Destaque) --- */
+.quote-stripe {
+    background: linear-gradient(90deg, var(--brand-orange) 0%, var(--brand-purple) 100%);
+    padding: 3rem 0;
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+.quote-stripe p {
+    font-size: 1.5rem; font-weight: 800; color: #fff; text-align: center;
+    margin: 0; line-height: 1.4; max-width: 1000px; margin: 0 auto;
+    font-style: italic; letter-spacing: -0.5px;
+}
+.quote-icon {
+    font-size: 4rem; opacity: 0.3; position: absolute; top: -10px; left: 2rem; color: #fff;
 }
 
 /* ==========================================================================
-   5. COMPONENTES DE UI
+   4. COMPONENTES DE UI
    ========================================================================== */
 .btn-group { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; width: 100%; }
 .btn {
@@ -122,12 +136,12 @@ header {
 .btn-outline { background: transparent; border: 1px solid rgba(255,255,255,0.3); color: #fff; }
 .btn-outline:hover { border-color: var(--brand-orange); color: var(--brand-orange); }
 
-/* Setas Removidas na V26+ para limpeza visual */
 .scroll-indicator { display: none; }
 
 .grid-4-cols { display: grid; gap: 1.5rem; margin-top: 3rem; grid-template-columns: 1fr; }
 .grid-3-cols { display: grid; gap: 2rem; margin-top: 3rem; grid-template-columns: 1fr; }
 
+/* Cards Padrão */
 .std-card {
     background: var(--bg-card); padding: 2.5rem; border-radius: var(--radius-card);
     border: 1px solid var(--border-light); display: flex; flex-direction: column;
@@ -135,6 +149,7 @@ header {
 }
 .std-card:hover { transform: translateY(-8px); border-color: var(--brand-orange); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
 
+/* Cards de Serviço */
 .service-card {
     background: #0f0518; padding: 3rem 2.5rem; border-radius: var(--radius-card);
     border: 1px solid var(--border-light); display: flex; flex-direction: column;
@@ -157,19 +172,16 @@ header {
    ========================================================================== */
 .bio-text-center { text-align: center; max-width: 900px; margin: 0 auto 4rem auto; }
 
-/* Livro */
 .book-wrapper { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 5rem; align-items: center; }
 .book-img-container { display: flex; justify-content: center; }
 .book-cover { max-width: 320px; width: 100%; transform: rotate(-5deg); filter: drop-shadow(0 20px 40px rgba(0,0,0,0.6)); transition: var(--transition); }
 .book-cover:hover { transform: rotate(0deg) scale(1.05); }
 
-/* Mentoria */
 .mentoria-box { background: #150520; border: 1px solid var(--border-light); border-top: 4px solid var(--brand-purple); border-radius: var(--radius-card); padding: 4rem; text-align: center; }
 .mentoria-features { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; margin: 2.5rem 0; text-align: left; }
 .mentoria-item { background: rgba(255,255,255,0.05); padding: 0.8rem 1.5rem; border-radius: 50px; font-size: 0.95rem; color: #fff; display: flex; align-items: center; gap: 10px; }
 .mentoria-item span { color: var(--brand-orange); font-weight: bold; }
 
-/* Showcase */
 .showcase-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
 .showcase-card { background: var(--bg-card); border-radius: var(--radius-card); border: 1px solid var(--border-light); overflow: hidden; position: relative; height: 400px; display: block; }
 .showcase-bg { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; transition: 0.5s; }
@@ -180,7 +192,6 @@ header {
 .play-overlay::before { content: '▶'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0); font-size: 3rem; color: #fff; opacity: 0; transition: all 0.4s ease; z-index: 2; text-shadow: 0 0 20px rgba(0,0,0,0.5); }
 .showcase-card:hover .play-overlay::before { transform: translate(-50%, -50%) scale(1); opacity: 1; }
 
-/* FAQ (Accordion) */
 .faq-grid { display: grid; gap: 1.5rem; max-width: 900px; margin: 3rem auto; }
 .faq-item { background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 12px; overflow: hidden; transition: var(--transition); }
 .faq-item.active { border-color: var(--brand-orange); box-shadow: 0 0 20px rgba(219, 116, 46, 0.1); }
@@ -190,37 +201,46 @@ header {
 .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; background: rgba(0,0,0,0.3); }
 .faq-answer p { padding: 0 1.5rem 1.5rem 1.5rem; color: #d1d1d1; font-size: 1rem; line-height: 1.6; margin: 0; }
 
-/* Formulário e Newsletter */
 .form-box { background: var(--bg-card); padding: 3rem; border-radius: var(--radius-card); border: 1px solid var(--border-light); max-width: 800px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
-.form-input { 
-    width: 100%; padding: 1.2rem; background: var(--bg-input); 
-    border: 1px solid var(--border-light); color: #fff; border-radius: 8px; font-size: 1rem; font-family: inherit; margin-bottom: 1.5rem; transition: border-color 0.3s;
-}
+.form-input { width: 100%; padding: 1.2rem; background: var(--bg-input); border: 1px solid var(--border-light); color: #fff; border-radius: 8px; font-size: 1rem; font-family: inherit; margin-bottom: 1.5rem; transition: border-color 0.3s; }
 .form-input:focus { outline: none; border-color: var(--brand-orange); box-shadow: 0 0 10px rgba(219, 116, 46, 0.2); }
 
-/* Rodapé Newsletter */
+/* --- RODAPÉ (3 COLUNAS & LOGO VAZADA) --- */
+footer { background: #020005; padding: 6rem 0 2rem 0; margin-top: 0; border-top: 4px solid var(--brand-purple); }
+
+/* Grid de 3 Colunas: 1.5fr (Marca) | 1fr (Mapa) | 1fr (Links+Social) */
+.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 4rem; margin-bottom: 4rem; }
+
+/* Logo Vazada */
+.footer-logo {
+    font-size: 1.8rem; font-weight: 900; margin: 0 0 1rem 0;
+    text-transform: uppercase; letter-spacing: -1px;
+    color: transparent; /* Texto transparente */
+    -webkit-text-stroke: 1px rgba(255,255,255,0.6); /* Borda branca */
+}
+.footer-logo span {
+    color: transparent;
+    -webkit-text-stroke: 1px var(--brand-purple); /* Borda roxa */
+}
+
+.footer-col h4 { color: #fff; margin-bottom: 1.5rem; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; }
+.footer-col a { display: block; margin-bottom: 0.8rem; color: var(--text-muted); transition: 0.2s; font-size: 0.95rem; }
+.footer-col a:hover { color: var(--brand-orange); padding-left: 5px; }
+
+/* Newsletter no Rodapé */
 .footer-newsletter { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem; }
 .footer-newsletter label { font-size: 0.85rem; color: var(--text-muted); }
 .footer-newsletter input { padding: 0.8rem; border-radius: 6px; border: 1px solid var(--border-light); background: #1a0b2e; color: #fff; width: 100%; }
 .footer-newsletter button { padding: 0.8rem; border-radius: 6px; background: var(--brand-purple); color: #fff; border: none; font-weight: bold; cursor: pointer; transition: 0.3s; width: 100%; }
 .footer-newsletter button:hover { background: #5e0676; }
 
-/* Rodapé */
-footer { background: #020005; padding: 6rem 0 2rem 0; margin-top: 0; border-top: 4px solid var(--brand-purple); }
-.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 4rem; margin-bottom: 4rem; }
-.footer-col h4 { color: #fff; margin-bottom: 1.5rem; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; }
-.footer-col a { display: block; margin-bottom: 0.8rem; color: var(--text-muted); transition: 0.2s; font-size: 0.95rem; }
-.footer-col a:hover { color: var(--brand-orange); padding-left: 5px; }
-
-/* ÍCONES SOCIAIS (CORREÇÃO FINAL) */
-.social-icons { display: flex; gap: 1rem; margin-top: 1rem; }
+/* Ícones Sociais (Abaixo dos Links Úteis) */
+.social-icons { display: flex; gap: 1rem; margin-top: 1.5rem; }
 .social-icon { 
-    width: 40px; height: 40px; 
-    min-width: 40px; /* Garante tamanho */
+    width: 40px; height: 40px; min-width: 40px;
     background: rgba(255,255,255,0.1); border-radius: 50%;
-    display: flex; align-items: center; justify-content: center; /* Centralização Flex */
-    color: #fff; transition: 0.3s; text-decoration: none;
-    padding: 0;
+    display: flex; align-items: center; justify-content: center; 
+    color: #fff; transition: 0.3s; text-decoration: none; padding: 0;
 }
 .social-icon svg { width: 18px; height: 18px; fill: currentColor; display: block; }
 .social-icon:hover { background: var(--brand-purple); transform: translateY(-3px); }
@@ -247,8 +267,11 @@ footer { background: #020005; padding: 6rem 0 2rem 0; margin-top: 0; border-top:
     .hero-image-wrapper { margin: 0 auto; width: 280px; height: 280px; }
     .nav-links { display: none; } 
     .footer-bottom { flex-direction: column; gap: 1rem; }
-    .scroll-indicator { display: none; }
     .grid-3-cols, .grid-4-cols { grid-template-columns: 1fr; }
     .btn-group { flex-direction: column; }
     .btn { width: 100%; max-width: 100%; margin-bottom: 0.5rem; }
+    
+    /* Ajuste da faixa no mobile */
+    .quote-stripe p { font-size: 1.1rem; padding: 0 1rem; }
+    .quote-icon { font-size: 3rem; left: 0.5rem; }
 }
