@@ -344,12 +344,17 @@
             
             <div class="footer-bottom">
                 <p>&copy; 2026 Paulin Basalces. Todos os direitos reservados.</p>
-                <a href="#topo" style="color:var(--brand-orange); font-weight:bold; text-decoration:none;">↑ VOLTAR AO TOPO</a>
+                <div class="footer-actions">
+                    <button class="a11y-btn" id="btn-decrease" aria-label="Diminuir Fonte">A-</button>
+                    <button class="a11y-btn" id="btn-increase" aria-label="Aumentar Fonte">A+</button>
+                    <a href="#topo" style="color:var(--brand-orange); font-weight:bold; text-decoration:none;">↑ VOLTAR AO TOPO</a>
+                </div>
             </div>
         </div>
     </footer>
 
     <script>
+        // Barra de Progresso
         window.onscroll = function() {
             var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
             var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -359,6 +364,7 @@
             document.getElementById("progressBar").style.width = (baseWidth + scrolled) + "px";
         };
 
+        // Scroll Reveal
         window.addEventListener('scroll', () => {
             const reveals = document.querySelectorAll('.reveal');
             reveals.forEach(reveal => {
@@ -370,6 +376,7 @@
             });
         });
 
+        // FAQ Logic
         const faqItems = document.querySelectorAll('.faq-item');
         faqItems.forEach(item => {
             const question = item.querySelector('.faq-question');
@@ -388,6 +395,26 @@
                     answer.style.maxHeight = null;
                 }
             });
+        });
+
+        // ACESSIBILIDADE: Redimensionador de Fonte
+        const btnIncrease = document.getElementById('btn-increase');
+        const btnDecrease = document.getElementById('btn-decrease');
+        const htmlRoot = document.documentElement;
+        let fontSize = 18; // Base em PX
+
+        btnIncrease.addEventListener('click', () => {
+            if (fontSize < 24) {
+                fontSize += 2;
+                htmlRoot.style.fontSize = fontSize + 'px';
+            }
+        });
+
+        btnDecrease.addEventListener('click', () => {
+            if (fontSize > 14) {
+                fontSize -= 2;
+                htmlRoot.style.fontSize = fontSize + 'px';
+            }
         });
     </script>
 </body>
