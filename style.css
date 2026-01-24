@@ -2,29 +2,23 @@
    1. DESIGN TOKENS & VARIÁVEIS GLOBAIS
    ========================================================================== */
 :root {
-    /* Identidade Visual */
     --brand-purple: #770a94;
     --brand-orange: #db742e;
     
-    /* Paleta de Fundos (Dark Mode Profundo) */
     --bg-deep: #05010a;
-    
-    /* Gradientes */
     --bg-gradient-1: linear-gradient(180deg, #05010a 0%, #0e021a 100%);
     --bg-gradient-2: linear-gradient(180deg, #0e021a 0%, #130424 100%);
     --bg-gradient-3: linear-gradient(180deg, #130424 0%, #05010a 100%);
     
-    /* Superfícies */
     --bg-card: #0f0518;        
     --bg-input: #1A0B2E;
     
-    /* Tipografia e Texto */
     --text-main: #FFFFFF;
     --text-body: #E2E8F0;
     --text-muted: #A3A3A3;
     
-    /* UI Elements */
     --border-light: rgba(119, 10, 148, 0.3);
+    
     --container-width: 1240px;
     --radius-card: 16px; 
     --radius-btn: 8px; 
@@ -32,9 +26,6 @@
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ==========================================================================
-   2. RESET & BASE
-   ========================================================================== */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 
@@ -47,14 +38,7 @@ body {
     overflow-x: hidden;
 }
 
-/* Tipografia */
-h1, h2, h3, h4 { 
-    color: var(--text-main); 
-    font-weight: 800; 
-    line-height: 1.1; 
-    margin-bottom: 1rem; 
-    letter-spacing: -0.02em; 
-}
+h1, h2, h3, h4 { color: var(--text-main); font-weight: 800; line-height: 1.1; margin-bottom: 1rem; letter-spacing: -0.02em; }
 h1 { font-size: clamp(2.8rem, 5vw, 4.8rem); text-transform: none; }
 h2 { font-size: clamp(2.2rem, 4vw, 3.5rem); }
 p { margin-bottom: 1.5rem; }
@@ -62,19 +46,17 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 img { max-width: 100%; display: block; }
 ul { list-style: none; }
 
-/* Layout */
 .container { max-width: var(--container-width); margin: 0 auto; padding: 0 2rem; }
 .section-padding { padding: 9rem 0; position: relative; }
 .text-center { text-align: center; }
 .center-block { margin: 0 auto; max-width: 800px; }
 
-/* Classes de Fundo */
 .bg-1 { background: var(--bg-gradient-1); }
 .bg-2 { background: var(--bg-gradient-2); }
 .bg-3 { background: var(--bg-gradient-3); }
 
 /* ==========================================================================
-   3. HEADER & BARRA DE PROGRESSO
+   2. HEADER & BARRA DE PROGRESSO
    ========================================================================== */
 header {
     height: 90px; display: flex; align-items: center;
@@ -93,15 +75,12 @@ header {
 .logo { font-size: 1.3rem; font-weight: 900; color: #fff; text-transform: uppercase; letter-spacing: -1px; margin: 0; }
 .logo span { color: var(--brand-purple); }
 
-.nav-links { display: flex; gap: 1.2rem; align-items: center; }
-.nav-links a { 
-    color: var(--text-muted); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; 
-    position: relative; transition: color 0.3s;
-}
+.nav-links { display: flex; gap: 1.5rem; align-items: center; }
+.nav-links a { color: var(--text-muted); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; position: relative; transition: color 0.3s; }
 .nav-links a:hover { color: var(--brand-orange); }
 
 /* ==========================================================================
-   4. HERO SECTION
+   3. HERO SECTION
    ========================================================================== */
 .hero { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; align-items: center; padding-top: 6rem; padding-bottom: 8rem; min-height: 85vh; position: relative; }
 .highlight { color: var(--brand-purple); }
@@ -128,7 +107,7 @@ header {
 }
 
 /* ==========================================================================
-   5. COMPONENTES UI (Botões, Cards)
+   5. COMPONENTES DE UI
    ========================================================================== */
 .btn-group { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; width: 100%; }
 .btn {
@@ -143,11 +122,12 @@ header {
 .btn-outline { background: transparent; border: 1px solid rgba(255,255,255,0.3); color: #fff; }
 .btn-outline:hover { border-color: var(--brand-orange); color: var(--brand-orange); }
 
-/* Grids */
+/* Setas Removidas na V26+ para limpeza visual */
+.scroll-indicator { display: none; }
+
 .grid-4-cols { display: grid; gap: 1.5rem; margin-top: 3rem; grid-template-columns: 1fr; }
 .grid-3-cols { display: grid; gap: 2rem; margin-top: 3rem; grid-template-columns: 1fr; }
 
-/* Cards Padrão */
 .std-card {
     background: var(--bg-card); padding: 2.5rem; border-radius: var(--radius-card);
     border: 1px solid var(--border-light); display: flex; flex-direction: column;
@@ -155,7 +135,6 @@ header {
 }
 .std-card:hover { transform: translateY(-8px); border-color: var(--brand-orange); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
 
-/* Cards de Serviço */
 .service-card {
     background: #0f0518; padding: 3rem 2.5rem; border-radius: var(--radius-card);
     border: 1px solid var(--border-light); display: flex; flex-direction: column;
@@ -201,7 +180,7 @@ header {
 .play-overlay::before { content: '▶'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0); font-size: 3rem; color: #fff; opacity: 0; transition: all 0.4s ease; z-index: 2; text-shadow: 0 0 20px rgba(0,0,0,0.5); }
 .showcase-card:hover .play-overlay::before { transform: translate(-50%, -50%) scale(1); opacity: 1; }
 
-/* FAQ (Melhorado) */
+/* FAQ (Accordion) */
 .faq-grid { display: grid; gap: 1.5rem; max-width: 900px; margin: 3rem auto; }
 .faq-item { background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 12px; overflow: hidden; transition: var(--transition); }
 .faq-item.active { border-color: var(--brand-orange); box-shadow: 0 0 20px rgba(219, 116, 46, 0.1); }
@@ -233,15 +212,17 @@ footer { background: #020005; padding: 6rem 0 2rem 0; margin-top: 0; border-top:
 .footer-col a { display: block; margin-bottom: 0.8rem; color: var(--text-muted); transition: 0.2s; font-size: 0.95rem; }
 .footer-col a:hover { color: var(--brand-orange); padding-left: 5px; }
 
-/* Ícones Sociais (CORRIGIDO) */
+/* ÍCONES SOCIAIS (CORREÇÃO FINAL) */
 .social-icons { display: flex; gap: 1rem; margin-top: 1rem; }
 .social-icon { 
     width: 40px; height: 40px; 
+    min-width: 40px; /* Garante tamanho */
     background: rgba(255,255,255,0.1); border-radius: 50%;
-    display: flex; align-items: center; justify-content: center; 
+    display: flex; align-items: center; justify-content: center; /* Centralização Flex */
     color: #fff; transition: 0.3s; text-decoration: none;
+    padding: 0;
 }
-.social-icon svg { width: 20px; height: 20px; fill: currentColor; }
+.social-icon svg { width: 18px; height: 18px; fill: currentColor; display: block; }
 .social-icon:hover { background: var(--brand-purple); transform: translateY(-3px); }
 
 .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.9rem; color: var(--text-muted); }
@@ -266,6 +247,7 @@ footer { background: #020005; padding: 6rem 0 2rem 0; margin-top: 0; border-top:
     .hero-image-wrapper { margin: 0 auto; width: 280px; height: 280px; }
     .nav-links { display: none; } 
     .footer-bottom { flex-direction: column; gap: 1rem; }
+    .scroll-indicator { display: none; }
     .grid-3-cols, .grid-4-cols { grid-template-columns: 1fr; }
     .btn-group { flex-direction: column; }
     .btn { width: 100%; max-width: 100%; margin-bottom: 0.5rem; }
