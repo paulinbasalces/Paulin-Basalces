@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paulin Basalces | Links</title>
+    <meta name="description" content="Conecte-se com Paulin Basalces: Mentoria, Livro, Palestras e Redes Sociais.">
+    
+    <link rel="icon" type="image/png" href="foto-perfil.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* Estilos Específicos para a Página de Links */
+        body.tree-body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 3rem 1.5rem;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        .tree-profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .tree-photo {
+            width: 110px; height: 110px;
+            border-radius: 50%;
+            padding: 3px;
+            background: linear-gradient(135deg, var(--brand-orange), var(--brand-purple));
+        }
+        .tree-photo img {
+            width: 100%; height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--bg-deep);
+            background: var(--bg-deep);
+        }
+
+        .tree-name { font-size: 1.4rem; color: #fff; margin: 0; line-height: 1.2; }
+        .tree-role { color: var(--text-muted); font-size: 0.95rem; margin: 0; max-width: 320px; line-height: 1.5; }
+
+        .tree-links {
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .tree-btn {
+            display: flex;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 50px; /* Formato Pílula */
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+        }
+
+        .tree-btn:hover {
+            transform: scale(1.02);
+            border-color: var(--brand-orange);
+            background: rgba(119, 10, 148, 0.15);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .tree-btn-icon { 
+            font-size: 1.4rem; 
+            margin-right: 1rem;
+            width: 24px; text-align: center;
+        }
+        
+        .tree-btn-content {
+            text-align: left;
+            flex-grow: 1;
+        }
+        
+        .tree-btn-title {
+            display: block;
+            font-weight: 600;
+            font-size: 1rem;
+            color: #fff;
+        }
+        
+        .tree-btn-desc {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        /* Destaque Principal */
+        .tree-btn.featured {
+            background: var(--brand-purple);
+            border-color: var(--brand-purple);
+            box-shadow: 0 4px 15px rgba(119, 10, 148, 0.4);
+        }
+        .tree-btn.featured:hover { background: #5e0676; }
+
+        .tree-footer {
+            margin-top: 3rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            align-items: center;
+        }
+    </style>
+</head>
+<body class="tree-body">
+
+    <div class="tree-profile">
+        <div class="tree-photo">
+            <img src="foto-perfil.png" alt="Paulin Basalces">
+        </div>
+        <h1 class="tree-name">Paulin Basalces</h1>
+        <p class="tree-role">UX Design Manager • IA • Acessibilidade<br>Autor de "Desconstruindo o Capacitismo"</p>
+    </div>
+
+    <div class="tree-links">
+        
+        <a href="https://basalces.com" class="tree-btn featured">
+            <span class="tree-btn-icon">🌐</span>
+            <div class="tree-btn-content">
+                <span class="tree-btn-title">Site Oficial & Portfólio</span>
+                <span class="tree-btn-desc">Palestras, workshops e consultoria</span>
+            </div>
+        </a>
+
+        <a href="https://app.ementor.com.br/mentor/PaulinBasalces/" target="_blank" class="tree-btn">
+            <span class="tree-btn-icon">🚀</span>
+            <div class="tree-btn-content">
+                <span class="tree-btn-title">Mentoria de Carreira</span>
+                <span class="tree-btn-desc">Acelere sua liderança em Design & IA</span>
+            </div>
+        </a>
+
+        <a href="https://amzn.to/45pwStD" target="_blank" class="tree-btn">
+            <span class="tree-btn-icon">📚</span>
+            <div class="tree-btn-content">
+                <span class="tree-btn-title">Livro: Desconstruindo o Capacitismo</span>
+                <span class="tree-btn-desc">Disponível na Amazon (Digital)</span>
+            </div>
+        </a>
+        
+        <a href="https://loja.uiclap.com/titulo/ua110248" target="_blank" class="tree-btn">
+            <span class="tree-btn-icon">📖</span>
+            <div class="tree-btn-content">
+                <span class="tree-btn-title">Livro Impresso (UICLAP)</span>
+                <span class="tree-btn-desc">Peça sua versão física</span>
+            </div>
+        </a>
+
+        <a href="https://api.whatsapp.com/send?phone=5531984470001" target="_blank" class="tree-btn">
+            <span class="tree-btn-icon">💬</span>
+            <div class="tree-btn-content">
+                <span class="tree-btn-title">Chamar no WhatsApp</span>
+                <span class="tree-btn-desc">Contato direto</span>
+            </div>
+        </a>
+
+        <a href="https://chat.whatsapp.com/EvXlAWVMPr3FUOqgd2qVbb" target="_blank" class="tree-btn">
+            <span class="tree-btn-icon">👥</span>
+            <div class="tree-btn-content">
+                <span class="tree-btn-title">Comunidade Hub Multipotencial</span>
+                <span class="tree-btn-desc">Grupo gratuito no WhatsApp</span>
+            </div>
+        </a>
+
+        <a href="https://cripplepunkbrasil.substack.com/" target="_blank" class="tree-btn">
+            <span class="tree-btn-icon">🔥</span>
+            <div class="tree-btn-content">
+                <span class="tree-btn-title">Cripple Punk Brasil</span>
+                <span class="tree-btn-desc">Fanzine de ativismo anticapacitista</span>
+            </div>
+        </a>
+
+        <a href="https://tr.ee/pMUvLU" target="_blank" class="tree-btn">
+            <span class="tree-btn-icon">✍️</span>
+            <div class="tree-btn-content">
+                <span class="tree-btn-title">Artigos no LinkedIn</span>
+                <span class="tree-btn-desc">Reflexões sobre IA e Cultura</span>
+            </div>
+        </a>
+
+        <a href="https://tr.ee/sexcon" target="_blank" class="tree-btn">
+            <span class="tree-btn-icon">🎥</span>
+            <div class="tree-btn-content">
+                <span class="tree-btn-title">Palestra: Sexualidade & Deficiência</span>
+                <span class="tree-btn-desc">Assista no YouTube</span>
+            </div>
+        </a>
+
+        <a href="https://www.amazon.com.br/shop/basalces.com.br?isPublicView=true" target="_blank" class="tree-btn">
+            <span class="tree-btn-icon">🛒</span>
+            <div class="tree-btn-content">
+                <span class="tree-btn-title">Minhas Sugestões na Amazon</span>
+                <span class="tree-btn-desc">Produtos recomendados</span>
+            </div>
+        </a>
+
+    </div>
+
+    <div class="tree-footer">
+        <div class="social-icons">
+            <a href="https://linkedin.com/in/paulinbasalces" target="_blank" class="social-icon" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" fill="currentColor"/></svg>
+            </a>
+            <a href="https://instagram.com/PaulinBasalces" target="_blank" class="social-icon" aria-label="Instagram">
+                <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" fill="currentColor"/></svg>
+            </a>
+            <a href="https://mastodon.social/@PaulinBasalces" target="_blank" class="social-icon" aria-label="Mastodon">
+                <svg viewBox="0 0 24 24"><path d="M23.268 5.313c-.35-2.578-2.617-4.61-5.304-5.004C17.51.242 15.792 0 11.813 0h-.03c-3.98 0-4.835.242-5.288.309C3.882.692 1.496 2.518.917 5.127.64 6.412.61 7.837.661 9.143c.074 1.874.503 3.755 1.563 5.309.908 1.33 2.531 2.035 4.35 2.145 1.38.083 2.793.072 4.195-.005v-1.921c-1.396.143-2.795.143-4.195.005-1.127-.111-2.023-.623-2.645-1.396-.708-.881-.979-2.062-1.03-3.235-.009-.235-.013-.472-.013-.709.673.355 1.418.571 2.193.619 1.533.093 3.076.125 4.614.07 1.77-.063 3.535-.251 5.253-.614 1.122-.236 2.21-.611 3.23-1.112.924-1.272 1.34-2.83 1.407-4.39.052-1.29.022-2.703-.263-3.991zM10.973 13.989h-2.118v-5.283c0-1.238.528-1.873 1.583-1.873.973 0 1.52.619 1.52 1.838v2.091h1.771V8.671c0-1.219.547-1.838 1.52-1.838 1.055 0 1.583.635 1.583 1.873v5.283h-2.118V8.814c0-.623-.235-.935-.705-.935-.521 0-.792.348-.792.935v2.795h-1.939v-2.795c0-.587-.271-.935-.792-.935-.47 0-.705.312-.705.935v5.175z" fill="currentColor"/></svg>
+            </a>
+        </div>
+        <p class="tree-copy">© 2026 Paulin Basalces</p>
+    </div>
+
+</body>
+</html>
