@@ -134,8 +134,8 @@
                     <button id="a11y-toggle" class="text-sm font-semibold border-2 border-gray-800 px-3 py-1 rounded hover:bg-gray-800 hover:text-white transition-colors" aria-label="Ativar modo de alto contraste">
                         Modo A11Y
                     </button>
-                    <a href="mailto:paulin@basalces.digital" class="bg-orange-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-orange-700 transition-colors shadow-sm">
-                        Contato
+                    <a href="https://wa.me/5531984470001?text=ol%C3%A1%2C%20estava%20vendo%20o%20seu%20curr%C3%ADculo%2C%20podemos%20conversar%3F" target="_blank" rel="noopener noreferrer" class="bg-orange-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-orange-700 transition-colors shadow-sm flex items-center gap-2">
+                        Fale no WhatsApp <span aria-hidden="true">&#8599;</span>
                     </a>
                 </div>
             </div>
@@ -450,8 +450,8 @@
                             </a>
                         </li>
                         <li>
-                            <a href="tel:+5531984470001" class="text-gray-400 hover:text-orange-400 transition-colors text-sm flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">
-                                <span aria-hidden="true">&#9990;</span> +55 31 98447-0001
+                            <a href="https://wa.me/5531984470001?text=ol%C3%A1%2C%20estava%20vendo%20o%20seu%20curr%C3%ADculo%2C%20podemos%20conversar%3F" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-orange-400 transition-colors text-sm flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">
+                                <span aria-hidden="true">&#9990;</span> WhatsApp: +55 31 98447-0001
                             </a>
                         </li>
                         <li class="text-gray-400 text-sm flex items-center gap-2">
@@ -779,7 +779,7 @@
         // ==========================================
         // Gemini API - AI Assistant Logic ✨
         // ==========================================
-        const apiKey = "AIzaSyADNNAcEcOGoTa4aeZ6zzf_9Gj-MbY6yMk";
+        const apiKey = "";
         
         const chatForm = document.getElementById('chat-form');
         const chatInput = document.getElementById('chat-input');
@@ -814,7 +814,8 @@ INFORMAÇÕES PESSOAIS E ADICIONAIS:
 - Competências Técnicas: Figma, Miro, WCAG 2.1/2.2, Service Design, IA Conversacional (treinamento, personas, tom de voz), ScrumMaster.`;
 
         async function fetchGeminiResponse(userText, retries = 5) {
-            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+            // Atualizado para o modelo de produção estável e público (1.5-flash)
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
             
             const payload = {
                 contents: [{ parts: [{ text: userText }] }],
@@ -829,11 +830,18 @@ INFORMAÇÕES PESSOAIS E ADICIONAIS:
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(payload)
                     });
-                    if (!response.ok) throw new Error('API Request Failed');
+                    
+                    if (!response.ok) {
+                        const errorDetails = await response.json();
+                        console.error("Detalhes do Erro da API:", errorDetails);
+                        throw new Error(`API Request Failed: ${response.status}`);
+                    }
                     
                     const data = await response.json();
                     return data.candidates[0].content.parts[0].text;
                 } catch (error) {
+                    console.error("Falha na conexão neural (Tentativa " + (i + 1) + "):", error);
+                    
                     if (i === retries - 1) {
                         return "Desculpe, minhas conexões neurais encontraram uma falha. Pode tentar novamente? Ou melhor, entre em contato direto pelo e-mail paulin@basalces.digital! ✨";
                     }
