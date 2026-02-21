@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paulin Basalces | UX Design Manager & Strategist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <style>
+        /* Custom Fonts & Base Styles */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Merriweather:ital,wght@0,300;0,700;1,300&display=swap');
+
+        :root {
+            --bg-color: #fdfbf7; /* Warm Neutral */
+            --text-main: #1f2937;
+            --text-muted: #4b5563;
+            --accent-color: #ea580c; /* Terracotta */
+            --card-bg: #ffffff;
+            --border-color: #e5e7eb;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Merriweather', serif;
+        }
+
+        /* Chart Container Styling - Critical Requirement */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px; /* Max width constraint */
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+
+        /* Timeline Connector Line */
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 20px;
+            width: 2px;
+            background-color: #e5e7eb;
+            z-index: 0;
+        }
+
+        /* Interactive Elements */
+        .interactive-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+        }
+        .interactive-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* A11Y Focus Mode Classes */
+        .a11y-mode {
+            --bg-color: #ffffff;
+            --text-main: #000000;
+            --text-muted: #222222;
+            --card-bg: #f3f4f6;
+            --accent-color: #000000;
+        }
+        .a11y-mode .interactive-card {
+            border: 2px solid #000;
+            box-shadow: none !important;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d1d5db;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #9ca3af;
+        }
+    </style>
+    <!-- Chosen Palette: Warm Neutral (Beige/Cream background, Charcoal text, Terracotta accent) -->
+    <!-- Application Structure Plan:
+         1. Hero: Personal philosophy and high-level intro.
+         2. Metrics Dashboard: Quantitative proof of value (Chart.js Donut).
+         3. Skills Radar: Visualizing the mix of Tech vs Soft skills (Chart.js Radar).
+         4. Experience Timeline: The core interactive element. Uses the STAR method content. Filterable by domain (Leadership, Innovation, Tech).
+         5. Footer: Contact info.
+         Why? This structure moves from "Who I am" -> "What I deliver (Numbers)" -> "What I know (Skills)" -> "How I did it (Experience)". It prioritizes impact over chronology.
+    -->
+    <!-- Visualization & Content Choices:
+         - Metrics: Doughnut charts to show 'completeness' or impact share. Goal: Inform/Prove.
+         - Skills: Radar chart to show the 'shape' of the professional profile. Goal: Compare/Organize.
+         - Experience: Interactive Accordion/Timeline. Goal: Inform/Explore. Allows users to toggle details without overwhelming the page.
+         - NO SVG/Mermaid confirmed.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+</head>
+<body class="antialiased selection:bg-orange-200 selection:text-orange-900">
+
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center">
+                    <span class="text-2xl font-serif font-bold tracking-tight text-gray-900">PB.</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <button onclick="scrollToSection('hero')" class="text-gray-600 hover:text-orange-600 font-medium transition-colors">Início</button>
+                    <button onclick="scrollToSection('impact')" class="text-gray-600 hover:text-orange-600 font-medium transition-colors">Impacto</button>
+                    <button onclick="scrollToSection('ai-assistant')" class="text-orange-600 hover:text-orange-800 font-bold transition-colors">✨ IA Clone</button>
+                    <button onclick="scrollToSection('skills')" class="text-gray-600 hover:text-orange-600 font-medium transition-colors">Competências</button>
+                    <button onclick="scrollToSection('experience')" class="text-gray-600 hover:text-orange-600 font-medium transition-colors">Experiência</button>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button id="a11y-toggle" class="text-sm font-semibold border-2 border-gray-800 px-3 py-1 rounded hover:bg-gray-800 hover:text-white transition-colors" aria-label="Ativar modo de alto contraste">
+                        Modo A11Y
+                    </button>
+                    <a href="mailto:paulin@basalces.digital" class="bg-orange-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-orange-700 transition-colors shadow-sm">
+                        Contato
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="pt-20 pb-16 sm:pt-24 sm:pb-20 lg:pb-28 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="lg:grid lg:grid-cols-12 lg:gap-8">
+                <div class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-8 lg:text-left">
+                    <h1 class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl lg:text-6xl">
+                        <span class="block xl:inline">Onde os sistemas falham,</span>
+                        <span class="block text-orange-600">eu vejo oportunidade.</span>
+                    </h1>
+                    <p class="mt-6 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+                        Sou <strong>Paulin Basalces</strong>, UX Design Manager com mais de 20 anos de experiência. Uno Inteligência Artificial, Acessibilidade (A11Y) e Negócios para transformar falhas de exclusão em vantagem competitiva.
+                    </p>
+                    <div class="mt-8 sm:max-w-2xl sm:mx-auto sm:text-center lg:text-left lg:mx-0 flex flex-col sm:flex-row flex-wrap gap-4">
+                        <button onclick="scrollToSection('experience')" class="w-full sm:w-auto px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-900 hover:bg-gray-800 transition-all shadow-lg">
+                            Explorar Trajetória
+                        </button>
+                        <a href="https://basalces.com" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-6 py-3 border border-gray-300 text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 transition-all shadow-sm flex justify-center items-center gap-2">
+                            Acessar Site Oficial <span>&#8599;</span>
+                        </a>
+                        <a href="https://basalces.com/docs/cvPaulinBasalces.pdf" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-6 py-3 border border-orange-200 text-base font-medium rounded-md text-orange-800 bg-orange-50 hover:bg-orange-100 transition-all shadow-sm flex justify-center items-center gap-2">
+                            Baixar Currículo (PDF) <span aria-hidden="true">&#8595;</span>
+                        </a>
+                    </div>
+                </div>
+                <!-- Decorative Abstract Visual using HTML/CSS (No SVG) -->
+                <div class="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-4 lg:flex lg:items-center">
+                    <div class="relative mx-auto w-full rounded-lg shadow-lg lg:max-w-md bg-white p-6 border-t-4 border-orange-500">
+                        <div class="space-y-4">
+                            <div class="h-2 bg-gray-200 rounded w-3/4"></div>
+                            <div class="h-2 bg-gray-200 rounded w-full"></div>
+                            <div class="flex gap-2 mt-4">
+                                <div class="h-8 w-8 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 font-bold text-xs">AI</div>
+                                <div class="h-8 w-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-xs">UX</div>
+                                <div class="h-8 w-8 rounded-full bg-green-100 flex items-center justify-center text-green-600 font-bold text-xs">A11Y</div>
+                            </div>
+                            <div class="mt-4 p-4 bg-gray-50 rounded border border-gray-100">
+                                <p class="text-xs text-gray-500 italic">"Design inclusivo não é caridade, é estratégia de crescimento."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Dashboard Section -->
+    <section id="impact" class="bg-white py-16 border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">Impacto Mensurável</h2>
+                <p class="mt-4 text-lg text-gray-500 max-w-2xl mx-auto">
+                    Resultados reais gerados através da união entre Design Strategy, Operações de IA e Cultura.
+                    Estes dados refletem a eficiência operacional e o retorno de negócios obtidos em projetos recentes.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Reduction in Barriers Metric -->
+                <div class="bg-gray-50 rounded-xl p-6 shadow-sm border border-gray-100 text-center hover:shadow-md transition-shadow">
+                    <div class="text-5xl font-bold text-orange-600 mb-2 font-serif">-85%</div>
+                    <h3 class="text-lg font-semibold text-gray-900">Barreiras de Uso</h3>
+                    <p class="text-sm text-gray-500 mt-2">Para pessoas com deficiência no VerusKofi</p>
+                    <div class="mt-4 w-full bg-gray-200 rounded-full h-2">
+                        <div class="bg-orange-500 h-2 rounded-full" style="width: 85%"></div>
+                    </div>
+                </div>
+
+                <!-- Conversion Metric -->
+                <div class="bg-gray-50 rounded-xl p-6 shadow-sm border border-gray-100 text-center hover:shadow-md transition-shadow">
+                    <div class="text-5xl font-bold text-blue-600 mb-2 font-serif">+35%</div>
+                    <h3 class="text-lg font-semibold text-gray-900">Taxa de Conversão</h3>
+                    <p class="text-sm text-gray-500 mt-2">Otimização de fluxos na Maloca Kofi Lab</p>
+                    <div class="mt-4 w-full bg-gray-200 rounded-full h-2">
+                        <div class="bg-blue-500 h-2 rounded-full" style="width: 35%"></div>
+                    </div>
+                </div>
+
+                <!-- Operational Cost Metric -->
+                <div class="bg-gray-50 rounded-xl p-6 shadow-sm border border-gray-100 text-center hover:shadow-md transition-shadow">
+                    <div class="text-5xl font-bold text-green-600 mb-2 font-serif">-18%</div>
+                    <h3 class="text-lg font-semibold text-gray-900">Custos Operacionais</h3>
+                    <p class="text-sm text-gray-500 mt-2">Através de fluxos éticos de IA na Blip</p>
+                    <div class="mt-4 w-full bg-gray-200 rounded-full h-2">
+                        <div class="bg-green-500 h-2 rounded-full" style="width: 18%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Clone Assistant Section -->
+    <section id="ai-assistant" class="py-16 bg-orange-50 border-t border-b border-orange-100">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">Entreviste meu Clone de IA ✨</h2>
+                <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+                    Como especialista em fluxos conversacionais (IA), treinei este assistente inteligente com o meu currículo. 
+                    Faça perguntas e descubra se o meu perfil é o ideal para os desafios da sua equipe.
+                </p>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-lg border border-orange-200 overflow-hidden">
+                <!-- Chat Window -->
+                <div id="chat-window" class="h-80 overflow-y-auto p-6 space-y-4 bg-gray-50/50">
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-full bg-orange-500 flex items-center justify-center text-white font-bold text-xs flex-shrink-0">IA</div>
+                        <div class="bg-white border border-gray-200 p-3 rounded-lg rounded-tl-none shadow-sm max-w-[80%] text-gray-700 text-sm">
+                            Olá! Sou a versão IA do Paulin Basalces. Fui treinado com toda a experiência e visão estratégica dele. O que você gostaria de saber sobre a minha trajetória em UX, IA ou Acessibilidade? ✨
+                        </div>
+                    </div>
+                </div>
+                <!-- Chat Input -->
+                <div class="p-4 bg-white border-t border-gray-200">
+                    <div class="flex gap-2 mb-3 overflow-x-auto pb-2 scrollbar-hide">
+                        <button onclick="sendQuickQuestion('Qual foi o seu maior impacto na Blip?')" class="whitespace-nowrap text-xs font-medium bg-orange-100 text-orange-700 px-3 py-1.5 rounded-full hover:bg-orange-200 transition-colors">Impacto na Blip ✨</button>
+                        <button onclick="sendQuickQuestion('Como você aplica acessibilidade digital no dia a dia?')" class="whitespace-nowrap text-xs font-medium bg-orange-100 text-orange-700 px-3 py-1.5 rounded-full hover:bg-orange-200 transition-colors">Acessibilidade ✨</button>
+                        <button onclick="sendQuickQuestion('Me fale sobre o aplicativo VerusKofi.')" class="whitespace-nowrap text-xs font-medium bg-orange-100 text-orange-700 px-3 py-1.5 rounded-full hover:bg-orange-200 transition-colors">App VerusKofi ✨</button>
+                    </div>
+                    <form id="chat-form" class="flex gap-2">
+                        <input type="text" id="chat-input" class="flex-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 text-sm" placeholder="Ex: Qual é a sua experiência com liderança?" required autocomplete="off">
+                        <button type="submit" id="chat-submit" class="bg-orange-600 text-white px-6 py-2 rounded-lg text-sm font-bold hover:bg-orange-700 transition-colors flex items-center justify-center min-w-[100px] gap-2">
+                            <span>Enviar</span> <span class="hidden sm:inline">✨</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills & Competencies Section -->
+    <section id="skills" class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+                
+                <!-- Text Content -->
+                <div class="mb-10 lg:mb-0">
+                    <h2 class="text-3xl font-extrabold text-gray-900 mb-6">Competências Multidisciplinares</h2>
+                    <p class="text-lg text-gray-500 mb-6">
+                        Minha atuação não é linear. Como profissional multipotencial, transito entre a gestão técnica e a sensibilidade humana.
+                        O gráfico ao lado ilustra o equilíbrio entre minhas competências estratégicas, técnicas e de liderança.
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-6 w-6 flex items-center justify-center rounded-full bg-orange-100 text-orange-600 font-bold text-sm">1</div>
+                            <p class="ml-4 text-base text-gray-600"><strong>Liderança Estratégica:</strong> Gestão de times multidisciplinares, mentoria e definição de processos (Discovery a Delivery).</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-6 w-6 flex items-center justify-center rounded-full bg-orange-100 text-orange-600 font-bold text-sm">2</div>
+                            <p class="ml-4 text-base text-gray-600"><strong>Tecnologia Inclusiva:</strong> Especialista em WCAG, leitores de tela e Design Inclusivo nativo.</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-6 w-6 flex items-center justify-center rounded-full bg-orange-100 text-orange-600 font-bold text-sm">3</div>
+                            <p class="ml-4 text-base text-gray-600"><strong>IA Conversacional:</strong> Criação de personas, prompts e fluxos para chatbots inteligentes e éticos.</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-8">
+                        <h4 class="text-sm font-bold text-gray-900 uppercase tracking-wide mb-3">Stack Técnica</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-gray-200 text-gray-800 rounded-full text-sm">Figma</span>
+                            <span class="px-3 py-1 bg-gray-200 text-gray-800 rounded-full text-sm">Miro</span>
+                            <span class="px-3 py-1 bg-gray-200 text-gray-800 rounded-full text-sm">Service Design</span>
+                            <span class="px-3 py-1 bg-gray-200 text-gray-800 rounded-full text-sm">Hotjar</span>
+                            <span class="px-3 py-1 bg-gray-200 text-gray-800 rounded-full text-sm">HTML/CSS</span>
+                            <span class="px-3 py-1 bg-gray-200 text-gray-800 rounded-full text-sm">Google Analytics</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Radar Chart -->
+                <div class="bg-white rounded-2xl shadow-xl p-4 border border-gray-100">
+                    <div class="chart-container">
+                        <canvas id="skillsChart"></canvas>
+                    </div>
+                    <p class="text-center text-xs text-gray-400 mt-4">Distribuição de competências baseada em 20+ anos de experiência</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Timeline Section -->
+    <section id="experience" class="bg-gray-50 py-16 border-t border-b border-gray-200">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-extrabold text-gray-900">Jornada Profissional</h2>
+                <p class="mt-4 text-lg text-gray-500">
+                    Uma trajetória evolutiva de execução técnica para liderança estratégica. 
+                    Utilize os filtros abaixo para explorar diferentes facetas da minha carreira.
+                </p>
+                
+                <!-- Filters -->
+                <div class="mt-8 flex justify-center flex-wrap gap-2">
+                    <button onclick="filterExperience('all')" class="filter-btn active px-4 py-2 rounded-full text-sm font-medium bg-gray-800 text-white transition-all hover:shadow-lg">Todos</button>
+                    <button onclick="filterExperience('lideranca')" class="filter-btn px-4 py-2 rounded-full text-sm font-medium bg-white text-gray-600 border border-gray-300 hover:bg-orange-50 hover:border-orange-200 transition-all">Liderança & Gestão</button>
+                    <button onclick="filterExperience('inovacao')" class="filter-btn px-4 py-2 rounded-full text-sm font-medium bg-white text-gray-600 border border-gray-300 hover:bg-orange-50 hover:border-orange-200 transition-all">Inovação & IA</button>
+                    <button onclick="filterExperience('cultura')" class="filter-btn px-4 py-2 rounded-full text-sm font-medium bg-white text-gray-600 border border-gray-300 hover:bg-orange-50 hover:border-orange-200 transition-all">Cultura & Impacto</button>
+                </div>
+            </div>
+
+            <!-- Timeline Container -->
+            <div class="relative timeline-line space-y-8" id="timeline-container">
+                <!-- Timeline items will be injected by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Additional Info: Education & Volunteering -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12">
+                
+                <!-- Education & Certs -->
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                        <span class="mr-3 text-orange-600">&#9900;</span> Formação & Certificações
+                    </h3>
+                    <div class="space-y-6">
+                        <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-orange-500">
+                            <h4 class="font-bold text-lg">Google UX Design Specialization</h4>
+                            <p class="text-sm text-gray-600">Coursera | Fev 2025 - Ago 2025</p>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-orange-500">
+                            <h4 class="font-bold text-lg">Gestão de Projetos Culturais</h4>
+                            <p class="text-sm text-gray-600">Instituto Federal de Goiás | Set 2025 - Nov 2025</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-900 mb-2">Outras Certificações:</h4>
+                            <ul class="list-disc list-inside text-gray-600 space-y-1 ml-2">
+                                <li>Fundamentos de IA Conversacional (Google Cloud)</li>
+                                <li>WCAG 2.1: Acessibilidade Web (Udemy)</li>
+                                <li>ScrumMaster (Scrum Alliance)</li>
+                                <li>Proficiência em Espanhol (CIPLE - Instituto Camões)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Books & Volunteering -->
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                        <span class="mr-3 text-blue-600">&#10084;</span> Voluntariado & Projetos Autorais
+                    </h3>
+                    <div class="space-y-6">
+                        <div class="bg-blue-50 p-6 rounded-lg border border-blue-100">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h4 class="font-bold text-lg text-blue-900">Teleton 2025 - AACD</h4>
+                                    <p class="text-sm text-blue-700 font-semibold">Liderança em War Room</p>
+                                </div>
+                                <span class="text-2xl text-blue-300">&#9873;</span>
+                            </div>
+                            <p class="mt-3 text-sm text-blue-800">Liderei equipe multidisciplinar em ambiente de alta pressão, contribuindo para arrecadação recorde de R$ 37 milhões.</p>
+                        </div>
+                        
+                        <div class="border border-gray-200 p-6 rounded-lg">
+                            <h4 class="font-bold text-lg">Livro: "Desconstruindo o Capacitismo" (2025)</h4>
+                            <p class="mt-2 text-sm text-gray-600">
+                                Obra autoral que explora como a inclusão começa com a desconstrução de preconceitos. Baseado em pesquisa antropológica e vivência pessoal.
+                            </p>
+                            <div class="mt-3">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+                                    Autor
+                                </span>
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 ml-2">
+                                    Pesquisa
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8 border-t-4 border-orange-600">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <!-- Marca & Bio -->
+                <div class="col-span-1 lg:col-span-1">
+                    <span class="text-3xl font-serif font-bold text-white tracking-tight">basalces<span class="text-orange-500">.</span></span>
+                    <p class="text-gray-400 mt-4 text-sm leading-relaxed">
+                        Design com propósito, dados e inclusão. Transformando falhas de acessibilidade em vantagem competitiva e impacto social.
+                    </p>
+                </div>
+
+                <!-- Navegação -->
+                <div>
+                    <h3 class="text-sm font-bold text-gray-200 uppercase tracking-wider mb-4">Navegação</h3>
+                    <ul class="space-y-3">
+                        <li><button onclick="scrollToSection('hero')" class="text-gray-400 hover:text-orange-400 transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">Início</button></li>
+                        <li><button onclick="scrollToSection('impact')" class="text-gray-400 hover:text-orange-400 transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">Impacto Numérico</button></li>
+                        <li><button onclick="scrollToSection('experience')" class="text-gray-400 hover:text-orange-400 transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">Jornada Profissional</button></li>
+                        <li><a href="https://basalces.com/docs/cvPaulinBasalces.pdf" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-orange-400 transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">Baixar Currículo (PDF)</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contacto -->
+                <div>
+                    <h3 class="text-sm font-bold text-gray-200 uppercase tracking-wider mb-4">Contacto</h3>
+                    <ul class="space-y-3">
+                        <li>
+                            <a href="mailto:paulin@basalces.digital" class="text-gray-400 hover:text-orange-400 transition-colors text-sm flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">
+                                <span aria-hidden="true">&#9993;</span> paulin@basalces.digital
+                            </a>
+                        </li>
+                        <li>
+                            <a href="tel:+5531984470001" class="text-gray-400 hover:text-orange-400 transition-colors text-sm flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">
+                                <span aria-hidden="true">&#9990;</span> +55 31 98447-0001
+                            </a>
+                        </li>
+                        <li class="text-gray-400 text-sm flex items-center gap-2">
+                            <span aria-hidden="true">&#128205;</span> Belo Horizonte, MG - Brasil
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Ecossistema -->
+                <div>
+                    <h3 class="text-sm font-bold text-gray-200 uppercase tracking-wider mb-4">Ecossistema</h3>
+                    <ul class="space-y-3">
+                        <li>
+                            <a href="https://basalces.com" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-orange-400 transition-colors text-sm flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">
+                                <span aria-hidden="true">&#127760;</span> Site Oficial
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://linkedin.com/in/paulinbasalces" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-orange-400 transition-colors text-sm flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">
+                                <span aria-hidden="true">&#128188;</span> LinkedIn
+                            </a>
+                        </li>
+                        <li>
+                            <span class="text-gray-400 text-sm flex items-center gap-2">
+                                <span aria-hidden="true">&#128218;</span> Autor: Desconstruindo o Capacitismo
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-500 text-xs text-center md:text-left">
+                    &copy; 2026 Estúdio Basalces Digital. Todos os direitos reservados.
+                </p>
+                <p class="text-gray-500 text-xs text-center md:text-right flex items-center justify-center md:justify-end gap-2">
+                    <span class="inline-block w-2 h-2 rounded-full bg-green-500" aria-hidden="true"></span>
+                    Construído com conformidade WCAG e foco em performance.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Data Store - Extracted from the provided Markdown CV
+        const experienceData = [
+            {
+                id: 1,
+                company: "Estúdio Basalces Digital",
+                role: "Diretor de Serviços Criativos & Consultor",
+                period: "Mai 2025 - Presente",
+                categories: ["lideranca", "inovacao"],
+                situation: "O mercado carece de produtos digitais com acessibilidade nativa e consultorias que integrem IA com responsabilidade ética.",
+                task: "Desenvolver soluções proprietárias e orientar parceiros estratégicos na construção de ecossistemas digitais inclusivos.",
+                action: "Projetei o aplicativo VerusKofi focando em acessibilidade e implementei consultorias de IA para mais de 15 parceiros de negócios.",
+                result: "Reduzi barreiras de uso em 85% no VerusKofi, alcancei 200+ conexões na Feira Int. de Café e aumentei o engajamento dos clientes B2B em 30%.",
+                active: true // Initially expanded
+            },
+            {
+                id: 2,
+                company: "eMentor.br",
+                role: "Mentor em Acessibilidade, UX e IA",
+                period: "Dez 2025 - Presente",
+                categories: ["lideranca", "cultura"],
+                situation: "Profissionais de tecnologia enfrentam dificuldades práticas para integrar acessibilidade e IA nas rotinas operacionais.",
+                task: "Capacitar mais de 20 profissionais e facilitar a transição de equipes para o design inclusivo.",
+                action: "Conduzo mentorias 1:1 e facilito workshops com pesquisa participativa envolvendo pessoas com deficiência em 15+ projetos.",
+                result: "Aumentei em 40% a adoção de práticas inclusivas nas rotinas das equipes orientadas.",
+                active: false
+            },
+            {
+                id: 3,
+                company: "Maloca Kofi Lab",
+                role: "Design Manager & Produtor Cultural",
+                period: "Set 2025 - Jan 2026",
+                categories: ["lideranca", "cultura", "inovacao"],
+                situation: "Grandes eventos culturais (CCBB, Descentra BH) enfrentavam fragmentação entre a vivência do público no espaço físico e o digital.",
+                task: "Integrar a jornada do usuário à produção cultural para mais de 10 mil usuários.",
+                action: "Idealizei a estratégia UX, criei a jornada do Edital Zona Cultural e estruturei fluxos conversacionais (voz/texto) acessíveis.",
+                result: "Aumentei a taxa de conversão em 35% nos fluxos do edital e entreguei processos otimizados de ponta a ponta.",
+                active: false
+            },
+            {
+                id: 4,
+                company: "Blip",
+                role: "UX Designer (Múltiplos Produtos)",
+                period: "Set 2022 - Set 2024",
+                categories: ["inovacao", "lideranca"],
+                situation: "Grandes clientes financeiros lidavam com alto tempo de resposta, custos elevados e gargalos de acessibilidade na comunicação.",
+                task: "Reestruturar fluxos, treinar agentes de IA com ética e implementar a cultura de acessibilidade digital.",
+                action: "Remodelei o design conversacional, treinei personas de IA e criei o Comitê de Acessibilidade (implementando padrões WCAG).",
+                result: "Aumentei a retenção em 20% (BMG), reduzi custos em 18%, melhorei a UX em 25% e apliquei WCAG em 100% dos produtos focados.",
+                active: false
+            },
+            {
+                id: 5,
+                company: "Hub Multipotencial",
+                role: "UX Content Writer",
+                period: "Mar 2023 - Mai 2024",
+                categories: ["cultura", "inovacao"],
+                situation: "Ausência de espaços educacionais aprofundados sobre a intersecção entre Inovação, IA responsável e Acessibilidade.",
+                task: "Criar conteúdo autoral para educar e engajar a comunidade.",
+                action: "Pesquisei e redigi mais de 50 conteúdos originais sobre tecnologia inclusiva.",
+                result: "Impulsionei o engajamento da publicação em 10%, estabelecendo a base para a obra 'Desconstruindo o Capacitismo'.",
+                active: false
+            }
+        ];
+
+        // Core Functions
+        function init() {
+            renderTimeline(experienceData);
+            initSkillsChart();
+        }
+
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if(element) {
+                const navHeight = document.getElementById('navbar').offsetHeight;
+                const elementPosition = element.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - navHeight;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: "smooth"
+                });
+            }
+        }
+
+        // Timeline Rendering Logic
+        function renderTimeline(data) {
+            const container = document.getElementById('timeline-container');
+            container.innerHTML = '';
+
+            if (data.length === 0) {
+                container.innerHTML = '<p class="text-center text-gray-500 py-8">Nenhuma experiência encontrada para este filtro.</p>';
+                return;
+            }
+
+            data.forEach((item, index) => {
+                const isActive = item.active;
+                const card = document.createElement('div');
+                card.className = `relative pl-8 sm:pl-32 py-2 group`;
+                
+                // Timeline marker
+                const markerColor = isActive ? 'bg-orange-500 ring-4 ring-orange-100' : 'bg-white border-2 border-gray-300 group-hover:border-orange-400';
+                
+                card.innerHTML = `
+                    <!-- Date (Desktop) -->
+                    <div class="hidden sm:block absolute left-0 top-6 text-sm text-gray-500 font-medium w-24 text-right">
+                        ${item.period.split(' - ')[0]}
+                    </div>
+                    
+                    <!-- Marker -->
+                    <div class="absolute left-4 sm:left-[17px] top-6 h-4 w-4 rounded-full ${markerColor} transition-all z-10"></div>
+                    
+                    <!-- Content Card -->
+                    <div class="interactive-card bg-white rounded-lg border ${isActive ? 'border-orange-200 shadow-md' : 'border-gray-200 shadow-sm'} p-5 sm:p-6" onclick="toggleDetails(${item.id})">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2">
+                            <div>
+                                <h3 class="text-lg font-bold text-gray-900 group-hover:text-orange-600 transition-colors">${item.role}</h3>
+                                <p class="text-md text-gray-700 font-medium">${item.company}</p>
+                                <p class="text-xs text-gray-400 sm:hidden mt-1">${item.period}</p>
+                            </div>
+                            <span class="mt-2 sm:mt-0 inline-flex items-center px-2.5 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-800 self-start">
+                                ${isActive ? 'Ocultar Detalhes [-]' : 'Ver Detalhes [+]'}
+                            </span>
+                        </div>
+                        
+                        <!-- Collapsible Content (STAR Method) -->
+                        <div class="${isActive ? 'block' : 'hidden'} mt-4 pt-4 border-t border-gray-100 animate-fade-in">
+                            <div class="grid gap-4 text-sm text-gray-600">
+                                <div>
+                                    <span class="font-bold text-orange-600 uppercase text-xs tracking-wider">Situação</span>
+                                    <p class="mt-1">${item.situation}</p>
+                                </div>
+                                <div>
+                                    <span class="font-bold text-orange-600 uppercase text-xs tracking-wider">Tarefa</span>
+                                    <p class="mt-1">${item.task}</p>
+                                </div>
+                                <div>
+                                    <span class="font-bold text-orange-600 uppercase text-xs tracking-wider">Ação</span>
+                                    <p class="mt-1">${item.action}</p>
+                                </div>
+                                <div class="bg-gray-50 p-3 rounded border-l-2 border-green-500">
+                                    <span class="font-bold text-green-700 uppercase text-xs tracking-wider">Resultado</span>
+                                    <p class="mt-1 text-gray-800 font-medium">${item.result}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function toggleDetails(id) {
+            const index = experienceData.findIndex(item => item.id === id);
+            if (index !== -1) {
+                experienceData[index].active = !experienceData[index].active;
+                // Re-render only the timeline to update state
+                // Note: In a filter view, we need to re-apply filter, but for simplicity here we just re-render current filtered set or all.
+                // To keep it simple: just toggle and re-render the current view logic.
+                // We'll get the active filter button and re-trigger it.
+                const activeFilterBtn = document.querySelector('.filter-btn.active'); // simplified selector logic
+                // If using complex logic, we'd store filter state. Here we assume 'all' or simple logic.
+                // Let's just re-render properly based on current visible data or just update DOM directly for best performance? 
+                // SPA approach: Update data model, re-render.
+                
+                // Re-apply current filter
+                const currentFilter = document.querySelector('.filter-btn.bg-gray-800').innerText.toLowerCase();
+                let filterKey = 'all';
+                if(currentFilter.includes('liderança')) filterKey = 'lideranca';
+                else if(currentFilter.includes('inovação')) filterKey = 'inovacao';
+                else if(currentFilter.includes('cultura')) filterKey = 'cultura';
+                
+                filterExperience(filterKey);
+            }
+        }
+
+        function filterExperience(category) {
+            // Update buttons visual state
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('bg-gray-800', 'text-white');
+                btn.classList.add('bg-white', 'text-gray-600', 'border', 'border-gray-300');
+            });
+            
+            // Find the button clicked (or matching category) and highlight it
+            const clickedBtn = [...document.querySelectorAll('.filter-btn')].find(btn => {
+                if(category === 'all') return btn.innerText === 'Todos';
+                if(category === 'lideranca') return btn.innerText.includes('Liderança');
+                if(category === 'inovacao') return btn.innerText.includes('Inovação');
+                if(category === 'cultura') return btn.innerText.includes('Cultura');
+                return false;
+            });
+            
+            if(clickedBtn) {
+                clickedBtn.classList.remove('bg-white', 'text-gray-600', 'border', 'border-gray-300');
+                clickedBtn.classList.add('bg-gray-800', 'text-white');
+                clickedBtn.classList.add('active'); // Helper class
+            }
+
+            // Filter Data
+            if (category === 'all') {
+                renderTimeline(experienceData);
+            } else {
+                const filtered = experienceData.filter(item => item.categories.includes(category));
+                renderTimeline(filtered);
+            }
+        }
+
+        // Chart.js Initialization
+        function initSkillsChart() {
+            const ctx = document.getElementById('skillsChart').getContext('2d');
+            
+            // Radar Chart Data
+            const data = {
+                labels: [
+                    'Liderança & Gestão',
+                    'Acessibilidade (A11Y)',
+                    'Inteligência Artificial',
+                    'UX Strategy',
+                    'Service Design',
+                    'Pesquisa / Dados'
+                ],
+                datasets: [{
+                    label: 'Nível de Proficiência',
+                    data: [9, 10, 8, 9, 8, 7], // Estimated based on 20y experience and manager role
+                    fill: true,
+                    backgroundColor: 'rgba(234, 88, 12, 0.2)', // Orange-500 transparent
+                    borderColor: 'rgb(234, 88, 12)',
+                    pointBackgroundColor: 'rgb(234, 88, 12)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgb(234, 88, 12)'
+                }]
+            };
+
+            const config = {
+                type: 'radar',
+                data: data,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    elements: {
+                        line: { borderWidth: 3 }
+                    },
+                    scales: {
+                        r: {
+                            min: 0,
+                            max: 10,
+                            angleLines: { color: '#e5e7eb' },
+                            grid: { color: '#e5e7eb' },
+                            pointLabels: {
+                                font: { size: 12, family: "'Inter', sans-serif", weight: '600' },
+                                color: '#374151'
+                            },
+                            ticks: { display: false, stepSize: 2 }
+                        }
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: 'rgba(31, 41, 55, 0.9)',
+                            padding: 12,
+                            bodyFont: { family: "'Inter', sans-serif" }
+                        }
+                    }
+                }
+            };
+
+            new Chart(ctx, config);
+        }
+
+        // A11Y Toggle Logic
+        let a11yMode = false;
+        document.getElementById('a11y-toggle').addEventListener('click', function() {
+            a11yMode = !a11yMode;
+            document.body.classList.toggle('a11y-mode');
+            this.innerText = a11yMode ? 'Modo Padrão' : 'Modo A11Y';
+            this.setAttribute('aria-pressed', a11yMode);
+        });
+
+        // ==========================================
+        // Gemini API - AI Assistant Logic ✨
+        // ==========================================
+        const apiKey = "AIzaSyADNNAcEcOGoTa4aeZ6zzf_9Gj-MbY6yMk";
+        
+        const chatForm = document.getElementById('chat-form');
+        const chatInput = document.getElementById('chat-input');
+        const chatWindow = document.getElementById('chat-window');
+        const submitBtn = document.getElementById('chat-submit');
+
+        const systemPrompt = `Você é o assistente virtual baseado no currículo de Paulin Basalces.
+Sua missão é responder perguntas de recrutadores sobre a experiência dele em primeira pessoa ("Eu sou", "Eu fiz").
+
+DIRETRIZES CRÍTICAS DE ACESSIBILIDADE E COMPORTAMENTO (Siga rigorosamente):
+1. SEM ALUCINAÇÕES: Baseie-se APENAS nas informações abaixo. Se a resposta não estiver no texto, diga exatamente: "Não tenho essa informação detalhada, mas você pode perguntar diretamente ao Paulin em paulin@basalces.digital."
+2. LINGUAGEM SIMPLES (Plain Language/WCAG): Use frases curtas, voz ativa e ordem direta. Evite jargões complexos sem explicação. Seja claro e direto.
+3. TOM: Amigável, profissional e acolhedor. NUNCA use termos ou expressões capacitistas.
+4. CONCISÃO: Responda no máximo em 2 parágrafos curtos ou use bullet points (marcadores). Facilite a leitura dinâmica (escaneabilidade).
+
+HISTÓRICO PROFISSIONAL (O PASSADO E O PRESENTE):
+- [1998 - 2018] RTCN Empreendedorismo: Comecei como Diretor de Arte e depois atuei como Product Owner, focando em agilidade no atendimento e segurança da informação.
+- [2018 - 2022] basalce.digital: Product Designer. Foco em Frontend (HTML/CSS/WordPress) e otimização de conversão (CRO) usando Google Analytics e Hotjar.
+- [2019 - 2021] F15D Network & iLerni Academy: Atuei simultaneamente com Product Design e Product Owner. Foco em pesquisa UX e criação de novos modelos de negócios para educação tecnológica e interfaces centradas no usuário.
+- [Set 2022 - Set 2024] Blip: UX Designer (Múltiplos Produtos). Remodelei fluxos conversacionais e otimizei IA para Banco BMG, Pan e Itaú. Resultados: +20% retenção, -18% custos operacionais com IA ética, e implementei padrões WCAG em 100% dos produtos do meu escopo. Criei o Comitê de Acessibilidade.
+- [Mar 2023 - Mai 2024] Hub Multipotencial (UAIxp): UX Content Writer. Criei conteúdos educacionais sobre IA responsável e acessibilidade digital (+600 assinantes).
+- [Abr 2025 - Jan 2026] Maloca Kofi Lab: Design Manager. Liderança em projetos culturais phygital (físico + digital). Aumentei a taxa de conversão em 35% no Edital Zona Cultural e integrei interfaces conversacionais (voz/texto).
+- [Mai 2025 - Presente] Estúdio Basalces Digital: Diretor/Consultor. Projetei o aplicativo VerusKofi (reduziu barreiras de uso em 85% para pessoas com deficiência, gerou +200 conexões na Feira Int. de Café). Presto consultorias B2B aumentando engajamento em 30%.
+- [Dez 2025 - Presente] eMentor.br: Mentor em Acessibilidade e IA. Capacito profissionais, aumentando a adoção de práticas inclusivas nas equipes em 40%.
+
+INFORMAÇÕES PESSOAIS E ADICIONAIS:
+- Mais de 20 anos de experiência (Atualmente UX Design Manager).
+- Foco: Interseção entre Inteligência Artificial, Acessibilidade (A11Y), Cultura Digital e Negócios.
+- Sou pessoa com deficiência (PcD) e atuo ativamente nas discussões de diversidade, transformando o discurso de "nos importamos" em métricas reais (ESG).
+- Autor do livro "Desconstruindo o Capacitismo: Inclusão começa com a desconstrução de preconceitos" (2025).
+- Voluntariado: Liderei a War Room no Teleton 2025 (arrecadou 37 milhões).
+- Competências Técnicas: Figma, Miro, WCAG 2.1/2.2, Service Design, IA Conversacional (treinamento, personas, tom de voz), ScrumMaster.`;
+
+        async function fetchGeminiResponse(userText, retries = 5) {
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+            
+            const payload = {
+                contents: [{ parts: [{ text: userText }] }],
+                systemInstruction: { parts: [{ text: systemPrompt }] }
+            };
+
+            let delay = 1000;
+            for (let i = 0; i < retries; i++) {
+                try {
+                    const response = await fetch(url, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    if (!response.ok) throw new Error('API Request Failed');
+                    
+                    const data = await response.json();
+                    return data.candidates[0].content.parts[0].text;
+                } catch (error) {
+                    if (i === retries - 1) {
+                        return "Desculpe, minhas conexões neurais encontraram uma falha. Pode tentar novamente? Ou melhor, entre em contato direto pelo e-mail paulin@basalces.digital! ✨";
+                    }
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                    delay *= 2;
+                }
+            }
+        }
+
+        function appendMessage(sender, text) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = sender === 'user' 
+                ? 'flex items-start gap-3 justify-end' 
+                : 'flex items-start gap-3';
+            
+            const avatar = sender === 'user'
+                ? '<div class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center text-white font-bold text-xs flex-shrink-0 order-2">Você</div>'
+                : '<div class="w-8 h-8 rounded-full bg-orange-500 flex items-center justify-center text-white font-bold text-xs flex-shrink-0">IA</div>';
+            
+            const bubbleClass = sender === 'user'
+                ? 'bg-orange-600 text-white p-3 rounded-lg rounded-tr-none shadow-sm max-w-[80%] text-sm order-1'
+                : 'bg-white border border-gray-200 text-gray-700 p-3 rounded-lg rounded-tl-none shadow-sm max-w-[80%] text-sm';
+
+            // Parsing simples de Markdown para bold (**)
+            const formattedText = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
+            messageDiv.innerHTML = `
+                ${sender !== 'user' ? avatar : ''}
+                <div class="${bubbleClass}">${formattedText}</div>
+                ${sender === 'user' ? avatar : ''}
+            `;
+            
+            chatWindow.appendChild(messageDiv);
+            chatWindow.scrollTop = chatWindow.scrollHeight;
+            return messageDiv;
+        }
+
+        function addTypingIndicator() {
+            const indicatorDiv = document.createElement('div');
+            indicatorDiv.id = 'typing-indicator';
+            indicatorDiv.className = 'flex items-start gap-3';
+            indicatorDiv.innerHTML = `
+                <div class="w-8 h-8 rounded-full bg-orange-500 flex items-center justify-center text-white font-bold text-xs flex-shrink-0">IA</div>
+                <div class="bg-white border border-gray-200 p-3 rounded-lg rounded-tl-none shadow-sm flex gap-1 items-center h-10">
+                    <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                    <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+                    <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.4s"></div>
+                </div>
+            `;
+            chatWindow.appendChild(indicatorDiv);
+            chatWindow.scrollTop = chatWindow.scrollHeight;
+        }
+
+        function removeTypingIndicator() {
+            const indicator = document.getElementById('typing-indicator');
+            if (indicator) indicator.remove();
+        }
+
+        async function handleChatSubmit(e) {
+            if (e) e.preventDefault();
+            const text = chatInput.value.trim();
+            if (!text) return;
+
+            // UI Updates
+            chatInput.value = '';
+            chatInput.disabled = true;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span class="animate-spin inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full"></span>';
+            
+            appendMessage('user', text);
+            addTypingIndicator();
+
+            // Chamada à API
+            const response = await fetchGeminiResponse(text);
+            
+            // Reverter botões de interface e exibir resposta
+            removeTypingIndicator();
+            appendMessage('ai', response);
+            
+            chatInput.disabled = false;
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<span>Enviar</span> <span class="hidden sm:inline">✨</span>';
+            chatInput.focus();
+        }
+
+        chatForm.addEventListener('submit', handleChatSubmit);
+
+        // Helper para os botões de atalho de perguntas
+        window.sendQuickQuestion = function(question) {
+            chatInput.value = question;
+            handleChatSubmit();
+        };
+
+        // Initialize on Load
+        window.addEventListener('DOMContentLoaded', init);
+
+    </script>
+</body>
+</html>
