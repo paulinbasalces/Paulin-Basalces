@@ -16,7 +16,65 @@
     <meta property="og:image" content="https://basalces.com/Paulin-Basalces-profile-pic-full.jpg">
     <meta property="og:url" content="https://basalces.com/">
     <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:site_name" content="Paulin Basalces">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Paulin Basalces | Atuo onde os sistemas quebram">
+    <meta name="twitter:description" content="Estrategista de experiência focado em transformar barreiras ocultas em vantagem competitiva.">
+    <meta name="twitter:image" content="https://basalces.com/Paulin-Basalces-profile-pic-full.jpg">
+    <meta name="theme-color" content="#100c1f">
+    <link rel="canonical" href="https://basalces.com/">
     <meta name="fediverse:creator" content="@PaulinBasalces@ursal.zone">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://basalces.com/#paulin-basalces",
+          "name": "Paulin Basalces",
+          "url": "https://basalces.com/",
+          "image": "https://basalces.com/Paulin-Basalces-profile-pic-full.jpg",
+          "jobTitle": "UX Design Manager",
+          "description": "Consultoria estratégica em IA, DesignOps e Liderança Inclusiva.",
+          "sameAs": [
+            "https://linkedin.com/in/paulinbasalces",
+            "https://instagram.com/PaulinBasalces",
+            "https://paulinbasalces.substack.com/",
+            "https://cripplepunkbrasil.substack.com/"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://basalces.com/#website",
+          "url": "https://basalces.com/",
+          "name": "Paulin Basalces",
+          "description": "Site oficial com mentoria, consultoria, livro e conteúdo sobre IA, UX e acessibilidade.",
+          "inLanguage": "pt-BR",
+          "publisher": {
+            "@id": "https://basalces.com/#paulin-basalces"
+          }
+        },
+        {
+          "@type": "ProfessionalService",
+          "@id": "https://basalces.com/#servicos",
+          "name": "Consultoria Paulin Basalces",
+          "url": "https://basalces.com/",
+          "provider": {
+            "@id": "https://basalces.com/#paulin-basalces"
+          },
+          "areaServed": "BR",
+          "serviceType": [
+            "Consultoria de IA e Design",
+            "Palestras de Impacto",
+            "Workshops In-Company",
+            "Mentoria Estratégica"
+          ]
+        }
+      ]
+    }
+    </script>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,15 +82,16 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body id="topo">
+    <a href="#conteudo-principal" class="skip-link">Pular para o conteúdo principal</a>
 
     <header>
         <div class="header-track"></div>
         <div class="header-progress" id="progressBar"></div>
         <div class="container nav-flex">
             <a href="#topo" class="logo-link">
-                <h1 class="logo">Paulin<span>Basalces</span></h1>
+                <p class="logo" aria-label="Paulin Basalces">Paulin<span>Basalces</span></p>
             </a>
-            <nav class="nav-links">
+            <nav class="nav-links" aria-label="Navegação principal">
                 <a href="#sobre">Sobre</a>
                 <a href="#ecossistema">Conteúdo</a>
                 <a href="#livro">Livro</a>
@@ -46,7 +105,7 @@
         </div>
     </header>
 
-    <main>
+    <main id="conteudo-principal">
         
         <section class="container section-padding hero">
             <div class="hero-content">
@@ -244,40 +303,40 @@
                 </div>
                 <div class="faq-grid">
                     <div class="faq-item">
-                        <button class="faq-question">Como a IA se conecta com a Acessibilidade no seu trabalho?</button>
-                        <div class="faq-answer"><p>Utilizo Inteligência Artificial para identificar barreiras em larga escala e criar agentes que adaptam interfaces em tempo real. A IA não substitui o humano, ela potencializa a inclusão removendo o "trabalho braçal" da conformidade.</p></div>
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq-a1" id="faq-q1">Como a IA se conecta com a Acessibilidade no seu trabalho?</button>
+                        <div class="faq-answer" id="faq-a1" role="region" aria-labelledby="faq-q1"><p>Utilizo Inteligência Artificial para identificar barreiras em larga escala e criar agentes que adaptam interfaces em tempo real. A IA não substitui o humano, ela potencializa a inclusão removendo o "trabalho braçal" da conformidade.</p></div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-question">Você faz o design das telas (UI)?</button>
-                        <div class="faq-answer"><p>Meu foco é <strong>estratégia e arquitetura</strong>. Eu defino como o produto deve funcionar para ser inclusivo e eficiente. Posso orientar seu time de UI, mas meu valor está na inteligência do sistema, não apenas no pixel.</p></div>
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq-a2" id="faq-q2">Você faz o design das telas (UI)?</button>
+                        <div class="faq-answer" id="faq-a2" role="region" aria-labelledby="faq-q2"><p>Meu foco é <strong>estratégia e arquitetura</strong>. Eu defino como o produto deve funcionar para ser inclusivo e eficiente. Posso orientar seu time de UI, mas meu valor está na inteligência do sistema, não apenas no pixel.</p></div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-question">Sua mentoria serve para quem está começando?</button>
-                        <div class="faq-answer"><p>Minha mentoria é ideal para quem quer dar o próximo passo: designers plenos/sêniores querendo liderança, ou profissionais em transição que buscam diferencial em Acessibilidade e IA. Não ensino ferramentas básicas (Figma), ensino visão de mercado.</p></div>
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq-a3" id="faq-q3">Sua mentoria serve para quem está começando?</button>
+                        <div class="faq-answer" id="faq-a3" role="region" aria-labelledby="faq-q3"><p>Minha mentoria é ideal para quem quer dar o próximo passo: designers plenos/sêniores querendo liderança, ou profissionais em transição que buscam diferencial em Acessibilidade e IA. Não ensino ferramentas básicas (Figma), ensino visão de mercado.</p></div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-question">O que é um "Agente de IA Inclusivo"?</button>
-                        <div class="faq-answer"><p>É uma inteligência treinada para entender contextos variados (gírias, sotaques, limitações motoras) e oferecer atendimento humano e preciso, sem os vieses comuns dos chatbots tradicionais.</p></div>
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq-a4" id="faq-q4">O que é um "Agente de IA Inclusivo"?</button>
+                        <div class="faq-answer" id="faq-a4" role="region" aria-labelledby="faq-q4"><p>É uma inteligência treinada para entender contextos variados (gírias, sotaques, limitações motoras) e oferecer atendimento humano e preciso, sem os vieses comuns dos chatbots tradicionais.</p></div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-question">Como quebrar o capacitismo na minha empresa?</button>
-                        <div class="faq-answer"><p>A mudança começa na cultura. Minhas palestras focam em "desconforto produtivo": mostro onde a empresa perde dinheiro e talento ao excluir pessoas, transformando a inclusão em meta de negócio.</p></div>
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq-a5" id="faq-q5">Como quebrar o capacitismo na minha empresa?</button>
+                        <div class="faq-answer" id="faq-a5" role="region" aria-labelledby="faq-q5"><p>A mudança começa na cultura. Minhas palestras focam em "desconforto produtivo": mostro onde a empresa perde dinheiro e talento ao excluir pessoas, transformando a inclusão em meta de negócio.</p></div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-question">Você atua com diversidade além da deficiência?</button>
-                        <div class="faq-answer"><p>Sim. Acessibilidade é interseccional. Minha abordagem considera raça, gênero, idade e letramento digital. Um produto acessível para uma pessoa cega também é melhor para um idoso ou alguém com baixa conexão.</p></div>
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq-a6" id="faq-q6">Você atua com diversidade além da deficiência?</button>
+                        <div class="faq-answer" id="faq-a6" role="region" aria-labelledby="faq-q6"><p>Sim. Acessibilidade é interseccional. Minha abordagem considera raça, gênero, idade e letramento digital. Um produto acessível para uma pessoa cega também é melhor para um idoso ou alguém com baixa conexão.</p></div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-question">O livro é técnico ou para público geral?</button>
-                        <div class="faq-answer"><p>"Desconstruindo o Capacitismo" é um guia prático e humano para líderes, RHs e educadores. Não requer conhecimento técnico.</p></div>
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq-a7" id="faq-q7">O livro é técnico ou para público geral?</button>
+                        <div class="faq-answer" id="faq-a7" role="region" aria-labelledby="faq-q7"><p>"Desconstruindo o Capacitismo" é um guia prático e humano para líderes, RHs e educadores. Não requer conhecimento técnico.</p></div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-question">Você faz auditoria de WCAG?</button>
-                        <div class="faq-answer"><p>Sim, mas vou além do checklist. A auditoria técnica é o básico. Entrego um plano de ação para que o produto continue acessível após a auditoria, integrando isso ao fluxo de DevOps e DesignOps.</p></div>
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq-a8" id="faq-q8">Você faz auditoria de WCAG?</button>
+                        <div class="faq-answer" id="faq-a8" role="region" aria-labelledby="faq-q8"><p>Sim, mas vou além do checklist. A auditoria técnica é o básico. Entrego um plano de ação para que o produto continue acessível após a auditoria, integrando isso ao fluxo de DevOps e DesignOps.</p></div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-question">Qual o formato das palestras?</button>
-                        <div class="faq-answer"><p>Podem ser presenciais ou remotas. Fujo do modelo "palestra motivacional". Trago dados, casos reais e provocações estratégicas para que a audiência saia com ferramentas para aplicar na segunda-feira.</p></div>
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq-a9" id="faq-q9">Qual o formato das palestras?</button>
+                        <div class="faq-answer" id="faq-a9" role="region" aria-labelledby="faq-q9"><p>Podem ser presenciais ou remotas. Fujo do modelo "palestra motivacional". Trago dados, casos reais e provocações estratégicas para que a audiência saia com ferramentas para aplicar na segunda-feira.</p></div>
                     </div>
                 </div>
             </div>
@@ -295,9 +354,12 @@
                     <p style="color:var(--text-muted)">Preencha o formulário e vamos desenhar o futuro.</p>
                 </div>
                 <form action="https://formspree.io/f/xpqpkodo" method="POST">
-                    <input type="text" name="nome" placeholder="Seu Nome" class="form-input" required>
-                    <input type="email" name="email" placeholder="E-mail Corporativo" class="form-input" required>
-                    <textarea name="msg" rows="5" placeholder="Como posso ajudar seu projeto?" class="form-input" required></textarea>
+                    <label for="nome-contato" class="sr-only">Seu nome</label>
+                    <input type="text" id="nome-contato" name="nome" autocomplete="name" placeholder="Seu Nome" class="form-input" required>
+                    <label for="email-contato" class="sr-only">E-mail corporativo</label>
+                    <input type="email" id="email-contato" name="email" autocomplete="email" placeholder="E-mail Corporativo" class="form-input" required>
+                    <label for="mensagem-contato" class="sr-only">Mensagem</label>
+                    <textarea id="mensagem-contato" name="msg" rows="5" placeholder="Como posso ajudar seu projeto?" class="form-input" required></textarea>
                     <button type="submit" class="btn btn-primary" style="width:100%">Enviar Mensagem</button>
                 </form>
             </div>
@@ -393,11 +455,14 @@
                 faqItems.forEach(otherItem => {
                     if (otherItem !== item) {
                         otherItem.classList.remove('active');
+                        otherItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
                         otherItem.querySelector('.faq-answer').style.maxHeight = null;
                     }
                 });
                 item.classList.toggle('active');
                 const answer = item.querySelector('.faq-answer');
+                const isOpen = item.classList.contains('active');
+                question.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
                 if (item.classList.contains('active')) {
                     answer.style.maxHeight = answer.scrollHeight + "px";
                 } else {
