@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Paulin Basalces | UX Design Manager, Palestrante e Autor</title>
+    <title>Atuo onde os sistemas quebram | Paulin Basalces</title>
     <meta name="description" content="Transformo barreiras de acessibilidade em vantagem competitiva. Consultoria estratégica em IA, DesignOps e Liderança Inclusiva por Paulin Basalces.">
     <meta name="keywords" content="UX Design, Acessibilidade, Inteligência Artificial, DesignOps, Palestrante, Diversidade, Inclusão, Consultoria, Mentoria">
     <meta name="author" content="Paulin Basalces">
@@ -16,23 +16,83 @@
     <meta property="og:image" content="https://basalces.com/Paulin-Basalces-profile-pic-full.jpg">
     <meta property="og:url" content="https://basalces.com/">
     <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:site_name" content="Paulin Basalces">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Paulin Basalces | Atuo onde os sistemas quebram">
+    <meta name="twitter:description" content="Estrategista de experiência focado em transformar barreiras ocultas em vantagem competitiva.">
+    <meta name="twitter:image" content="https://basalces.com/Paulin-Basalces-profile-pic-full.jpg">
+    <meta name="theme-color" content="#100c1f">
+    <link rel="canonical" href="https://basalces.com/">
     <meta name="fediverse:creator" content="@PaulinBasalces@ursal.zone">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://basalces.com/#paulin-basalces",
+          "name": "Paulin Basalces",
+          "url": "https://basalces.com/",
+          "image": "https://basalces.com/Paulin-Basalces-profile-pic-full.jpg",
+          "jobTitle": "UX Design Manager",
+          "description": "Consultoria estratégica em IA, DesignOps e Liderança Inclusiva.",
+          "sameAs": [
+            "https://linkedin.com/in/paulinbasalces",
+            "https://instagram.com/PaulinBasalces",
+            "https://paulinbasalces.substack.com/",
+            "https://cripplepunkbrasil.substack.com/"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://basalces.com/#website",
+          "url": "https://basalces.com/",
+          "name": "Paulin Basalces",
+          "description": "Site oficial com mentoria, consultoria, livro e conteúdo sobre IA, UX e acessibilidade.",
+          "inLanguage": "pt-BR",
+          "publisher": {
+            "@id": "https://basalces.com/#paulin-basalces"
+          }
+        },
+        {
+          "@type": "ProfessionalService",
+          "@id": "https://basalces.com/#servicos",
+          "name": "Consultoria Paulin Basalces",
+          "url": "https://basalces.com/",
+          "provider": {
+            "@id": "https://basalces.com/#paulin-basalces"
+          },
+          "areaServed": "BR",
+          "serviceType": [
+            "Consultoria de IA e Design",
+            "Palestras de Impacto",
+            "Workshops In-Company",
+            "Mentoria Estratégica"
+          ]
+        }
+      ]
+    }
+    </script>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body id="topo">
+    <div class="site-top-bar" aria-hidden="true"></div>
+    <a href="#conteudo-principal" class="skip-link">Pular para o conteúdo principal</a>
 
     <header>
         <div class="header-track"></div>
         <div class="header-progress" id="progressBar"></div>
         <div class="container nav-flex">
             <a href="#topo" class="logo-link">
-                <h1 class="logo">Paulin<span>Basalces</span></h1>
+                <p class="logo nav-logo" aria-label="Paulin Basalces"><span class="first-name">Paulin</span><span class="last-name">Basalces</span></p>
             </a>
-            <nav class="nav-links">
+            <nav class="nav-links" aria-label="Navegação principal">
                 <a href="#sobre">Sobre</a>
                 <a href="#ecossistema">Conteúdo</a>
                 <a href="#livro">Livro</a>
@@ -42,13 +102,14 @@
                 <a href="#faq">FAQ</a>
                 <a href="#contato">Contato</a>
             </nav>
-            <a href="https://app.ementor.com.br/mentor/PaulinBasalces/" target="_blank" class="btn btn-primary" style="padding: 0.6rem 1rem; font-size: 0.8rem; flex: 0 0 auto; min-width: auto;">Agendar</a>
+            <a href="https://app.ementor.com.br/mentor/PaulinBasalces/" target="_blank" title="Abre em nova aba" rel="noopener noreferrer" class="btn btn-primary nav-cta" style="padding: 0.6rem 1rem; font-size: 0.8rem; flex: 0 0 auto; min-width: auto;">Agendar</a>
         </div>
     </header>
 
-    <main>
+    <main id="conteudo-principal">
         
-        <section class="container section-padding hero">
+        <section class="container section-padding hero hero-section">
+            <div class="grafismo grafismo--apoio" aria-hidden="true"></div>
             <div class="hero-content">
                 <h1>Atuo onde os <br><span class="highlight">sistemas quebram.</span></h1>
                 <p class="lead" style="font-size: 1.15rem; line-height: 1.7;">
@@ -69,7 +130,7 @@
             </div>
         </section>
 
-        <section id="sobre" class="section-padding bg-1 reveal">
+        <section id="sobre" class="section-padding bg-1 reveal quem-e-paulin about-section">
             <div class="container">
                 <div class="bio-text-center">
                     <h2>Quem é Paulin?</h2>
@@ -106,7 +167,7 @@
             </div>
         </section>
 
-        <section id="ecossistema" class="section-padding bg-2 reveal">
+        <section id="ecossistema" class="section-padding bg-2 reveal ecossistema content-ecosystem">
             <div class="container">
                 <div class="text-center center-block">
                     <h2>Ecossistema de Conteúdo</h2>
@@ -116,7 +177,7 @@
                 </div>
                 
                 <div class="grid-3-cols">
-                    <a href="https://cripplepunkbrasil.substack.com/" target="_blank" class="std-card">
+                    <a href="https://cripplepunkbrasil.substack.com/" target="_blank" title="Abre em nova aba" rel="noopener noreferrer" class="std-card">
                         <span class="tag-pill">Movimento</span>
                         <div class="card-icon">🔥</div>
                         <h3 class="card-title">CripplePunk Brasil</h3>
@@ -124,7 +185,7 @@
                         <span class="card-link">Ler Manifesto &rarr;</span>
                     </a>
 
-                    <a href="https://paulinbasalces.substack.com/" target="_blank" class="std-card">
+                    <a href="https://paulinbasalces.substack.com/" target="_blank" title="Abre em nova aba" rel="noopener noreferrer" class="std-card">
                         <span class="tag-pill">Ensaios</span>
                         <div class="card-icon">✍️</div>
                         <h3>Paulin Escreve</h3>
@@ -132,7 +193,7 @@
                         <span class="card-link">Assinar Grátis &rarr;</span>
                     </a>
 
-                    <a href="https://tr.ee/paulinbasalces" target="_blank" class="std-card">
+                    <a href="https://tr.ee/paulinbasalces" target="_blank" title="Abre em nova aba" rel="noopener noreferrer" class="std-card">
                         <span class="tag-pill">Linktree</span>
                         <div class="card-icon">🎨</div>
                         <h3>Produtor Cultural</h3>
@@ -143,13 +204,14 @@
             </div>
         </section>
 
-        <section id="livro" class="section-padding bg-1 reveal">
+        <section id="livro" class="section-padding bg-1 reveal book-section livro-section">
+            <div class="grafismo grafismo--protagonista grafismo-book" aria-hidden="true"></div>
             <div class="container book-wrapper">
                 <div class="book-img-container">
                     <img src="capa-livro.png" alt="Capa Desconstruindo o Capacitismo" class="book-cover">
                 </div>
                 <div class="book-info">
-                    <span style="color:var(--brand-orange); font-weight:bold; letter-spacing:2px; text-transform:uppercase; font-size: 0.9rem;">Obra de Referência</span>
+                    <span class="eyebrow">Novo do Autor</span>
                     <h2 style="font-size: 2.5rem; margin-top: 1rem; text-align: left;">O manual que o mercado ignora.</h2>
                     
                     <p style="font-size: 1.1rem; color: var(--text-body);">
@@ -159,14 +221,15 @@
                         O capacitismo está tão enraizado em nossa cultura que passa despercebido. <strong>"Desconstruindo o Capacitismo"</strong> é a ferramenta definitiva para quem deseja fazer parte dessa transformação. Uma obra prática para entender o impacto na saúde mental e adquirir ferramentas para ser um aliado eficaz.
                     </p>
                     <div class="btn-group">
-                        <a href="https://livro.cripplepunkbrasil.org/" target="_blank" class="btn btn-primary">Conhecer o Livro</a>
-                        <a href="https://amzn.to/45pwStD" target="_blank" class="btn btn-outline">Comprar na Amazon</a>
+                        <a href="https://livro.cripplepunkbrasil.org/" target="_blank" title="Abre em nova aba" rel="noopener noreferrer" class="btn btn-primary">Conhecer o Livro</a>
+                        <a href="https://amzn.to/45pwStD" target="_blank" title="Abre em nova aba" rel="noopener noreferrer" class="btn btn-outline">Comprar na Amazon</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="mentoria-info" class="section-padding bg-2 reveal">
+        <section id="mentoria-info" class="section-padding bg-2 reveal mentoria mentoring-section">
+            <div class="grafismo grafismo--protagonista grafismo-mentoria" aria-hidden="true"></div>
             <div class="container">
                 <div class="mentoria-box center-block">
                     <h2>Mentoria Estratégica</h2>
@@ -179,12 +242,12 @@
                         <div class="mentoria-item"><span>✓</span> Inteligência Artificial</div>
                         <div class="mentoria-item"><span>✓</span> DesignOps</div>
                     </div>
-                    <a href="https://app.ementor.com.br/mentor/PaulinBasalces/" target="_blank" class="btn btn-primary">Ver Planos e Agendar</a>
+                    <a href="https://app.ementor.com.br/mentor/PaulinBasalces/" target="_blank" title="Abre em nova aba" rel="noopener noreferrer" class="btn btn-primary">Ver Planos e Agendar</a>
                 </div>
             </div>
         </section>
 
-        <section id="servicos" class="section-padding bg-1 reveal">
+        <section id="servicos" class="section-padding bg-1 reveal solucoes corporate-section">
             <div class="container">
                 <div class="text-center center-block">
                     <h2>Soluções Corporativas</h2>
@@ -213,20 +276,20 @@
             </div>
         </section>
 
-        <section id="pratica" class="container section-padding reveal">
+        <section id="pratica" class="container section-padding reveal impacto portfolio-section">
             <div class="text-center center-block">
                 <h2>Impacto Real</h2>
                 <p style="color:var(--text-muted); font-size:1.2rem; margin-bottom:3rem;">Não é apenas teoria. É estratégia aplicada em interfaces reais e palcos globais.</p>
             </div>
             <div class="showcase-grid">
-                <a href="https://paulinbasalces.framer.ai/" target="_blank" class="showcase-card">
+                <a href="https://paulinbasalces.framer.ai/" target="_blank" title="Abre em nova aba" rel="noopener noreferrer" class="showcase-card">
                     <img src="2.webp" alt="Portfolio Visual" class="showcase-bg">
                     <div class="showcase-info">
                         <h3>Portfólio Visual UX/UI</h3>
                         <p>Interfaces e Design Systems no Framer.</p>
                     </div>
                 </a>
-                <a href="https://youtu.be/Kfw4sxP5OBg?si=u2QKhyWzFcpllA2i" target="_blank" class="showcase-card play-overlay">
+                <a href="https://youtu.be/Kfw4sxP5OBg?si=u2QKhyWzFcpllA2i" target="_blank" title="Abre em nova aba" rel="noopener noreferrer" class="showcase-card play-overlay">
                     <img src="https://img.youtube.com/vi/Kfw4sxP5OBg/maxresdefault.jpg" alt="Talk Sexualidade e Inclusão" class="showcase-bg">
                     <div class="showcase-info">
                         <h3>Sexualidade sem Limites: Desafios e Inclusão</h3>
@@ -236,7 +299,7 @@
             </div>
         </section>
 
-        <section id="faq" class="section-padding bg-2 reveal">
+        <section id="faq" class="section-padding bg-2 reveal faq perguntas">
             <div class="container">
                 <div class="text-center center-block">
                     <h2>Perguntas Frequentes</h2>
@@ -244,40 +307,40 @@
                 </div>
                 <div class="faq-grid">
                     <div class="faq-item">
-                        <button class="faq-question">Como a IA se conecta com a Acessibilidade no seu trabalho?</button>
-                        <div class="faq-answer"><p>Utilizo Inteligência Artificial para identificar barreiras em larga escala e criar agentes que adaptam interfaces em tempo real. A IA não substitui o humano, ela potencializa a inclusão removendo o "trabalho braçal" da conformidade.</p></div>
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq-a1" id="faq-q1">Como a IA se conecta com a Acessibilidade no seu trabalho?</button>
+                        <div class="faq-answer" id="faq-a1" role="region" aria-labelledby="faq-q1"><p>Utilizo Inteligência Artificial para identificar barreiras em larga escala e criar agentes que adaptam interfaces em tempo real. A IA não substitui o humano, ela potencializa a inclusão removendo o "trabalho braçal" da conformidade.</p></div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-question">Você faz o design das telas (UI)?</button>
-                        <div class="faq-answer"><p>Meu foco é <strong>estratégia e arquitetura</strong>. Eu defino como o produto deve funcionar para ser inclusivo e eficiente. Posso orientar seu time de UI, mas meu valor está na inteligência do sistema, não apenas no pixel.</p></div>
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq-a2" id="faq-q2">Você faz o design das telas (UI)?</button>
+                        <div class="faq-answer" id="faq-a2" role="region" aria-labelledby="faq-q2"><p>Meu foco é <strong>estratégia e arquitetura</strong>. Eu defino como o produto deve funcionar para ser inclusivo e eficiente. Posso orientar seu time de UI, mas meu valor está na inteligência do sistema, não apenas no pixel.</p></div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-question">Sua mentoria serve para quem está começando?</button>
-                        <div class="faq-answer"><p>Minha mentoria é ideal para quem quer dar o próximo passo: designers plenos/sêniores querendo liderança, ou profissionais em transição que buscam diferencial em Acessibilidade e IA. Não ensino ferramentas básicas (Figma), ensino visão de mercado.</p></div>
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq-a3" id="faq-q3">Sua mentoria serve para quem está começando?</button>
+                        <div class="faq-answer" id="faq-a3" role="region" aria-labelledby="faq-q3"><p>Minha mentoria é ideal para quem quer dar o próximo passo: designers plenos/sêniores querendo liderança, ou profissionais em transição que buscam diferencial em Acessibilidade e IA. Não ensino ferramentas básicas (Figma), ensino visão de mercado.</p></div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-question">O que é um "Agente de IA Inclusivo"?</button>
-                        <div class="faq-answer"><p>É uma inteligência treinada para entender contextos variados (gírias, sotaques, limitações motoras) e oferecer atendimento humano e preciso, sem os vieses comuns dos chatbots tradicionais.</p></div>
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq-a4" id="faq-q4">O que é um "Agente de IA Inclusivo"?</button>
+                        <div class="faq-answer" id="faq-a4" role="region" aria-labelledby="faq-q4"><p>É uma inteligência treinada para entender contextos variados (gírias, sotaques, limitações motoras) e oferecer atendimento humano e preciso, sem os vieses comuns dos chatbots tradicionais.</p></div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-question">Como quebrar o capacitismo na minha empresa?</button>
-                        <div class="faq-answer"><p>A mudança começa na cultura. Minhas palestras focam em "desconforto produtivo": mostro onde a empresa perde dinheiro e talento ao excluir pessoas, transformando a inclusão em meta de negócio.</p></div>
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq-a5" id="faq-q5">Como quebrar o capacitismo na minha empresa?</button>
+                        <div class="faq-answer" id="faq-a5" role="region" aria-labelledby="faq-q5"><p>A mudança começa na cultura. Minhas palestras focam em "desconforto produtivo": mostro onde a empresa perde dinheiro e talento ao excluir pessoas, transformando a inclusão em meta de negócio.</p></div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-question">Você atua com diversidade além da deficiência?</button>
-                        <div class="faq-answer"><p>Sim. Acessibilidade é interseccional. Minha abordagem considera raça, gênero, idade e letramento digital. Um produto acessível para uma pessoa cega também é melhor para um idoso ou alguém com baixa conexão.</p></div>
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq-a6" id="faq-q6">Você atua com diversidade além da deficiência?</button>
+                        <div class="faq-answer" id="faq-a6" role="region" aria-labelledby="faq-q6"><p>Sim. Acessibilidade é interseccional. Minha abordagem considera raça, gênero, idade e letramento digital. Um produto acessível para uma pessoa cega também é melhor para um idoso ou alguém com baixa conexão.</p></div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-question">O livro é técnico ou para público geral?</button>
-                        <div class="faq-answer"><p>"Desconstruindo o Capacitismo" é um guia prático e humano para líderes, RHs e educadores. Não requer conhecimento técnico.</p></div>
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq-a7" id="faq-q7">O livro é técnico ou para público geral?</button>
+                        <div class="faq-answer" id="faq-a7" role="region" aria-labelledby="faq-q7"><p>"Desconstruindo o Capacitismo" é um guia prático e humano para líderes, RHs e educadores. Não requer conhecimento técnico.</p></div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-question">Você faz auditoria de WCAG?</button>
-                        <div class="faq-answer"><p>Sim, mas vou além do checklist. A auditoria técnica é o básico. Entrego um plano de ação para que o produto continue acessível após a auditoria, integrando isso ao fluxo de DevOps e DesignOps.</p></div>
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq-a8" id="faq-q8">Você faz auditoria de WCAG?</button>
+                        <div class="faq-answer" id="faq-a8" role="region" aria-labelledby="faq-q8"><p>Sim, mas vou além do checklist. A auditoria técnica é o básico. Entrego um plano de ação para que o produto continue acessível após a auditoria, integrando isso ao fluxo de DevOps e DesignOps.</p></div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-question">Qual o formato das palestras?</button>
-                        <div class="faq-answer"><p>Podem ser presenciais ou remotas. Fujo do modelo "palestra motivacional". Trago dados, casos reais e provocações estratégicas para que a audiência saia com ferramentas para aplicar na segunda-feira.</p></div>
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq-a9" id="faq-q9">Qual o formato das palestras?</button>
+                        <div class="faq-answer" id="faq-a9" role="region" aria-labelledby="faq-q9"><p>Podem ser presenciais ou remotas. Fujo do modelo "palestra motivacional". Trago dados, casos reais e provocações estratégicas para que a audiência saia com ferramentas para aplicar na segunda-feira.</p></div>
                     </div>
                 </div>
             </div>
@@ -285,19 +348,22 @@
 
         <div class="quote-stripe">
             <span class="quote-icon-bg">“</span>
-            <p>A inclusão começa ao desconstruir preconceitos e perceber o potencial de cada indivíduo.</p>
+            <p class="banner-text">A inclusão começa ao <strong>desconstruir</strong> preconceitos e perceber o <strong>potencial</strong> de cada indivíduo.</p>
         </div>
 
-        <section id="contato" class="section-padding bg-3 reveal">
+        <section id="contato" class="section-padding bg-3 reveal contact empresa-section">
             <div class="form-box">
                 <div class="text-center" style="margin-bottom: 2rem;">
                     <h2>Sua empresa está pronta para a próxima fase?</h2>
                     <p style="color:var(--text-muted)">Preencha o formulário e vamos desenhar o futuro.</p>
                 </div>
                 <form action="https://formspree.io/f/xpqpkodo" method="POST">
-                    <input type="text" name="nome" placeholder="Seu Nome" class="form-input" required>
-                    <input type="email" name="email" placeholder="E-mail Corporativo" class="form-input" required>
-                    <textarea name="msg" rows="5" placeholder="Como posso ajudar seu projeto?" class="form-input" required></textarea>
+                    <label for="nome-contato" class="form-label">Seu nome <span aria-hidden="true">*</span></label>
+                    <input type="text" id="nome-contato" name="nome" autocomplete="name" placeholder="Seu Nome" class="form-input" required>
+                    <label for="email-contato" class="form-label">E-mail corporativo <span aria-hidden="true">*</span></label>
+                    <input type="email" id="email-contato" name="email" autocomplete="email" placeholder="E-mail Corporativo" class="form-input" required>
+                    <label for="mensagem-contato" class="form-label">Mensagem <span aria-hidden="true">*</span></label>
+                    <textarea id="mensagem-contato" name="msg" rows="5" placeholder="Como posso ajudar seu projeto?" class="form-input" required></textarea>
                     <button type="submit" class="btn btn-primary" style="width:100%">Enviar Mensagem</button>
                 </form>
             </div>
@@ -305,7 +371,8 @@
 
     </main>
 
-    <footer>
+    <footer class="site-footer footer">
+        <div class="grafismo grafismo--satelite grafismo-footer" aria-hidden="true"></div>
         <div class="container">
             <div class="footer-grid">
                 <div>
@@ -313,9 +380,10 @@
                     <p style="color:var(--text-muted); font-size:0.95rem;">
                         UX Design Manager, Palestrante e Autor. Inovação e inclusão radical.
                     </p>
+                    <p><a href="https://basalces.com" class="site-url">basalces.com</a></p>
                     <form id="substack-form" method="POST" action="https://paulinbasalces.substack.com/api/v1/free" target="_blank" class="footer-newsletter">
-                        <label for="email-news">Cadastre seu e-mail para receber novidades:</label>
-                        <input type="email" id="email-news" name="email" placeholder="Digite seu e-mail" required>
+                        <label for="email-news">Cadastre seu e-mail para receber novidades <span aria-hidden="true">*</span>:</label>
+                        <input type="email" id="email-news" name="email" autocomplete="email" placeholder="Digite seu e-mail" required>
                         <button type="submit">Assinar Newsletter</button>
                     </form>
                 </div>
@@ -336,15 +404,15 @@
                     <a href="#contato">Solicitar Palestra</a>
                     <a href="#mentoria-info">Mentoria</a>
                     
-                    <div class="social-icons">
-                        <a href="https://linkedin.com/in/paulinbasalces" target="_blank" class="social-icon" aria-label="LinkedIn">
-                            <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    <div class="social-icons" style="display:flex;gap:0.8rem;align-items:center;">
+                        <a href="https://linkedin.com/in/paulinbasalces" target="_blank" title="Abre em nova aba" rel="noopener noreferrer" class="social-icon" aria-label="LinkedIn" style="width:40px;height:40px;display:inline-flex;align-items:center;justify-content:center;">
+                            <svg width="18" height="18" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                         </a>
-                        <a href="https://instagram.com/PaulinBasalces" target="_blank" class="social-icon" aria-label="Instagram">
-                            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        <a href="https://instagram.com/PaulinBasalces" target="_blank" title="Abre em nova aba" rel="noopener noreferrer" class="social-icon" aria-label="Instagram" style="width:40px;height:40px;display:inline-flex;align-items:center;justify-content:center;">
+                            <svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
                         </a>
-                        <a href="https://basalces.com/links" target="_blank" class="social-icon" aria-label="LinkTree">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L12 22M5 12L19 12M5 7L19 7M5 17L19 17" stroke-linecap="round"/></svg>
+                        <a href="https://basalces.com/links" target="_blank" title="Abre em nova aba" rel="noopener noreferrer" class="social-icon" aria-label="LinkTree" style="width:40px;height:40px;display:inline-flex;align-items:center;justify-content:center;">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L12 22M5 12L19 12M5 7L19 7M5 17L19 17" stroke-linecap="round"/></svg>
                         </a>
                     </div>
                 </div>
@@ -352,11 +420,11 @@
             
             <div class="footer-bottom">
                 <p>&copy; 2026 Paulin Basalces. Todos os direitos reservados.</p>
-                <a rel="me" href="https://ursal.zone/@PaulinBasalces">-</a>
+                <a rel="me noopener noreferrer" href="https://ursal.zone/@PaulinBasalces" class="mastodon-link" aria-label="Perfil no Mastodon (abre em nova aba)" target="_blank" title="Abre em nova aba">Mastodon</a>
                 <div class="footer-actions">
                     <button class="a11y-btn" id="btn-decrease" aria-label="Diminuir Fonte">A-</button>
                     <button class="a11y-btn" id="btn-increase" aria-label="Aumentar Fonte">A+</button>
-                    <a href="#topo" style="color:var(--brand-orange); font-weight:bold; text-decoration:none;">↑ VOLTAR AO TOPO</a>
+                    <a href="#topo" class="back-to-top-link">↑ VOLTAR AO TOPO</a>
                 </div>
             </div>
         </div>
@@ -393,11 +461,14 @@
                 faqItems.forEach(otherItem => {
                     if (otherItem !== item) {
                         otherItem.classList.remove('active');
+                        otherItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
                         otherItem.querySelector('.faq-answer').style.maxHeight = null;
                     }
                 });
                 item.classList.toggle('active');
                 const answer = item.querySelector('.faq-answer');
+                const isOpen = item.classList.contains('active');
+                question.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
                 if (item.classList.contains('active')) {
                     answer.style.maxHeight = answer.scrollHeight + "px";
                 } else {
@@ -418,6 +489,28 @@
 
         btnDecrease.addEventListener('click', () => {
             if (fontSize > 14) { fontSize -= 2; htmlRoot.style.fontSize = fontSize + 'px'; }
+        });
+        // Aviso de nova aba para leitores de tela
+        document.querySelectorAll('a[target="_blank"]').forEach(link => {
+            const notice = ' (abre em nova aba)';
+            const currentLabel = link.getAttribute('aria-label');
+            if (currentLabel) {
+                if (!currentLabel.includes('abre em nova aba')) {
+                    link.setAttribute('aria-label', currentLabel + notice);
+                }
+            } else {
+                const text = link.textContent.replace(/\s+/g, ' ').trim();
+                if (text) {
+                    link.setAttribute('aria-label', text + notice);
+                }
+            }
+
+            if (!link.querySelector('.sr-only') && !link.classList.contains('social-icon')) {
+                const sr = document.createElement('span');
+                sr.className = 'sr-only';
+                sr.textContent = notice;
+                link.appendChild(sr);
+            }
         });
     </script>
 <!-- Google tag (gtag.js) -->

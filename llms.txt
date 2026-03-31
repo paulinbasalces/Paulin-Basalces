@@ -1,0 +1,22 @@
+# Paulin Basalces — Site oficial
+
+## Resumo
+Paulin Basalces é UX Design Manager, palestrante e autor do livro "Desconstruindo o Capacitismo".
+O site reúne serviços de consultoria em IA e Design, mentoria estratégica, palestras, workshops e conteúdo autoral sobre inclusão, acessibilidade e cultura.
+
+## Conteúdo principal
+- Página inicial: https://basalces.com/
+- Links oficiais: https://basalces.com/links/
+- Currículo: https://basalces.com/cv/
+- PDF do currículo: https://basalces.com/docs/cvPaulinBasalces.pdf
+
+## Tópicos de especialidade
+- UX estratégico e liderança de design
+- Acessibilidade digital e anticapacitismo
+- DesignOps e escala de times
+- IA aplicada à experiência do usuário
+- Palestras e workshops corporativos
+
+## Contato e contratação
+- Formulário no site: https://basalces.com/#contato
+- Mentoria: https://app.ementor.com.br/mentor/PaulinBasalces/
