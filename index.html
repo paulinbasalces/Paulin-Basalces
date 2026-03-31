@@ -78,7 +78,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body id="topo">
@@ -107,7 +107,8 @@
 
     <main id="conteudo-principal">
         
-        <section class="container section-padding hero">
+        <section class="container section-padding hero hero-section">
+            <div class="grafismo grafismo--apoio" aria-hidden="true"></div>
             <div class="hero-content">
                 <h1>Atuo onde os <br><span class="highlight">sistemas quebram.</span></h1>
                 <p class="lead" style="font-size: 1.15rem; line-height: 1.7;">
@@ -128,7 +129,7 @@
             </div>
         </section>
 
-        <section id="sobre" class="section-padding bg-1 reveal">
+        <section id="sobre" class="section-padding bg-1 reveal quem-e-paulin about-section">
             <div class="container">
                 <div class="bio-text-center">
                     <h2>Quem é Paulin?</h2>
@@ -165,7 +166,7 @@
             </div>
         </section>
 
-        <section id="ecossistema" class="section-padding bg-2 reveal">
+        <section id="ecossistema" class="section-padding bg-2 reveal ecossistema content-ecosystem">
             <div class="container">
                 <div class="text-center center-block">
                     <h2>Ecossistema de Conteúdo</h2>
@@ -202,13 +203,14 @@
             </div>
         </section>
 
-        <section id="livro" class="section-padding bg-1 reveal">
+        <section id="livro" class="section-padding bg-1 reveal book-section livro-section">
+            <div class="grafismo grafismo--protagonista grafismo-book" aria-hidden="true"></div>
             <div class="container book-wrapper">
                 <div class="book-img-container">
                     <img src="capa-livro.png" alt="Capa Desconstruindo o Capacitismo" class="book-cover">
                 </div>
                 <div class="book-info">
-                    <span style="color:var(--brand-orange); font-weight:bold; letter-spacing:2px; text-transform:uppercase; font-size: 0.9rem;">Obra de Referência</span>
+                    <span class="eyebrow">Novo do Autor</span>
                     <h2 style="font-size: 2.5rem; margin-top: 1rem; text-align: left;">O manual que o mercado ignora.</h2>
                     
                     <p style="font-size: 1.1rem; color: var(--text-body);">
@@ -225,7 +227,8 @@
             </div>
         </section>
 
-        <section id="mentoria-info" class="section-padding bg-2 reveal">
+        <section id="mentoria-info" class="section-padding bg-2 reveal mentoria mentoring-section">
+            <div class="grafismo grafismo--protagonista grafismo-mentoria" aria-hidden="true"></div>
             <div class="container">
                 <div class="mentoria-box center-block">
                     <h2>Mentoria Estratégica</h2>
@@ -243,7 +246,7 @@
             </div>
         </section>
 
-        <section id="servicos" class="section-padding bg-1 reveal">
+        <section id="servicos" class="section-padding bg-1 reveal solucoes corporate-section">
             <div class="container">
                 <div class="text-center center-block">
                     <h2>Soluções Corporativas</h2>
@@ -272,7 +275,7 @@
             </div>
         </section>
 
-        <section id="pratica" class="container section-padding reveal">
+        <section id="pratica" class="container section-padding reveal impacto portfolio-section">
             <div class="text-center center-block">
                 <h2>Impacto Real</h2>
                 <p style="color:var(--text-muted); font-size:1.2rem; margin-bottom:3rem;">Não é apenas teoria. É estratégia aplicada em interfaces reais e palcos globais.</p>
@@ -295,7 +298,7 @@
             </div>
         </section>
 
-        <section id="faq" class="section-padding bg-2 reveal">
+        <section id="faq" class="section-padding bg-2 reveal faq perguntas">
             <div class="container">
                 <div class="text-center center-block">
                     <h2>Perguntas Frequentes</h2>
@@ -344,10 +347,10 @@
 
         <div class="quote-stripe">
             <span class="quote-icon-bg">“</span>
-            <p>A inclusão começa ao desconstruir preconceitos e perceber o potencial de cada indivíduo.</p>
+            <p class="banner-text">A inclusão começa ao <strong>desconstruir</strong> preconceitos e perceber o <strong>potencial</strong> de cada indivíduo.</p>
         </div>
 
-        <section id="contato" class="section-padding bg-3 reveal">
+        <section id="contato" class="section-padding bg-3 reveal contact empresa-section">
             <div class="form-box">
                 <div class="text-center" style="margin-bottom: 2rem;">
                     <h2>Sua empresa está pronta para a próxima fase?</h2>
@@ -367,7 +370,8 @@
 
     </main>
 
-    <footer>
+    <footer class="site-footer footer">
+        <div class="grafismo grafismo--satelite grafismo-footer" aria-hidden="true"></div>
         <div class="container">
             <div class="footer-grid">
                 <div>
@@ -375,6 +379,7 @@
                     <p style="color:var(--text-muted); font-size:0.95rem;">
                         UX Design Manager, Palestrante e Autor. Inovação e inclusão radical.
                     </p>
+                    <p><a href="https://basalces.com" class="site-url">basalces.com</a></p>
                     <form id="substack-form" method="POST" action="https://paulinbasalces.substack.com/api/v1/free" target="_blank" class="footer-newsletter">
                         <label for="email-news">Cadastre seu e-mail para receber novidades <span aria-hidden="true">*</span>:</label>
                         <input type="email" id="email-news" name="email" autocomplete="email" placeholder="Digite seu e-mail" required>
