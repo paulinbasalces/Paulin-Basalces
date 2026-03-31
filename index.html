@@ -82,7 +82,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body id="topo">
-    <div class="site-top-bar" aria-hidden="true"></div>
     <a href="#conteudo-principal" class="skip-link">Pular para o conteúdo principal</a>
 
     <header>
@@ -90,7 +89,7 @@
         <div class="header-progress" id="progressBar"></div>
         <div class="container nav-flex">
             <a href="#topo" class="logo-link">
-                <p class="logo nav-logo" aria-label="Paulin Basalces"><span class="first-name">Paulin</span><span class="last-name">Basalces</span></p>
+                <p class="logo" aria-label="Paulin Basalces">Paulin<span>Basalces</span></p>
             </a>
             <nav class="nav-links" aria-label="Navegação principal">
                 <a href="#sobre">Sobre</a>
@@ -102,7 +101,7 @@
                 <a href="#faq">FAQ</a>
                 <a href="#contato">Contato</a>
             </nav>
-            <a href="https://app.ementor.com.br/mentor/PaulinBasalces/" target="_blank" title="Abre em nova aba" rel="noopener noreferrer" class="btn btn-primary nav-cta" style="padding: 0.6rem 1rem; font-size: 0.8rem; flex: 0 0 auto; min-width: auto;">Agendar</a>
+            <a href="https://app.ementor.com.br/mentor/PaulinBasalces/" target="_blank" title="Abre em nova aba" rel="noopener noreferrer" class="btn btn-primary" style="padding: 0.6rem 1rem; font-size: 0.8rem; flex: 0 0 auto; min-width: auto;">Agendar</a>
         </div>
     </header>
 
@@ -358,11 +357,11 @@
                     <p style="color:var(--text-muted)">Preencha o formulário e vamos desenhar o futuro.</p>
                 </div>
                 <form action="https://formspree.io/f/xpqpkodo" method="POST">
-                    <label for="nome-contato" class="form-label">Seu nome <span aria-hidden="true">*</span></label>
+                    <label for="nome-contato" class="sr-only">Seu nome</label>
                     <input type="text" id="nome-contato" name="nome" autocomplete="name" placeholder="Seu Nome" class="form-input" required>
-                    <label for="email-contato" class="form-label">E-mail corporativo <span aria-hidden="true">*</span></label>
+                    <label for="email-contato" class="sr-only">E-mail corporativo</label>
                     <input type="email" id="email-contato" name="email" autocomplete="email" placeholder="E-mail Corporativo" class="form-input" required>
-                    <label for="mensagem-contato" class="form-label">Mensagem <span aria-hidden="true">*</span></label>
+                    <label for="mensagem-contato" class="sr-only">Mensagem</label>
                     <textarea id="mensagem-contato" name="msg" rows="5" placeholder="Como posso ajudar seu projeto?" class="form-input" required></textarea>
                     <button type="submit" class="btn btn-primary" style="width:100%">Enviar Mensagem</button>
                 </form>
