@@ -1,30 +1,30 @@
 :root {
-  --brand-primary: #C4156A;
-  --brand-secondary: #9E4A12;
-  --brand-accent: #D4A017;
-  --bg-dark: #130B07;
-  --bg-deep: #0F0905;
-  --bg-footer: #0A0705;
-  --bg-light: #EDE9DC;
-  --text-primary: #1A0D07;
-  --text-secondary: #7A6A58;
-  --text-on-dark: #EDE9DC;
-  --text-on-dark-muted: #D1C8B8;
-  --text-body: #D1C8B8;
-  --text-muted: #B6A792;
-
-  --brand-primary-15: rgba(196, 21, 106, 0.15);
-  --brand-primary-25: rgba(196, 21, 106, 0.25);
-  --brand-primary-50: rgba(196, 21, 106, 0.50);
-  --brand-accent-20: rgba(212, 160, 23, 0.20);
-  --brand-accent-30: rgba(212, 160, 23, 0.30);
-  --brand-secondary-12: rgba(158, 74, 18, 0.12);
-  --brand-secondary-40: rgba(158, 74, 18, 0.40);
-
-  --container-width: 1240px;
-  --radius-card: 8px;
-  --radius-btn: 100px;
-  --transition: all 0.25s ease;
+    --brand-purple: #770a94;
+    --brand-orange: #db742e;
+    --footer-primary: #C4156A;
+    --footer-accent: #D4A017;
+    --footer-text: #EDE9DC;
+    --footer-bg: #0A0705;
+    
+    --bg-deep: #05010a;
+    --bg-gradient-1: linear-gradient(180deg, #05010a 0%, #0e021a 100%);
+    --bg-gradient-2: linear-gradient(180deg, #0e021a 0%, #130424 100%);
+    --bg-gradient-3: linear-gradient(180deg, #130424 0%, #05010a 100%);
+    
+    --bg-card: #0f0518;        
+    --bg-input: #1A0B2E;
+    
+    --text-main: #FFFFFF;
+    --text-body: #E2E8F0;
+    --text-muted: #A3A3A3;
+    
+    --border-light: rgba(119, 10, 148, 0.3);
+    
+    --container-width: 1240px;
+    --radius-card: 16px; 
+    --radius-btn: 8px; 
+    --font-main: 'Inter', sans-serif;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @font-face {
@@ -281,32 +281,55 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 }
 .form-input:focus { border-color: var(--brand-primary); box-shadow: 0 0 0 3px var(--brand-primary-15); outline: none; }
 
-footer, .site-footer {
-  background: var(--bg-footer);
-  border-top: 1px solid var(--brand-primary-25);
-  padding: 60px 0 32px;
-  position: relative;
-}
-.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 2.5rem; margin-bottom: 2.5rem; }
-.footer-logo, .footer-signature { font-family: 'Amsterdam Four', cursive; color: var(--text-on-dark); font-size: 2rem; }
-.site-url { color: var(--brand-accent); }
-.footer h4, .footer-col-title { font-family: 'Syne', sans-serif; color: var(--brand-accent); }
-.footer a { font-family: 'Lora', serif; color: var(--text-on-dark); opacity: .78; }
-.footer a:hover { color: var(--brand-accent); opacity: 1; }
-.social-icons { display: flex; gap: .8rem; margin-top: .8rem; flex-wrap: wrap; }
-.social-pill { padding: 8px 14px; border-radius: 100px; border: 1px solid var(--brand-primary-25); font-family: 'Syne', sans-serif; font-size: 0.8rem; opacity: 1; }
-.social-pill:hover { color: var(--brand-primary); border-color: var(--brand-primary); }
-.footer-bottom { border-top: 1px solid rgba(237,233,220,0.15); padding-top: 1.2rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
-.footer-actions { display: flex; align-items: center; gap: 1rem; }
-.a11y-btn { border: 1px solid var(--brand-accent-30); color: var(--brand-accent); background: transparent; border-radius: 100px; padding: 8px 14px; font-family: 'Syne', sans-serif; font-weight: 700; }
-.back-to-top-link, .mastodon-link { color: var(--brand-accent); font-family: 'Syne', sans-serif; font-weight: 700; }
+.form-box { background: var(--bg-card); padding: 3rem; border-radius: var(--radius-card); border: 1px solid var(--border-light); max-width: 800px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+.form-input { width: 100%; padding: 1.2rem; background: var(--bg-input); border: 1px solid var(--border-light); color: #fff; border-radius: 8px; font-size: 1rem; font-family: inherit; margin-bottom: 1.5rem; transition: border-color 0.3s; }
+.form-input:focus { outline: none; border-color: var(--brand-orange); box-shadow: 0 0 10px rgba(219, 116, 46, 0.2); }
 
-.grafismo {
-  background-image: url('/images/grafismo-incorporado.svg');
-  background-repeat: no-repeat;
-  position: absolute;
-  pointer-events: none;
-  user-select: none;
+/* Rodapé */
+footer { background: var(--footer-bg); padding: 6rem 0 2rem 0; margin-top: 0; border-top: 1px solid rgba(196,21,106,0.25); }
+.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 4rem; margin-bottom: 4rem; }
+
+/* Logo Vazada - APENAS TRAÇOS */
+.footer-logo {
+    font-size: 1.8rem; font-weight: 900; margin: 0 0 1rem 0;
+    text-transform: uppercase; letter-spacing: -1px;
+    color: var(--footer-text);
+    opacity: 0.95;
+}
+.footer-logo span { color: var(--footer-text); }
+
+.footer-newsletter { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem; }
+.footer-newsletter label { font-size: 0.85rem; color: #bcae95; }
+.footer-newsletter input { padding: 0.8rem; border-radius: 6px; border: 1px solid rgba(158,74,18,0.4); background: #1F1007; color: var(--footer-text); width: 100%; }
+.footer-newsletter button { padding: 0.8rem; border-radius: 100px; background: var(--footer-accent); color: #130B07; border: none; font-weight: bold; cursor: pointer; transition: 0.3s; width: 100%; }
+.footer-newsletter button:hover { background: var(--footer-primary); color: var(--footer-text); }
+
+.footer-col h4 { color: var(--footer-accent); margin-bottom: 1.5rem; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; }
+.footer-col a { display: block; margin-bottom: 0.8rem; color: var(--footer-text); opacity: 0.75; transition: 0.2s; font-size: 0.95rem; }
+.footer-col a:hover { color: var(--footer-accent); opacity: 1; padding-left: 5px; }
+
+/* ÍCONES SOCIAIS (CORRIGIDO V30) */
+.social-icons { display: flex; gap: 1rem; margin-top: 1.5rem; }
+.social-icon { 
+    width: 40px; height: 40px; min-width: 40px;
+    background: rgba(255,255,255,0.05); border-radius: 50%; border: 1px solid rgba(196,21,106,0.25);
+    display: flex; align-items: center; justify-content: center; 
+    color: var(--footer-text); transition: 0.3s; text-decoration: none; padding: 0; line-height: 0;
+}
+.social-icon svg { width: 18px; height: 18px; fill: currentColor; display: block; }
+.social-icon:hover { background: var(--footer-primary); color: var(--footer-text); transform: translateY(-3px); }
+
+/* Rodapé Inferior com Acessibilidade */
+.footer-bottom { 
+    border-top: 1px solid rgba(255,255,255,0.12); padding-top: 2rem; 
+    display: flex; justify-content: space-between; align-items: center; 
+    font-size: 0.9rem; color: #7A6A58; 
+}
+.footer-actions { display: flex; gap: 1.5rem; align-items: center; }
+.a11y-btn {
+    background: transparent; border: 1px solid rgba(212,160,23,0.35);
+    color: var(--footer-accent); cursor: pointer; padding: 5px 10px;
+    border-radius: 100px; font-weight: bold; font-size: 0.9rem; transition: 0.2s;
 }
 .grafismo--apoio { opacity: 0.12; }
 .grafismo--protagonista { opacity: 0.55; }
